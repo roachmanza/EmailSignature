@@ -138,8 +138,20 @@ CREATE TABLE public."SignatureItems"
         REFERENCES public."FieldTypes" ("FieldTypeId") MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION,
-    CONSTRAINT "SignatureItems_Persons_fkey" FOREIGN KEY ("ManagerPersonId")
-        REFERENCES public."Persons" ("PersonId") MATCH SIMPLE
+    CONSTRAINT "SignatureItems_Languages_fkey" FOREIGN KEY ("LanguageId")
+        REFERENCES public."Languages" ("LanguageId") MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT "SignatureItems_CsiContactCategories_fkey" FOREIGN KEY ("CsiContactCategoryId")
+        REFERENCES public."CsiContactCategories" ("CsiContactCategoryId") MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT "SignatureItems_CsiContactTypes_fkey" FOREIGN KEY ("CsiContactTypeId")
+        REFERENCES public."CsiContactTypes" ("CsiContactTypeId") MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT "SignatureItems_CsiMainContactTypes_fkey" FOREIGN KEY ("CsiMainContactTypeId")
+        REFERENCES public."Persons" ("CsiContactTypeId") MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
 )
