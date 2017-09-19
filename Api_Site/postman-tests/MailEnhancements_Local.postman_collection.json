@@ -17,6 +17,68 @@
 				"description": ""
 			},
 			"response": []
+		},
+		{
+			"name": "ContactTypes/1",
+			"request": {
+				"url": "http://localhost:4010/MailEnhancement/api/v1/ContactTypes/1",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "ContactTypes",
+			"request": {
+				"url": "http://localhost:4010/MailEnhancement/api/v1/ContactTypes",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"name\":\"test1\",\n\"description\":\"1desc\",\n\"contactTypeEmailAddress\":\"1desc@e\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "ContactTypes/1",
+			"request": {
+				"url": "http://localhost:4010/MailEnhancement/api/v1/ContactTypes/1",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"name\":\"test1\",\n\"description\":\"1desc\",\n\"contactTypeEmailAddress\":\"1desc@sdfsdfe\",\n\"inActive\":\"0\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "ContactTypes/2",
+			"request": {
+				"url": "http://localhost:4010/MailEnhancement/api/v1/ContactTypes/2",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
 		}
 	]
 }
