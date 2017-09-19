@@ -1,5 +1,5 @@
 
-##  ![Mail enhancement system](https://github.com/roachmanza/MailEnhancement/blob/master/Client_website_cdn/content/img/MailIcon64.png "Mail enhancement system") Mail enhancement system
+##  ![Mail enhancement services](https://github.com/roachmanza/MailEnhancement/blob/master/Client_Website_CDN/content/img/redtrophy36x36.png "Mail enhancement services") AWARDS system
 
 ### Welcome to the mail enhancement system
 
