@@ -102,7 +102,7 @@ CREATE TABLE public."AwdContactTypeMappings"
     CONSTRAINT "AwdContactTypeMappings_ContactTypes_fkey" FOREIGN KEY ("ContactTypeId")
         REFERENCES public."ContactTypes" ("ContactTypeId") MATCH SIMPLE
         ON UPDATE NO ACTION
-        ON DELETE NO ACTION,
+        ON DELETE NO ACTION
 )
 WITH (
     OIDS = FALSE
