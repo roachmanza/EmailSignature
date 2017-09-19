@@ -1,32 +1,31 @@
 
 
 --||===============||--
---|| PERSON TABLES ||--
+--|| BASE TABLES ||--
 --||===============||--
--- Persons has base tables for:
--- PersonInformationAttribute - where any other information of the person can be stored
--- Employment type - a person can be defined by one or more employment types.
--- PersonTypes - Office worker , sales, etc.
--- IdentifierType - a unique identifier that the user can use , for example domain login.
--- Roles - a person can be assigned multiple roles in the system.
---||====================||--
---|| BASE PERSON TABLES ||--
---||====================||--
+-- Base tables has base tables for:
+-- Contact types - 
+-- Field type - 
+-- Languages - 
+-- CSI contact categories - 
+-- CSI Contact types - 
+-- AWD Contact type mappings - 
 --|| NO 1.1 ||--
-CREATE TABLE public."PersonInformationAttributes"
+CREATE TABLE public."ContactTypes"
 (
-    "PersonInformationAttributeId" integer NOT NULL,
+    "ContactTypeId" integer NOT NULL,
     "Name" character varying COLLATE pg_catalog."default",
     "Description" character varying COLLATE pg_catalog."default",
+    "ContactTypeEmailAddress" character varying COLLATE pg_catalog."default",
     "InActiveDate" date,
     "InActive" bit(1),
-    CONSTRAINT "PersonInformationAttributes_pkey" PRIMARY KEY ("PersonInformationAttributeId")
+    CONSTRAINT "ContactTypes_pkey" PRIMARY KEY ("ContactTypeId")
 )
 WITH (
     OIDS = FALSE
 )
 TABLESPACE pg_default;
-ALTER TABLE public."PersonInformationAttributes" OWNER TO "Awards_Dev_User";
+ALTER TABLE public."ContactTypes" OWNER TO "MailEnhancementUser";
 
 --|| NO 1.2 ||--
 CREATE TABLE public."EmploymentTypes"
