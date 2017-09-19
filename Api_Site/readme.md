@@ -1,10 +1,11 @@
 
-##  ![Mail enhancement services](https://github.com/roachmanza/MailEnhancement/blob/master/Client_Website_CDN/content/img/redtrophy36x36.png "Mail enhancement services") AWARDS system
+##  ![Mail enhancement system](https://github.com/roachmanza/MailEnhancement/blob/master/Client_website_cdn/content/img/MailIcon64.png "Mail enhancement system") Mail enhancement system APIs
 
-### Welcome to the mail enhancement system
+### Welcome to the mail enhancement system APIs
 
 #### What is the mail enhancement system
-The mail enhancement system is a system where applications can add signatures and headers to outgoing mail.<br/>
+Upload a file for the signature.<br/>
+Add content lines per area
 
 ### How to get the application up and running
 Clone the application to your local repo.<br/>
