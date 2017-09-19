@@ -1,0 +1,22 @@
+{
+	"variables": [],
+	"info": {
+		"name": "MailEnhancements_Local",
+		"_postman_id": "7659493e-5b9d-faf8-2723-1e6805a1049b",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ContactTypes",
+			"request": {
+				"url": "http://localhost:4010/MailEnhancement/api/v1/ContactTypes",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
