@@ -151,7 +151,7 @@ CREATE TABLE public."SignatureItems"
         ON UPDATE NO ACTION
         ON DELETE NO ACTION,
     CONSTRAINT "SignatureItems_CsiMainContactTypes_fkey" FOREIGN KEY ("CsiMainContactTypeId")
-        REFERENCES public."Persons" ("CsiContactTypeId") MATCH SIMPLE
+        REFERENCES public."CsiContactTypes" ("CsiContactTypeId") MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
 )
@@ -159,4 +159,4 @@ WITH (
     OIDS = FALSE
 )
 TABLESPACE pg_default;
-ALTER TABLE public."Persons" OWNER TO "Awards_Dev_User";
+ALTER TABLE public."SignatureItems" OWNER TO "MailEnhancementUser";
