@@ -2,7 +2,7 @@
 
 ### How to get the database up and running
 Install postgres from the web site <a href="https://www.postgresql.org/">https://www.postgresql.org/</a><br/>
-<b>Change the 'pg_hba.conf' file</b> to facilitate your local database instance to be accessed from the API's @~\data\pg96 , sample here : <a href="https://github.com/roachmanza/MailEnhancement/blob/master/Database/PostGres/pg_hba.conf">here</a><br/>
+<b>Change the 'pg_hba.conf' file</b> to facilitate your local database instance to be accessed from the API's @~\data\pg96 , sample here : <a href="https://github.com/roachmanza/MailEnhancement/blob/master/Database/Postgres/pg_hba.conf">here</a><br/>
 <b>Create the user</b> with the script found <a href="https://github.com/roachmanza/MailEnhancement/blob/master/Database/PostGres/0_Create_User.sql">here</a><br/>
 <b>Create the database</b> with the script found <a ref="https://github.com/roachmanza/MailEnhancement/blob/master/Database/PostGres/1_Create_Database.sql">here</a><br/>
 <b>Grant access</b> to the user with the script found <a href="https://github.com/roachmanza/MailEnhancement/blob/master/Database/PostGres/2_GrantAccess.sql">here</a><br/>
