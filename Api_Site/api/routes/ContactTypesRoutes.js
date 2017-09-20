@@ -7,5 +7,7 @@ module.exports = function(webserver) {
     webserver.route('/MailEnhancement/api/v1/ContactTypes/:ContactTypeId')
         .get(controller.read_a_ContactType)
         .put(controller.update_a_ContactType)
-        .delete(controller.delete_a_ContactType);
+        .delete(controller.delete_a_ContactType);        
+    webserver.route('/MailEnhancement/api/v1/ContactTypes/EmailAddress/:EmailAddress')
+    .get(controller.read_a_ContactType_for_EmailAddress);
 };

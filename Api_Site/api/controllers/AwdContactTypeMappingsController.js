@@ -1,15 +1,16 @@
 
-exports.get_all_ContactTypes = function (req, res) {
+exports.get_all_AwdContactTypeMappings = function (req, res) {
     var dataGet = require('../dataAccess/dataGet');
-    dataGet(
-        'SELECT '+
-        ' CT."ContactTypeId" as ContactTypeId,'+
-        ' CT."Name" as Name,'+
-        ' CT."Description" as Description,'+
-        ' CT."ContactTypeEmailAddress" as ContactTypeEmailAddress,'+
-        ' CT."InActiveDate" as InActiveDate,'+
-        ' CT."InActive" as InActive'+   
-        ' FROM public."ContactTypes" AS CT',
+    dataGet('SELECT '+
+    ' ACTM."AwdContactTypeMappingId" as AwdContactTypeMappingId,'+
+    ' ACTM."ContactTypeId" as ContactTypeId,'+
+    ' ACTM."AwdRegion" as AwdRegion,'+
+    ' ACTM."AwdContactRole" as AwdContactRole,'+
+    ' ACTM."Name" as Name,'+
+    ' ACTM."Description" as Description,'+
+    ' ACTM."InActiveDate" as InActiveDate,'+
+    ' ACTM."InActive" as InActive'+    
+    ' FROM public."AwdContactTypeMappings" AS ACTM',
         function (results, err) {
             if (err) {
                 res.status(400).type('application/json').json({ success: false, httpStatusCode: 400, error: { status: "Bad Request", message: results } });
@@ -19,23 +20,25 @@ exports.get_all_ContactTypes = function (req, res) {
         });
 };
 
-exports.create_a_ContactType = function (req, res) {
+exports.create_a_AwdContactTypeMapping = function (req, res) {
     var dataGet = require('../dataAccess/dataGet');
-    dataGet('SELECT "ContactTypeId" FROM public."ContactTypes" order by "ContactTypeId" desc LIMIT 1',
+    dataGet('SELECT "AwdContactTypeMappingId" FROM public."AwdContactTypeMappings" order by "AwdContactTypeMappingId" desc LIMIT 1',
         function (numberResults) {
             var id = 1;
             if (numberResults[0] != null) {
-                id = numberResults[0]["ContactTypeId"] + 1;
+                id = numberResults[0]["AwdContactTypeMappingId"] + 1;
             }
+            var contactTypeId = req.body.contactTypeId;
+            var awdRegion = req.body.awdRegion;
+            var awdContactRole = req.body.awdContactRole;
             var name = req.body.name;
             var description = req.body.description;
-            var email = req.body.contactTypeEmailAddress;
             var inactiveDate = new Date(1900, 01, 01).toJSON().slice(0, 10).replace(/-/g, '/');
             var inactive = 0;
             var dataPost = require('../dataAccess/dataPost');
-            dataPost('INSERT INTO public."ContactTypes"("ContactTypeId", "Name", "Description", "ContactTypeEmailAddress","InActiveDate", "InActive") ' +
+            dataPost('INSERT INTO public."AwdContactTypeMappings"("AwdContactTypeMappingId", "ContactTypeId", "AwdRegion", "AwdContactRole", "Name", "Description","InActiveDate", "InActive") ' +
                 'VALUES' +
-                '(' + id + ',\'' + name + '\' ,\'' + description + '\' ,\'' + email + '\' ,\'' + inactiveDate + '\' ,\'' + inactive + '\')',
+                '(' + id + ',\'' + contactTypeId + '\' ,\'' + awdRegion + '\' ,\'' + awdContactRole + '\' ,\'' + name + '\' ,\'' + description + '\' ,\'' + inactiveDate + '\' ,\'' + inactive + '\')',
                 function (results, err) {
                     if (err) {
                         res.status(400).type('application/json').json({ success: false, httpStatusCode: 400, error: { status: "Bad Request", message: results } });
@@ -46,19 +49,21 @@ exports.create_a_ContactType = function (req, res) {
         });
 };
 
-exports.read_a_ContactType = function (req, res) {
-    var id = req.params.ContactTypeId;
+exports.read_a_AwdContactTypeMapping = function (req, res) {
+    var id = req.params.AwdContactTypeMappingId;
     var dataGet = require('../dataAccess/dataGet');
     dataGet(
-        'SELECT '+
-        ' CT."ContactTypeId" as ContactTypeId,'+
-        ' CT."Name" as Name,'+
-        ' CT."Description" as Description,'+
-        ' CT."ContactTypeEmailAddress" as ContactTypeEmailAddress,'+
-        ' CT."InActiveDate" as InActiveDate,'+
-        ' CT."InActive" as InActive'+   
-        ' FROM public."ContactTypes" AS CT'+
-        ' WHERE CT."ContactTypeId" = ' + id,
+    'SELECT '+
+    ' ACTM."AwdContactTypeMappingId" as AwdContactTypeMappingId,'+
+    ' ACTM."ContactTypeId" as ContactTypeId,'+
+    ' ACTM."AwdRegion" as AwdRegion,'+
+    ' ACTM."AwdContactRole" as AwdContactRole,'+
+    ' ACTM."Name" as Name,'+
+    ' ACTM."Description" as Description,'+
+    ' ACTM."InActiveDate" as InActiveDate,'+
+    ' ACTM."InActive" as InActive'+   
+    ' FROM public."AwdContactTypeMappings" AS ACTM'+
+    ' where ACTM."AwdContactTypeMappingId" = ' + id,
         function (results, err) {
             if (err) {
                 res.status(400).type('application/json').json({ success: false, httpStatusCode: 400, error: { status: "Bad Request", message: results } });
@@ -68,33 +73,13 @@ exports.read_a_ContactType = function (req, res) {
         });
 };
 
-exports.read_a_ContactType_for_EmailAddress = function (req, res) {
-    var email = req.params.EmailAddress;
-    var dataGet = require('../dataAccess/dataGet');
-    dataGet(
-        'SELECT '+
-        ' CT."ContactTypeId" as ContactTypeId,'+
-        ' CT."Name" as Name,'+
-        ' CT."Description" as Description,'+
-        ' CT."ContactTypeEmailAddress" as ContactTypeEmailAddress,'+
-        ' CT."InActiveDate" as InActiveDate,'+
-        ' CT."InActive" as InActive'+   
-        ' FROM public."ContactTypes" AS CT'+
-        ' WHERE CT."ContactTypeEmailAddress" = \'' + email + '\'',
-        function (results, err) {
-            if (err) {
-                res.status(400).type('application/json').json({ success: false, httpStatusCode: 400, error: { status: "Bad Request", message: results } });
-            } else {
-                res.type('application/json').json({ success: true, httpStatusCode: 200, status: "OK", data: results });
-            }
-        });
-};
-
-exports.update_a_ContactType = function (req, res) {
-    var id = req.params.ContactTypeId;
+exports.update_a_AwdContactTypeMapping = function (req, res) {
+    var id = req.params.AwdContactTypeMappingId;
+    var contactTypeId = req.body.contactTypeId;
+    var awdRegion = req.body.awdRegion;
+    var awdContactRole = req.body.awdContactRole;
     var name = req.body.name;
     var description = req.body.description;
-    var email = req.body.contactTypeEmailAddress;
     var inactiveDate;
     var inactive;
     if (req.body.inActive === "1") {
@@ -107,14 +92,16 @@ exports.update_a_ContactType = function (req, res) {
 
 
     var dataPut = require('../dataAccess/dataPut');
-    dataPut(' UPDATE public."ContactTypes" ' +
+    dataPut(' UPDATE public."AwdContactTypeMappings" ' +
         'SET ' +
+        ' "ContactTypeId"=\'' + contactTypeId + '\', ' +
+        ' "AwdRegion"=\'' + awdRegion + '\', ' +
+        ' "AwdContactRole"=\'' + awdContactRole + '\', ' +
         ' "Name"=\'' + name + '\', ' +
         ' "Description"=\'' + description + '\', ' +
-        ' "ContactTypeEmailAddress"=\'' + email + '\', ' +
         ' "InActiveDate"=\'' + inactiveDate + '\', ' +
         ' "InActive"=\'' + inactive + '\' ' +
-        'where "ContactTypeId" = ' + id,
+        'where "AwdContactTypeMappingId" = ' + id,
         function (results, err) {
             if (err) {
                 res.status(400).type('application/json').json({ success: false, httpStatusCode: 400, error: { status: "Bad Request", message: results } });
@@ -124,10 +111,10 @@ exports.update_a_ContactType = function (req, res) {
         });
 };
 
-exports.delete_a_ContactType = function (req, res) {
-    var id = req.params.ContactTypeId;
+exports.delete_a_AwdContactTypeMapping = function (req, res) {
+    var id = req.params.AwdContactTypeMappingId;
     var dataDelete = require('../dataAccess/dataDelete');
-    dataDelete('DELETE FROM public."ContactTypes" where "ContactTypeId" = ' + id,
+    dataDelete('DELETE FROM public."AwdContactTypeMappings" where "AwdContactTypeMappingId" = ' + id,
         function (results, err) {
             if (err) {
                 res.status(400).type('application/json').json({ success: false, httpStatusCode: 400, error: { status: "Bad Request", message: results } });

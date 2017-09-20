@@ -47,3 +47,23 @@ contactTypesRoutes(webserver);
 //1.2 Db table
 var fieldTypesRoutes = require('./api/routes/FieldTypesRoutes');
 fieldTypesRoutes(webserver);
+
+//1.3 Db table
+var languagesRoutes = require('./api/routes/LanguagesRoutes');
+languagesRoutes(webserver);
+
+//1.4 Db table
+var csiContactCategoriesRoutes = require('./api/routes/CsiContactCategoriesRoutes');
+csiContactCategoriesRoutes(webserver);
+
+//1.5 Db table
+var csiContactTypesRoutes = require('./api/routes/CsiContactTypesRoutes');
+csiContactTypesRoutes(webserver);
+
+//1.6 Db table
+var awdContactTypeMappingsRoutes = require('./api/routes/AwdContactTypeMappingsRoutes');
+awdContactTypeMappingsRoutes(webserver);
+
+//2.1 Db table
+var signatureItemsRoutes = require('./api/routes/SignatureItemsRoutes');
+signatureItemsRoutes(webserver);

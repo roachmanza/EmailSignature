@@ -17,27 +17,27 @@ module.exports = function (queryString, callback) {
             jsonReturnResult = jsonResult;
             client.end();
             console.log(jsonReturnResult);
-            callback(jsonReturnResult);
+            callback(jsonReturnResult, true);
         } else {
-            console.log('CONNECTED...');
+            //console.log('CONNECTED...');
             client.query(queryString, function (err, result) {
                 if (err) {
-                    console.log("ERROR")
-                    console.log(err.message);
+                    //console.log("ERROR")
+                    //console.log(err.message);
                     var jsonString = JSON.stringify(err.message);
                     var jsonResult = JSON.parse(jsonString);
                     jsonReturnResult = jsonResult;
                     client.end();
-                    console.log(jsonReturnResult);
-                    callback(jsonReturnResult);
+                   // console.log(jsonReturnResult);
+                    callback(jsonReturnResult, true);
                 } else {
-                    console.log("SUCCESS")
+                    //console.log("SUCCESS")
                     var jsonString = JSON.stringify(result.rows);
                     var jsonResult = JSON.parse(jsonString);
                     jsonReturnResult = jsonResult;
                     client.end();
-                    console.log(jsonReturnResult);
-                    callback(jsonReturnResult);
+                    //console.log(jsonReturnResult);
+                    callback(jsonReturnResult, false);
                 }
             });
         }

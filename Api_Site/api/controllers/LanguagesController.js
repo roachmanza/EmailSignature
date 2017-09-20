@@ -1,15 +1,15 @@
 
-exports.get_all_ContactTypes = function (req, res) {
+exports.get_all_Languages = function (req, res) {
     var dataGet = require('../dataAccess/dataGet');
     dataGet(
         'SELECT '+
-        ' CT."ContactTypeId" as ContactTypeId,'+
-        ' CT."Name" as Name,'+
-        ' CT."Description" as Description,'+
-        ' CT."ContactTypeEmailAddress" as ContactTypeEmailAddress,'+
-        ' CT."InActiveDate" as InActiveDate,'+
-        ' CT."InActive" as InActive'+   
-        ' FROM public."ContactTypes" AS CT',
+        ' L."LanguageId" as LanguageId,'+
+        ' L."Name" as Name,'+
+        ' L."Description" as Description,'+
+        ' L."Code" as Code,'+
+        ' L."InActiveDate" as InActiveDate,'+
+        ' L."InActive" as InActive'+   
+        ' FROM public."Languages" AS L',
         function (results, err) {
             if (err) {
                 res.status(400).type('application/json').json({ success: false, httpStatusCode: 400, error: { status: "Bad Request", message: results } });
@@ -19,23 +19,23 @@ exports.get_all_ContactTypes = function (req, res) {
         });
 };
 
-exports.create_a_ContactType = function (req, res) {
+exports.create_a_Language = function (req, res) {
     var dataGet = require('../dataAccess/dataGet');
-    dataGet('SELECT "ContactTypeId" FROM public."ContactTypes" order by "ContactTypeId" desc LIMIT 1',
+    dataGet('SELECT "LanguageId" FROM public."Languages" order by "LanguageId" desc LIMIT 1',
         function (numberResults) {
             var id = 1;
             if (numberResults[0] != null) {
-                id = numberResults[0]["ContactTypeId"] + 1;
+                id = numberResults[0]["LanguageId"] + 1;
             }
             var name = req.body.name;
             var description = req.body.description;
-            var email = req.body.contactTypeEmailAddress;
+            var code = req.body.code;
             var inactiveDate = new Date(1900, 01, 01).toJSON().slice(0, 10).replace(/-/g, '/');
             var inactive = 0;
             var dataPost = require('../dataAccess/dataPost');
-            dataPost('INSERT INTO public."ContactTypes"("ContactTypeId", "Name", "Description", "ContactTypeEmailAddress","InActiveDate", "InActive") ' +
+            dataPost('INSERT INTO public."Languages"("LanguageId", "Name", "Description", "Code","InActiveDate", "InActive") ' +
                 'VALUES' +
-                '(' + id + ',\'' + name + '\' ,\'' + description + '\' ,\'' + email + '\' ,\'' + inactiveDate + '\' ,\'' + inactive + '\')',
+                '(' + id + ',\'' + name + '\' ,\'' + description + '\' ,\'' + code + '\' ,\'' + inactiveDate + '\' ,\'' + inactive + '\')',
                 function (results, err) {
                     if (err) {
                         res.status(400).type('application/json').json({ success: false, httpStatusCode: 400, error: { status: "Bad Request", message: results } });
@@ -46,19 +46,19 @@ exports.create_a_ContactType = function (req, res) {
         });
 };
 
-exports.read_a_ContactType = function (req, res) {
-    var id = req.params.ContactTypeId;
+exports.read_a_Language = function (req, res) {
+    var id = req.params.LanguageId;
     var dataGet = require('../dataAccess/dataGet');
     dataGet(
         'SELECT '+
-        ' CT."ContactTypeId" as ContactTypeId,'+
-        ' CT."Name" as Name,'+
-        ' CT."Description" as Description,'+
-        ' CT."ContactTypeEmailAddress" as ContactTypeEmailAddress,'+
-        ' CT."InActiveDate" as InActiveDate,'+
-        ' CT."InActive" as InActive'+   
-        ' FROM public."ContactTypes" AS CT'+
-        ' WHERE CT."ContactTypeId" = ' + id,
+        ' L."LanguageId" as LanguageId,'+
+        ' L."Name" as Name,'+
+        ' L."Description" as Description,'+
+        ' L."Code" as Code,'+
+        ' L."InActiveDate" as InActiveDate,'+
+        ' L."InActive" as InActive'+   
+        ' FROM public."Languages" AS L'+
+        ' WHERE L."LanguageId" = ' + id,
         function (results, err) {
             if (err) {
                 res.status(400).type('application/json').json({ success: false, httpStatusCode: 400, error: { status: "Bad Request", message: results } });
@@ -68,33 +68,11 @@ exports.read_a_ContactType = function (req, res) {
         });
 };
 
-exports.read_a_ContactType_for_EmailAddress = function (req, res) {
-    var email = req.params.EmailAddress;
-    var dataGet = require('../dataAccess/dataGet');
-    dataGet(
-        'SELECT '+
-        ' CT."ContactTypeId" as ContactTypeId,'+
-        ' CT."Name" as Name,'+
-        ' CT."Description" as Description,'+
-        ' CT."ContactTypeEmailAddress" as ContactTypeEmailAddress,'+
-        ' CT."InActiveDate" as InActiveDate,'+
-        ' CT."InActive" as InActive'+   
-        ' FROM public."ContactTypes" AS CT'+
-        ' WHERE CT."ContactTypeEmailAddress" = \'' + email + '\'',
-        function (results, err) {
-            if (err) {
-                res.status(400).type('application/json').json({ success: false, httpStatusCode: 400, error: { status: "Bad Request", message: results } });
-            } else {
-                res.type('application/json').json({ success: true, httpStatusCode: 200, status: "OK", data: results });
-            }
-        });
-};
-
-exports.update_a_ContactType = function (req, res) {
-    var id = req.params.ContactTypeId;
+exports.update_a_Language = function (req, res) {
+    var id = req.params.LanguageId;
     var name = req.body.name;
     var description = req.body.description;
-    var email = req.body.contactTypeEmailAddress;
+    var code = req.body.code;
     var inactiveDate;
     var inactive;
     if (req.body.inActive === "1") {
@@ -107,14 +85,14 @@ exports.update_a_ContactType = function (req, res) {
 
 
     var dataPut = require('../dataAccess/dataPut');
-    dataPut(' UPDATE public."ContactTypes" ' +
+    dataPut(' UPDATE public."Languages" ' +
         'SET ' +
         ' "Name"=\'' + name + '\', ' +
         ' "Description"=\'' + description + '\', ' +
-        ' "ContactTypeEmailAddress"=\'' + email + '\', ' +
+        ' "Code"=\'' + code + '\', ' +
         ' "InActiveDate"=\'' + inactiveDate + '\', ' +
         ' "InActive"=\'' + inactive + '\' ' +
-        'where "ContactTypeId" = ' + id,
+        'where "LanguageId" = ' + id,
         function (results, err) {
             if (err) {
                 res.status(400).type('application/json').json({ success: false, httpStatusCode: 400, error: { status: "Bad Request", message: results } });
@@ -124,10 +102,10 @@ exports.update_a_ContactType = function (req, res) {
         });
 };
 
-exports.delete_a_ContactType = function (req, res) {
-    var id = req.params.ContactTypeId;
+exports.delete_a_Language = function (req, res) {
+    var id = req.params.LanguageId;
     var dataDelete = require('../dataAccess/dataDelete');
-    dataDelete('DELETE FROM public."ContactTypes" where "ContactTypeId" = ' + id,
+    dataDelete('DELETE FROM public."Languages" where "LanguageId" = ' + id,
         function (results, err) {
             if (err) {
                 res.status(400).type('application/json').json({ success: false, httpStatusCode: 400, error: { status: "Bad Request", message: results } });
