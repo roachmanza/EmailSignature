@@ -1,6 +1,7 @@
 'use strict';
 module.exports = function(webserver) {
     var controller = require('../controllers/AwdContactTypeMappingsController');
+    
     webserver.route('/MailEnhancement/api/v1/AwdContactTypeMappings')
         .post(controller.create_a_AwdContactTypeMapping)
         .get(controller.get_all_AwdContactTypeMappings);

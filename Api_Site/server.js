@@ -4,7 +4,11 @@ var webserver = express();
 var port = process.env.PORT || 4010;
 var bodyParser = require('body-parser');
 var path = require('path');
+// var swagger  = require("swagger-node-express");
+const swaggerUi = require('swagger-ui-express');
 
+
+//CORS
 var allowCrossDomain = function (req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
@@ -17,11 +21,19 @@ var allowCrossDomain = function (req, res, next) {
     next();
   }
 };
-
 webserver.use(allowCrossDomain);
-// webserver.options('*', cors())
+
+//PARSER
 webserver.use(bodyParser.urlencoded({ extended: true }));
 webserver.use(bodyParser.json());
+
+// SWAGGER
+const swaggerDocument = require('./swagger.json');
+var showExplorer = false;
+var options = {
+    validatorUrl : null
+};
+webserver.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument,showExplorer,options));
 
 //client css
 webserver.get('/client/content/css/default', function (req, res) { res.sendFile(path.join(__dirname + '/client/content/css/client.css')); });
@@ -32,6 +44,9 @@ webserver.get('/client/content/img/systemIcon', function (req, res) { res.sendFi
 webserver.get('/', function (req, res) { res.sendFile(path.join(__dirname + '/client/apiIndex.html')); });
 webserver.get('/home/', function (req, res) { res.sendFile(path.join(__dirname + '/client/apiIndex.html')); });
 webserver.get('/api/help', function (req, res) { res.sendFile(path.join(__dirname + '/client/apiDocumentation.html')); });
+
+// webserver.get('/swagger/', function (req, res) { res.sendFile(path.join(__dirname + '/client/swagger.html')); });
+// swagger.configure("http://localhost:4010/swagger", "0.1");
 
 //Listen on port number
 webserver.listen(port);
