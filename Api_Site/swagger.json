@@ -1,22 +1,37 @@
 {
-    "/pets": {
+  "swagger": "2.0",
+  "info": {
+    "title": "title",
+    "description": "deasctiption",
+    "version": "1.0"
+  },
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/test": {
       "get": {
-        "description": "Returns all pets from the system that the user has access to",
-        "responses": {
-          "200": {          
-            "description": "A list of pets.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/pet"
-                  }
-                }
-              }
-            }
-          }
-        }
+        "x-swagger-router-controller": "home",
+        "operationId": "index",
+        "tags": [
+          "/test"
+        ],
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/bar": {
+      "get": {
+        "x-swagger-router-controller": "bar",
+        "operationId": "impossible",
+        "tags": [
+          "/first"
+        ],
+        "description": "",
+        "parameters": [],
+        "responses": {}
       }
     }
   }
+}
