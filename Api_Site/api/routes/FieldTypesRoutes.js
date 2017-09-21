@@ -4,7 +4,7 @@ module.exports = function(webserver) {
     webserver.route('/MailEnhancement/api/v1/FieldTypes')
         .post(controller.create_a_FieldType)
         .get(controller.get_all_FieldTypes);
-    webserver.route('/MailEnhancement/api/v1/FieldTypes/:FieldTypeId')
+    webserver.route('/MailEnhancement/api/v1/FieldTypes/:Id')
         .get(controller.read_a_FieldType)
         .put(controller.update_a_FieldType)
         .delete(controller.delete_a_FieldType);
