@@ -23,6 +23,14 @@
 				"description": "Find out more",
 				"url": "http://localhost:4010/api/help"
 			}
+		},
+		{
+			"name": "CsiContactCategories",
+			"description": "CSI Contact categories.",
+			"externalDocs": {
+				"description": "Find out more",
+				"url": "http://localhost:4010/api/help"
+			}
 		}
 		
 	],
@@ -201,12 +209,37 @@
 			}
 
 		},
+		"/ContactTypes/EmailAddress/{EmailAddress}": {
+			"get": {
+				"tags": [
+					"ContactTypes"
+				],
+				"description": "Get all the contact type records from the database that has the supplied email address.",
+				"parameters": [
+					{
+					"name": "EmailAddress",
+					"in": "path",
+					"description": "EmailAddress of a contact type that needs to be fetched",
+					"required": true,
+					"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					}
+				}
+			}
+		},
 		"/ContactTypes/{Id}": {
 			"get": {
 				"tags": [
 					"ContactTypes"
 				],
-				"description": "Get the contact type from the database by the id.",
+				"description": "Get the contact type record from the database by the database id.",
 				"parameters": [
 					{
 					"name": "Id",
@@ -230,7 +263,7 @@
 				"tags": [
 					"ContactTypes"
 				],
-				"description": "Update a record on the database.",
+				"description": "Update a contact type record on the database with the details supplied , and the id of the record on the database.",
 				"parameters": [
 					{
 					"name": "Id",
@@ -263,7 +296,7 @@
 				"tags": [
 					"ContactTypes"
 				],
-				"description": "Delete a record from the database.",
+				"description": "Delete a  contact type record from the database.",
 				"parameters": [
 					{
 					"name": "Id",
@@ -284,19 +317,121 @@
 				}
 			}
 		},
-		"/ContactTypes/EmailAddress/{EmailAddress}": {
+		"/CsiContactCategories": {
 			"get": {
 				"tags": [
-					"ContactTypes"
+					"CsiContactCategories"
 				],
-				"description": "Get all the ContactTypes from the database.",
+				"description": "Get all the csi contact categories from the database.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					}
+				}
+			},
+
+			"post": {
+				"tags": [
+					"CsiContactCategories"
+				],
+				"description": "Create a new csi contact category on the database.",
 				"parameters": [
 					{
-					"name": "EmailAddress",
+						"in": "body",
+						"name": "body",
+						"description": "csi contact category that needs to be added to the system",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/CsiContactCategoriesModel"
+						}
+					}
+				],
+				"responses": {
+					"201": {
+						"description": "Created"
+					},
+					"400": {
+						"description": "Bad Request"
+					}
+				}
+			}
+
+		},
+		"/CsiContactCategories/{Id}": {
+			"get": {
+				"tags": [
+					"CsiContactCategories"
+				],
+				"description": "Get the csi contact category from the database by the id.",
+				"parameters": [
+					{
+					"name": "Id",
 					"in": "path",
-					"description": "EmailAddress of a contact type that needs to be fetched",
+					"description": "Id of csi contact category that needs to be fetched",
 					"required": true,
-					"type": "string"
+					"type": "integer",
+					"format": "int32"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					}
+				}
+			},
+			"put":{
+				"tags": [
+					"CsiContactCategories"
+				],
+				"description": "Update a csi contact category record on the database.",
+				"parameters": [
+					{
+					"name": "Id",
+					"in": "path",
+					"description": "Id of csi contact category that needs to be edited",
+					"required": true,
+					"type": "integer",
+					"format": "int32"
+					},
+					{
+						"in": "body",
+						"name": "body",
+						"description": "csi contact category that needs to be edited",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/CsiContactCategoriesModel"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					}
+				}
+			},
+			"delete": {
+				"tags": [
+					"CsiContactCategories"
+				],
+				"description": "Delete a csi contact category record from the database.",
+				"parameters": [
+					{
+					"name": "Id",
+					"in": "path",
+					"description": "Id of csi contact category that needs to be removed",
+					"required": true,
+					"type": "integer",
+					"format": "int32"
 					}
 				],
 				"responses": {
@@ -309,71 +444,102 @@
 				}
 			}
 		}
-
-		},
+		
+	
+	
+	
+	
+	},
 	"definitions": {
 		"AwdContactTypeMappingsModel": {
-		"type": "object",
-		"required": [
-			"contactTypeId",
-			"awdRegion",
-			"awdContactRole",
-			"name",
-			"description"
-		],
-		"properties": {
-			"contactTypeId": {
-				"type": "integer",
-				"format": "int32",
-				"example": 1
-			},
-			"awdRegion": {
-				"type": "string",
-				"example": "awdRegion"
-			},
-			"awdContactRole": {
-				"type": "string",
-				"example": "awdContactRole"
-			},
-			"name": {
-				"type": "string",
-				"example": "name"
-			},
-			"description": {
-				"type": "string",
-				"example": "description"
-			},
-			"inActive": {
-				"type": "bool",
-				"example": false
+			"type": "object",
+			"required": [
+				"contactTypeId",
+				"awdRegion",
+				"awdContactRole",
+				"name",
+				"description"
+			],
+			"properties": {
+				"contactTypeId": {
+					"type": "integer",
+					"format": "int32",
+					"example": 1
+				},
+				"awdRegion": {
+					"type": "string",
+					"example": "awdRegion"
+				},
+				"awdContactRole": {
+					"type": "string",
+					"example": "awdContactRole"
+				},
+				"name": {
+					"type": "string",
+					"example": "name"
+				},
+				"description": {
+					"type": "string",
+					"example": "description"
+				},
+				"inActive": {
+					"type": "bool",
+					"example": false
+				}
 			}
-		}
-	},
+		},
 		"ContactTypesModel": {
-		"type": "object",
-		"required": [
-			"name",
-			"description",
-			"contactTypeEmailAddress"
-		],
-		"properties": {
-			"name": {
-				"type": "string",
-				"example": "name"
-			},
-			"description": {
-				"type": "string",
-				"example": "description"
-			},
-			"contactTypeEmailAddress": {
-				"type": "string",
-				"example": "contactTypeEmailAddress"
-			},
-			"inActive": {
-				"type": "bool",
-				"example": false
+			"type": "object",
+			"required": [
+				"name",
+				"description",
+				"contactTypeEmailAddress"
+			],
+			"properties": {
+				"name": {
+					"type": "string",
+					"example": "name"
+				},
+				"description": {
+					"type": "string",
+					"example": "description"
+				},
+				"contactTypeEmailAddress": {
+					"type": "string",
+					"example": "contactTypeEmailAddress"
+				},
+				"inActive": {
+					"type": "bool",
+					"example": false
+				}
+			}
+		},
+		"CsiContactCategoriesModel": {
+			"type": "object",
+			"required": [
+				"name",
+				"description"
+			],
+			"properties": {
+				"name": {
+					"type": "string",
+					"example": "name"
+				},
+				"description": {
+					"type": "string",
+					"example": "description"
+				},
+				"inActive": {
+					"type": "bool",
+					"example": false
+				}
 			}
 		}
-	}
+	
+	
+	
+	
+	
+	
 	}
 }

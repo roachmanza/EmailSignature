@@ -13,7 +13,7 @@ exports.get_all_CsiContactCategories = function (req, res) {
             if (err) {
                 res.status(400).type('application/json').json({ success: false, httpStatusCode: 400, error: { status: "Bad Request", message: results } });
             } else {
-                res.type('application/json').json({success: true,  httpStatusCode: 200, status: "OK", data: results });
+                res.status(200).type('application/json').json({success: true,  httpStatusCode: 200, status: "OK", data: results });
             }
         });
 };
@@ -38,14 +38,14 @@ exports.create_a_CsiContactCategory = function (req, res) {
                     if (err) {
                         res.status(400).type('application/json').json({ success: false, httpStatusCode: 400, error: { status: "Bad Request", message: results } });
                     } else {
-                        res.type('application/json').json({ success: true, httpStatusCode: 201, status: "Created", data: results });
+                        res.status(201).type('application/json').json({ success: true, httpStatusCode: 201, status: "Created", data: results });
                     }
                 });
         });
 };
 
 exports.read_a_CsiContactCategory = function (req, res) {
-    var id = req.params.CsiContactCategoryId;
+    var id = req.params.Id;
     var dataGet = require('../dataAccess/dataGet');
     dataGet(
         'SELECT '+
@@ -60,13 +60,13 @@ exports.read_a_CsiContactCategory = function (req, res) {
             if (err) {
                 res.status(400).type('application/json').json({ success: false, httpStatusCode: 400, error: { status: "Bad Request", message: results } });
             } else {
-                res.type('application/json').json({success: true,  httpStatusCode: 200, status: "OK", data: results });
+                res.status(200).type('application/json').json({success: true,  httpStatusCode: 200, status: "OK", data: results });
             }
         });
 };
 
 exports.update_a_CsiContactCategory = function (req, res) {
-    var id = req.params.CsiContactCategoryId;
+    var id = req.params.Id;
     var name = req.body.name;
     var description = req.body.description;
     var inactiveDate;
@@ -92,20 +92,20 @@ exports.update_a_CsiContactCategory = function (req, res) {
             if (err) {
                 res.status(400).type('application/json').json({success: false,  httpStatusCode: 400, error: { status: "Bad Request", message: results } });
             } else {
-                res.type('application/json').json({ success: true, httpStatusCode: 200, status: "OK", data: results });
+                res.status(200).type('application/json').json({ success: true, httpStatusCode: 200, status: "OK", data: results });
             }
         });
 };
 
 exports.delete_a_CsiContactCategory = function (req, res) {
-    var id = req.params.CsiContactCategoryId;
+    var id = req.params.Id;
     var dataDelete = require('../dataAccess/dataDelete');
     dataDelete('DELETE FROM public."CsiContactCategories" where "CsiContactCategoryId" = ' + id,
         function (results, err) {
             if (err) {
                 res.status(400).type('application/json').json({success: false,  httpStatusCode: 400, error: { status: "Bad Request", message: results } });
             } else {
-                res.type('application/json').json({success: true,  httpStatusCode: 204, status: "No Content", data: results });
+                res.status(200).type('application/json').json({success: true,  httpStatusCode: 200, status: "No Content", data: results });
             }
         });
 };
