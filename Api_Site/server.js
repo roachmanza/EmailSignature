@@ -43,7 +43,7 @@ webserver.get('/client/content/img/systemIcon', function (req, res) { res.sendFi
 // static folders to be able to point to css, js etc files in a directory
 webserver.get('/', function (req, res) { res.sendFile(path.join(__dirname + '/client/apiIndex.html')); });
 webserver.get('/home/', function (req, res) { res.sendFile(path.join(__dirname + '/client/apiIndex.html')); });
-webserver.get('/api/help', function (req, res) { res.sendFile(path.join(__dirname + '/client/apiDocumentation.html')); });
+webserver.get('/specification', function (req, res) { res.sendFile(path.join(__dirname + '/client/apiSpecification.html')); });
 
 // webserver.get('/swagger/', function (req, res) { res.sendFile(path.join(__dirname + '/client/swagger.html')); });
 // swagger.configure("http://localhost:4010/swagger", "0.1");
