@@ -21,7 +21,7 @@ exports.get_all_SignatureItems = function (req, res) {
             if (err) {
                 res.status(400).type('application/json').json({ success: false, httpStatusCode: 400, error: { status: "Bad Request", message: results } });
             } else {
-                res.type('application/json').json({ success: true, httpStatusCode: 200, status: "OK", data: results });
+                res.status(200).type('application/json').json({ success: true, httpStatusCode: 200, status: "OK", data: results });
             }
         });
 };
@@ -55,7 +55,7 @@ exports.create_a_SignatureItem = function (req, res) {
                     if (err) {
                         res.status(400).type('application/json').json({success: false,  httpStatusCode: 400, error: { status: "Bad Request", message: results } });
                     } else {
-                        res.type('application/json').json({ success: true, httpStatusCode: 201, status: "Created", data: results });
+                        res.status(201).type('application/json').json({ success: true, httpStatusCode: 201, status: "Created", data: results });
                     }
                 });
         });
@@ -85,7 +85,7 @@ exports.read_a_SignatureItem = function (req, res) {
             if (err) {
                 res.status(400).type('application/json').json({ success: false, httpStatusCode: 400, error: { status: "Bad Request", message: results } });
             } else {
-                res.type('application/json').json({success: true,  httpStatusCode: 200, status: "OK", data: results });
+                res.status(200).type('application/json').json({success: true,  httpStatusCode: 200, status: "OK", data: results });
             }
         });
 };
@@ -132,7 +132,7 @@ exports.update_a_SignatureItem = function (req, res) {
             if (err) {
                 res.status(400).type('application/json').json({success: false,  httpStatusCode: 400, error: { status: "Bad Request", message: results } });
             } else {
-                res.type('application/json').json({ success: true, httpStatusCode: 200, status: "OK", data: results });
+                res.status(200).type('application/json').json({ success: true, httpStatusCode: 200, status: "OK", data: results });
             }
         });
 };
@@ -145,7 +145,7 @@ exports.delete_a_SignatureItem = function (req, res) {
             if (err) {
                 res.status(400).type('application/json').json({ success: false, httpStatusCode: 400, error: { status: "Bad Request", message: results } });
             } else {
-                res.type('application/json').json({ success: true, httpStatusCode: 204, status: "No Content", data: results });
+                res.status(200).type('application/json').json({ success: true, httpStatusCode: 200, status: "No Content", data: results });
             }
         });
 };
@@ -174,13 +174,13 @@ exports.read_all_SignatureItems_for_emailAddr = function (req, res) {
             if (err) {
                 res.status(400).type('application/json').json({ success: false, httpStatusCode: 400, error: { status: "Bad Request", message: results } });
             } else {
-                res.type('application/json').json({ success: true, httpStatusCode: 200, status: "OK", data: results });
+                res.status(200).type('application/json').json({ success: true, httpStatusCode: 200, status: "OK", data: results });
             }
         });
 };
 
 exports.read_all_SignatureItems_for_contactTypeId = function (req, res) {
-    var id = req.params.ContactTypeId;
+    var id = req.params.Id;
     var dataGet = require('../dataAccess/dataGet');
     dataGet('SELECT ' +
         ' SI."SignatureItemId" as SignatureItemId, ' +
@@ -202,7 +202,7 @@ exports.read_all_SignatureItems_for_contactTypeId = function (req, res) {
             if (err) {
                 res.status(400).type('application/json').json({ success: false, httpStatusCode: 400, error: { status: "Bad Request", message: results } });
             } else {
-                res.type('application/json').json({success: true,  httpStatusCode: 200, status: "OK", data: results });
+                res.status(200).type('application/json').json({success: true,  httpStatusCode: 200, status: "OK", data: results });
             }
         });
 };

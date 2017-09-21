@@ -47,6 +47,22 @@
 				"description": "Find out more",
 				"url": "http://localhost:4010/api/help"
 			}
+		},
+		{
+			"name": "Languages",
+			"description": "Languages that can be chosen from.",
+			"externalDocs": {
+				"description": "Find out more",
+				"url": "http://localhost:4010/api/help"
+			}
+		},
+		{
+			"name": "SignatureItems",
+			"description": "Signature items that can be chosen from.",
+			"externalDocs": {
+				"description": "Find out more",
+				"url": "http://localhost:4010/api/help"
+			}
 		}
 		
 	],
@@ -713,7 +729,312 @@
 					}
 				}
 			}
+		},
+		"/Languages": {
+			"get": {
+				"tags": [
+					"Languages"
+				],
+				"description": "Get all the languages from the database.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					}
+				}
+			},
+
+			"post": {
+				"tags": [
+					"Languages"
+				],
+				"description": "Create a new language on the database.",
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"description": "language that needs to be added to the system",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/LanguagesModel"
+						}
+					}
+				],
+				"responses": {
+					"201": {
+						"description": "Created"
+					},
+					"400": {
+						"description": "Bad Request"
+					}
+				}
+			}
+
+		},
+		"/Languages/{Id}": {
+			"get": {
+				"tags": [
+					"Languages"
+				],
+				"description": "Get the language from the database by the id.",
+				"parameters": [
+					{
+					"name": "Id",
+					"in": "path",
+					"description": "Id of language that needs to be fetched",
+					"required": true,
+					"type": "integer",
+					"format": "int32"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					}
+				}
+			},
+			"put":{
+				"tags": [
+					"Languages"
+				],
+				"description": "Update a language record on the database.",
+				"parameters": [
+					{
+					"name": "Id",
+					"in": "path",
+					"description": "Id of language that needs to be edited",
+					"required": true,
+					"type": "integer",
+					"format": "int32"
+					},
+					{
+						"in": "body",
+						"name": "body",
+						"description": "language that needs to be edited",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/LanguagesModel"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					}
+				}
+			},
+			"delete": {
+				"tags": [
+					"Languages"
+				],
+				"description": "Delete a language record from the database.",
+				"parameters": [
+					{
+					"name": "Id",
+					"in": "path",
+					"description": "Id of language that needs to be removed",
+					"required": true,
+					"type": "integer",
+					"format": "int32"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					}
+				}
+			}
+		},
+		"/SignatureItems": {
+			"get": {
+				"tags": [
+					"SignatureItems"
+				],
+				"description": "Get all the signature items from the database.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					}
+				}
+			},
+
+			"post": {
+				"tags": [
+					"SignatureItems"
+				],
+				"description": "Create a new signature item on the database.",
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"description": "signature item that needs to be added to the system",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/SignatureItemsModel"
+						}
+					}
+				],
+				"responses": {
+					"201": {
+						"description": "Created"
+					},
+					"400": {
+						"description": "Bad Request"
+					}
+				}
+			}
+
+		},
+		"/SignatureItems/{Id}": {
+			"get": {
+				"tags": [
+					"SignatureItems"
+				],
+				"description": "Get the language from the database by the id.",
+				"parameters": [
+					{
+					"name": "Id",
+					"in": "path",
+					"description": "Id of language that needs to be fetched",
+					"required": true,
+					"type": "integer",
+					"format": "int32"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					}
+				}
+			},
+			"put":{
+				"tags": [
+					"SignatureItems"
+				],
+				"description": "Update a language record on the database.",
+				"parameters": [
+					{
+					"name": "Id",
+					"in": "path",
+					"description": "Id of language that needs to be edited",
+					"required": true,
+					"type": "integer",
+					"format": "int32"
+					},
+					{
+						"in": "body",
+						"name": "body",
+						"description": "language that needs to be edited",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/SignatureItemsModel"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					}
+				}
+			},
+			"delete": {
+				"tags": [
+					"SignatureItems"
+				],
+				"description": "Delete a language record from the database.",
+				"parameters": [
+					{
+					"name": "Id",
+					"in": "path",
+					"description": "Id of language that needs to be removed",
+					"required": true,
+					"type": "integer",
+					"format": "int32"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					}
+				}
+			}
+		},
+		"/SignatureItems/EmailAddress/{EmailAddress}": {
+			"get": {
+				"tags": [
+					"SignatureItems"
+				],
+				"description": "Get all the signature items records from the database that has the supplied email address.",
+				"parameters": [
+					{
+					"name": "EmailAddress",
+					"in": "path",
+					"description": "EmailAddress of signature items that needs to be fetched",
+					"required": true,
+					"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					}
+				}
+			}
+		},		
+		"/SignatureItems/ContactTypes/{Id}": {
+			"get": {
+				"tags": [
+					"SignatureItems"
+				],
+				"description": "Get all the signature items records from the database that has the supplied email address.",
+				"parameters": [
+					{
+					"name": "Id",
+					"in": "path",
+					"description": "Id of signature item's contact types that needs to be fetched",
+					"required": true,
+					"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					}
+				}
+			}
 		}
+		
 		
 		
 	
@@ -841,6 +1162,100 @@
 				"description": {
 					"type": "string",
 					"example": "description"
+				},
+				"inActive": {
+					"type": "string",
+					"example": "0"
+				}
+			}
+		},
+		"LanguagesModel": {
+			"type": "object",
+			"required": [
+				"name",
+				"description",
+				"code"
+			],
+			"properties": {
+				"name": {
+					"type": "string",
+					"example": "name"
+				},
+				"description": {
+					"type": "string",
+					"example": "description"
+				},
+				"code": {
+					"type": "string",
+					"example": "code"
+				},
+				"inActive": {
+					"type": "string",
+					"example": "0"
+				}
+			}
+		},
+		"SignatureItemsModel": {
+			"type": "object",
+			"required": [
+				"contactTypeId",
+				"fieldTypeId",
+				"languageId",
+				"csiContactCategoryId",
+				"csiContactTypeId",
+				"csiMainContactTypeId",
+				"sequence",
+				"label",
+				"value",
+				"printFormat"
+			],
+			"properties": {
+				"contactTypeId": {
+					"type": "integer",
+					"format": "int32",
+					"example": 1
+				},
+				"fieldTypeId": {
+					"type": "integer",
+					"format": "int32",
+					"example": 1
+				},
+				"languageId": {
+					"type": "integer",
+					"format": "int32",
+					"example": 1
+				},
+				"csiContactCategoryId": {
+					"type": "integer",
+					"format": "int32",
+					"example": 1
+				},
+				"csiContactTypeId": {
+					"type": "integer",
+					"format": "int32",
+					"example": 1
+				},
+				"csiMainContactTypeId": {
+					"type": "integer",
+					"format": "int32",
+					"example": 1
+				},
+				"sequence": {
+					"type": "integer",
+					"format": "int32",
+					"example": 1
+				},
+				"label": {
+					"type": "string",
+					"example": "label"
+				},
+				"value": {
+					"type": "string",
+					"example": "value"
+				},
+				"printFormat": {
+					"type": "string",
+					"example": "printFormat"
 				},
 				"inActive": {
 					"type": "string",
