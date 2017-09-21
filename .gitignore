@@ -1,4 +1,5 @@
 /**/Api_Site/node_modules/**/
+/**/Client_website/node_modules/**/
 .vscode/launch.json
 /**/package-lock.json/**/
 Api_Site/package-lock.json
