@@ -22,7 +22,9 @@ module.exports = function (queryString, callback) {
             client.query(queryString, function (err, result) {
                 if (err) {
                    // console.log("POSTGRES ERROR")
-                   // console.log(err.message);
+                    // console.log(err.message);
+                    // console.log(queryString);
+                    
                     var jsonString = JSON.stringify(err.message);
                     var jsonResult = JSON.parse(jsonString);
                     jsonReturnResult = jsonResult;

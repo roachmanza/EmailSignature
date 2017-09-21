@@ -1,7 +1,7 @@
 {
 	"swagger": "2.0",
 	"info": {
-		"description": "This is a email enhancement system , that adds signatures at the bottom of emails or any other correspondence.",
+		"description": "This is a email enhancement system , that adds signatures at the bottom of emails or any other electronic correspondence.",
 		"version": "1.0.0",
 		"title": "Mail enhancement API documentation"
 	},
@@ -15,7 +15,16 @@
 				"description": "Find out more",
 				"url": "http://localhost:4010/api/help"
 			}
+		},
+		{
+			"name": "ContactTypes",
+			"description": "Contact types with email address linked to contact type.",
+			"externalDocs": {
+				"description": "Find out more",
+				"url": "http://localhost:4010/api/help"
+			}
 		}
+		
 	],
 	"schemes": [
 		"http"
@@ -50,7 +59,7 @@
 						"description": "AWD contact mapping that needs to be added to the system",
 						"required": true,
 						"schema": {
-							"$ref": "#/definitions/AwdContactTypeMappingsDef"
+							"$ref": "#/definitions/AwdContactTypeMappingsModel"
 						}
 					}
 				],
@@ -110,7 +119,7 @@
 						"description": "AWD contact mapping that needs to be edited",
 						"required": true,
 						"schema": {
-							"$ref": "#/definitions/AwdContactTypeMappingsDef"
+							"$ref": "#/definitions/AwdContactTypeMappingsModel"
 						}
 					}
 				],
@@ -147,11 +156,163 @@
 					}
 				}
 			}
+		},
+		"/ContactTypes": {
+			"get": {
+				"tags": [
+					"ContactTypes"
+				],
+				"description": "Get all the contact types from the database.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					}
+				}
+			},
+
+			"post": {
+				"tags": [
+					"ContactTypes"
+				],
+				"description": "Create a new contact type on the database.",
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"description": "Contact types that needs to be added to the system",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/ContactTypesModel"
+						}
+					}
+				],
+				"responses": {
+					"201": {
+						"description": "Created"
+					},
+					"400": {
+						"description": "Bad Request"
+					}
+				}
+			}
+
+		},
+		"/ContactTypes/{Id}": {
+			"get": {
+				"tags": [
+					"ContactTypes"
+				],
+				"description": "Get the contact type from the database by the id.",
+				"parameters": [
+					{
+					"name": "Id",
+					"in": "path",
+					"description": "Database id of contact type that needs to be fetched",
+					"required": true,
+					"type": "integer",
+					"format": "int32"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					}
+				}
+			},
+			"put":{
+				"tags": [
+					"ContactTypes"
+				],
+				"description": "Update a record on the database.",
+				"parameters": [
+					{
+					"name": "Id",
+					"in": "path",
+					"description": "Id of contact type that needs to be edited",
+					"required": true,
+					"type": "integer",
+					"format": "int32"
+					},
+					{
+						"in": "body",
+						"name": "body",
+						"description": "Id of the contact type that needs to be edited",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/ContactTypesModel"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					}
+				}
+			},
+			"delete": {
+				"tags": [
+					"ContactTypes"
+				],
+				"description": "Delete a record from the database.",
+				"parameters": [
+					{
+					"name": "Id",
+					"in": "path",
+					"description": "Id of contact type that needs to be removed",
+					"required": true,
+					"type": "integer",
+					"format": "int32"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					}
+				}
+			}
+		},
+		"/ContactTypes/EmailAddress/{EmailAddress}": {
+			"get": {
+				"tags": [
+					"ContactTypes"
+				],
+				"description": "Get all the ContactTypes from the database.",
+				"parameters": [
+					{
+					"name": "EmailAddress",
+					"in": "path",
+					"description": "EmailAddress of a contact type that needs to be fetched",
+					"required": true,
+					"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					}
+				}
+			}
 		}
-	
-},
-"definitions": {
-	"AwdContactTypeMappingsDef": {
+
+		},
+	"definitions": {
+		"AwdContactTypeMappingsModel": {
 		"type": "object",
 		"required": [
 			"contactTypeId",
@@ -187,6 +348,32 @@
 				"example": false
 			}
 		}
+	},
+		"ContactTypesModel": {
+		"type": "object",
+		"required": [
+			"name",
+			"description",
+			"contactTypeEmailAddress"
+		],
+		"properties": {
+			"name": {
+				"type": "string",
+				"example": "name"
+			},
+			"description": {
+				"type": "string",
+				"example": "description"
+			},
+			"contactTypeEmailAddress": {
+				"type": "string",
+				"example": "contactTypeEmailAddress"
+			},
+			"inActive": {
+				"type": "bool",
+				"example": false
+			}
+		}
 	}
-}
+	}
 }
