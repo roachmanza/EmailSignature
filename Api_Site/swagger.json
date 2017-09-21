@@ -12,56 +12,56 @@
 			"name": "AwdContactTypeMappings",
 			"description": "Link AWD regions and roles to contact types.",
 			"externalDocs": {
-				"description": "Find out more",
-				"url": "http://localhost:4010/api/help"
+				"description": "Repo",
+				"url": "https://github.com/roachmanza/MailEnhancement/blob/master/Api_Site/api/controllers/"
 			}
 		},
 		{
 			"name": "ContactTypes",
 			"description": "Contact types with email address linked to contact type.",
 			"externalDocs": {
-				"description": "Find out more",
-				"url": "http://localhost:4010/api/help"
+				"description": "Repo",
+				"url": "https://github.com/roachmanza/MailEnhancement/blob/master/Api_Site/api/controllers/"
 			}
 		},
 		{
 			"name": "CsiContactCategories",
 			"description": "CSI Contact categories.",
 			"externalDocs": {
-				"description": "Find out more",
-				"url": "http://localhost:4010/api/help"
+				"description": "Repo",
+				"url": "https://github.com/roachmanza/MailEnhancement/blob/master/Api_Site/api/controllers/"
 			}
 		},
 		{
 			"name": "CsiContactTypes",
 			"description": "CSI Contact types.",
 			"externalDocs": {
-				"description": "Find out more",
-				"url": "http://localhost:4010/api/help"
+				"description": "Repo",
+				"url": "https://github.com/roachmanza/MailEnhancement/blob/master/Api_Site/api/controllers/"
 			}
 		},
 		{
 			"name": "FieldTypes",
 			"description": "Field types.",
 			"externalDocs": {
-				"description": "Find out more",
-				"url": "http://localhost:4010/api/help"
+				"description": "Repo",
+				"url": "https://github.com/roachmanza/MailEnhancement/blob/master/Api_Site/api/controllers/"
 			}
 		},
 		{
 			"name": "Languages",
 			"description": "Languages that can be chosen from.",
 			"externalDocs": {
-				"description": "Find out more",
-				"url": "http://localhost:4010/api/help"
+				"description": "Repo",
+				"url": "https://github.com/roachmanza/MailEnhancement/blob/master/Api_Site/api/controllers/"
 			}
 		},
 		{
 			"name": "SignatureItems",
 			"description": "Signature items that can be chosen from.",
 			"externalDocs": {
-				"description": "Find out more",
-				"url": "http://localhost:4010/api/help"
+				"description": "Repo",
+				"url": "https://github.com/roachmanza/MailEnhancement/blob/master/Api_Site/api/controllers/"
 			}
 		}
 		
