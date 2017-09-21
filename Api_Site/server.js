@@ -33,7 +33,7 @@ var showExplorer = false;
 var options = {
     validatorUrl : null
 };
-webserver.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument,showExplorer,options));
+webserver.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument,showExplorer,options));
 
 //client css
 webserver.get('/client/content/css/default', function (req, res) { res.sendFile(path.join(__dirname + '/client/content/css/client.css')); });
