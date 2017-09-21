@@ -38,8 +38,9 @@ webserver.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument,showE
 //client css
 webserver.get('/client/content/css/default', function (req, res) { res.sendFile(path.join(__dirname + '/client/content/css/client.css')); });
 //img
-webserver.get('/client/content/img/homeIcon', function (req, res) { res.sendFile(path.join(__dirname + '/client/content/img/MailIcon24.png')); });
+webserver.get('/client/content/img/homeIcon', function (req, res) { res.sendFile(path.join(__dirname + '/client/content/img/home24.png')); });
 webserver.get('/client/content/img/systemIcon', function (req, res) { res.sendFile(path.join(__dirname + '/client/content/img/MailIcon32.png')); });
+webserver.get('/client/content/img/homeimage', function (req, res) { res.sendFile(path.join(__dirname + '/client/content/img/home64.png')); });
 // static folders to be able to point to css, js etc files in a directory
 webserver.get('/', function (req, res) { res.sendFile(path.join(__dirname + '/client/apiIndex.html')); });
 webserver.get('/home/', function (req, res) { res.sendFile(path.join(__dirname + '/client/apiIndex.html')); });
