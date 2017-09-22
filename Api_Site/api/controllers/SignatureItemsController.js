@@ -5,8 +5,10 @@ exports.get_all_SignatureItems = function (req, res) {
         'SELECT ' +
         ' SI."SignatureItemId" as SignatureItemId, ' +
         ' SI."ContactTypeId" as ContactTypeId, ' +
+        ' CT."Name" as ContactTypeIdString, ' +
         ' SI."FieldTypeId" as FieldTypeId, ' +
         ' SI."LanguageId" as LanguageId, ' +
+        ' L."Code" as LanguageCode, ' +
         ' SI."CsiContactCategoryId" as CsiContactCategoryId, ' +
         ' SI."CsiContactTypeId" as CsiContactTypeId, ' +
         ' SI."CsiMainContactTypeId" as CsiMainContactTypeId, ' +
@@ -16,7 +18,10 @@ exports.get_all_SignatureItems = function (req, res) {
         ' SI."PrintFormat" as PrintFormat, ' +
         ' SI."InActiveDate" as InActiveDate, ' +
         ' SI."InActive" as InActive ' +
-        ' FROM public."SignatureItems" AS SI',
+        ' FROM public."SignatureItems" AS SI'+
+        ' JOIN public."ContactTypes" as CT ON CT."ContactTypeId" = SI."ContactTypeId" '+
+        ' JOIN public."Languages" as L ON L."LanguageId" = SI."LanguageId" '+
+        ' ORDER BY CT."Name" ASC , L."Code" ASC, SI."Sequence" ASC',
         function (results, err) {
             if (err) {
                 res.status(400).type('application/json').json({ success: false, httpStatusCode: 400, error: { status: "Bad Request", message: results } });
@@ -68,8 +73,10 @@ exports.read_a_SignatureItem = function (req, res) {
         'SELECT ' +
         ' SI."SignatureItemId" as SignatureItemId, ' +
         ' SI."ContactTypeId" as ContactTypeId, ' +
+        ' CT."Name" as ContactTypeIdString, ' +
         ' SI."FieldTypeId" as FieldTypeId, ' +
         ' SI."LanguageId" as LanguageId, ' +
+        ' L."Code" as LanguageCode, ' +
         ' SI."CsiContactCategoryId" as CsiContactCategoryId, ' +
         ' SI."CsiContactTypeId" as CsiContactTypeId, ' +
         ' SI."CsiMainContactTypeId" as CsiMainContactTypeId, ' +
@@ -79,8 +86,10 @@ exports.read_a_SignatureItem = function (req, res) {
         ' SI."PrintFormat" as PrintFormat, ' +
         ' SI."InActiveDate" as InActiveDate, ' +
         ' SI."InActive" as InActive ' +
-        ' FROM public."SignatureItems" AS SI' +
-        ' WHERE SI."SignatureItemId" = ' + id,
+        ' FROM public."SignatureItems" AS SI'+
+        ' JOIN public."ContactTypes" as CT ON CT."ContactTypeId" = SI."ContactTypeId" '+
+        ' JOIN public."Languages" as L ON L."LanguageId" = SI."LanguageId" '+
+        ' AND SI."SignatureItemId" = ' + id ,
         function (results, err) {
             if (err) {
                 res.status(400).type('application/json').json({ success: false, httpStatusCode: 400, error: { status: "Bad Request", message: results } });
@@ -156,8 +165,10 @@ exports.read_all_SignatureItems_for_emailAddr = function (req, res) {
     dataGet('SELECT ' +
         ' SI."SignatureItemId" as SignatureItemId, ' +
         ' SI."ContactTypeId" as ContactTypeId, ' +
+        ' CT."Name" as ContactTypeIdString, ' +
         ' SI."FieldTypeId" as FieldTypeId, ' +
         ' SI."LanguageId" as LanguageId, ' +
+        ' L."Code" as LanguageCode, ' +
         ' SI."CsiContactCategoryId" as CsiContactCategoryId, ' +
         ' SI."CsiContactTypeId" as CsiContactTypeId, ' +
         ' SI."CsiMainContactTypeId" as CsiMainContactTypeId, ' +
@@ -169,6 +180,7 @@ exports.read_all_SignatureItems_for_emailAddr = function (req, res) {
         ' SI."InActive" as InActive ' +
         ' FROM public."SignatureItems" AS SI' +
         ' JOIN public."ContactTypes" as CT ON CT."ContactTypeId" = SI."ContactTypeId" ' +
+        ' JOIN public."Languages" as L ON L."LanguageId" = SI."LanguageId" '+
         ' and CT."ContactTypeEmailAddress" = \'' + id + '\'',
         function (results, err) {
             if (err) {
@@ -185,8 +197,10 @@ exports.read_all_SignatureItems_for_contactTypeId = function (req, res) {
     dataGet('SELECT ' +
         ' SI."SignatureItemId" as SignatureItemId, ' +
         ' SI."ContactTypeId" as ContactTypeId, ' +
+        ' CT."Name" as ContactTypeIdString, ' +
         ' SI."FieldTypeId" as FieldTypeId, ' +
         ' SI."LanguageId" as LanguageId, ' +
+        ' L."Code" as LanguageCode, ' +
         ' SI."CsiContactCategoryId" as CsiContactCategoryId, ' +
         ' SI."CsiContactTypeId" as CsiContactTypeId, ' +
         ' SI."CsiMainContactTypeId" as CsiMainContactTypeId, ' +
@@ -196,8 +210,10 @@ exports.read_all_SignatureItems_for_contactTypeId = function (req, res) {
         ' SI."PrintFormat" as PrintFormat, ' +
         ' SI."InActiveDate" as InActiveDate, ' +
         ' SI."InActive" as InActive ' +
-        ' FROM public."SignatureItems" AS SI' +
-        ' where SI."ContactTypeId" = ' + id,
+        ' FROM public."SignatureItems" AS SI'+
+        ' JOIN public."ContactTypes" as CT ON CT."ContactTypeId" = SI."ContactTypeId" '+
+        ' JOIN public."Languages" as L ON L."LanguageId" = SI."LanguageId" '+
+        ' AND SI."ContactTypeId" = ' + id,
         function (results, err) {
             if (err) {
                 res.status(400).type('application/json').json({ success: false, httpStatusCode: 400, error: { status: "Bad Request", message: results } });

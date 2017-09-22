@@ -32,8 +32,8 @@ webserver.get('/ContactTypes', function (req, res) { res.sendFile(path.join(__di
 webserver.get('/CsiContactCategories', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/CsiContactCategories/list.html')); });
 webserver.get('/CsiContactTypes', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/CsiContactTypes/list.html')); });
 webserver.get('/FieldTypes', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/FieldTypes/list.html')); });
-webserver.get('/Languages', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/Languages.html')); });
-webserver.get('/SignatureItems', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/SignatureItems.html')); });
+webserver.get('/Languages', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/Languages/list.html')); });
+webserver.get('/SignatureItems', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/SignatureItems/list.html')); });
 webserver.get('/Signatures', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/Signatures.html')); });
 
 //AwdContactTypeMappings PATHS
@@ -139,6 +139,47 @@ webserver.get('/comp-fieldTypes-edit/js', function (req, res) { res.sendFile(pat
 //view
 webserver.get('/comp-fieldTypes-view', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/FieldTypes/comp-fieldTypes-view.html')); });
 webserver.get('/comp-fieldTypes-view/js', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/FieldTypes/comp-fieldTypes-view-js-v1.js')); });
+
+
+//Languages PATHS
+//============================
+webserver.get('/Languages/list', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/Languages/list.html')); });
+webserver.get('/Languages/create', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/Languages/create.html')); });
+webserver.get('/Languages/edit', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/Languages/edit.html')); });
+webserver.get('/Languages/view', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/Languages/view.html')); });
+//Languages component PATHS
+//list
+webserver.get('/comp-languages-list', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/Languages/comp-languages-list.html')); });
+webserver.get('/comp-languages-list/js', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/Languages/comp-languages-list-js-v1.js')); });
+//create
+webserver.get('/comp-languages-create', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/Languages/comp-languages-create.html')); });
+webserver.get('/comp-languages-create/js', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/Languages/comp-languages-create-js-v1.js')); });
+//edit
+webserver.get('/comp-languages-edit', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/Languages/comp-languages-edit.html')); });
+webserver.get('/comp-languages-edit/js', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/Languages/comp-languages-edit-js-v1.js')); });
+//view
+webserver.get('/comp-languages-view', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/Languages/comp-languages-view.html')); });
+webserver.get('/comp-languages-view/js', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/Languages/comp-languages-view-js-v1.js')); });
+
+//SignatureItems PATHS - signatureItems
+//============================
+webserver.get('/SignatureItems/list', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/SignatureItems/list.html')); });
+webserver.get('/SignatureItems/create', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/SignatureItems/create.html')); });
+webserver.get('/SignatureItems/edit', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/SignatureItems/edit.html')); });
+webserver.get('/SignatureItems/view', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/SignatureItems/view.html')); });
+//SignatureItems component PATHS
+//list
+webserver.get('/comp-signatureItems-list', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/SignatureItems/comp-signatureItems-list.html')); });
+webserver.get('/comp-signatureItems-list/js', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/SignatureItems/comp-signatureItems-list-js-v1.js')); });
+//create
+webserver.get('/comp-signatureItems-create', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/SignatureItems/comp-signatureItems-create.html')); });
+webserver.get('/comp-signatureItems-create/js', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/SignatureItems/comp-signatureItems-create-js-v1.js')); });
+//edit
+webserver.get('/comp-signatureItems-edit', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/SignatureItems/comp-signatureItems-edit.html')); });
+webserver.get('/comp-signatureItems-edit/js', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/SignatureItems/comp-signatureItems-edit-js-v1.js')); });
+//view
+webserver.get('/comp-signatureItems-view', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/SignatureItems/comp-signatureItems-view.html')); });
+webserver.get('/comp-signatureItems-view/js', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/SignatureItems/comp-signatureItems-view-js-v1.js')); });
 
 
 
