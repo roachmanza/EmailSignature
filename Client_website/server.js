@@ -31,7 +31,7 @@ webserver.get('/AwdContactTypeMappings', function (req, res) { res.sendFile(path
 webserver.get('/ContactTypes', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/ContactTypes/list.html')); });
 webserver.get('/CsiContactCategories', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/CsiContactCategories/list.html')); });
 webserver.get('/CsiContactTypes', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/CsiContactTypes/list.html')); });
-webserver.get('/FieldTypes', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/FieldTypes.html')); });
+webserver.get('/FieldTypes', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/FieldTypes/list.html')); });
 webserver.get('/Languages', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/Languages.html')); });
 webserver.get('/SignatureItems', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/SignatureItems.html')); });
 webserver.get('/Signatures', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/Signatures.html')); });
@@ -118,6 +118,27 @@ webserver.get('/comp-csiContactTypes-edit/js', function (req, res) { res.sendFil
 //view
 webserver.get('/comp-csiContactTypes-view', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/CsiContactTypes/comp-csiContactTypes-view.html')); });
 webserver.get('/comp-csiContactTypes-view/js', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/CsiContactTypes/comp-csiContactTypes-view-js-v1.js')); });
+
+
+//FieldTypes PATHS
+//============================
+webserver.get('/FieldTypes/list', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/FieldTypes/list.html')); });
+webserver.get('/FieldTypes/create', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/FieldTypes/create.html')); });
+webserver.get('/FieldTypes/edit', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/FieldTypes/edit.html')); });
+webserver.get('/FieldTypes/view', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/FieldTypes/view.html')); });
+//FieldTypes component PATHS
+//list
+webserver.get('/comp-fieldTypes-list', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/FieldTypes/comp-fieldTypes-list.html')); });
+webserver.get('/comp-fieldTypes-list/js', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/FieldTypes/comp-fieldTypes-list-js-v1.js')); });
+//create
+webserver.get('/comp-fieldTypes-create', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/FieldTypes/comp-fieldTypes-create.html')); });
+webserver.get('/comp-fieldTypes-create/js', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/FieldTypes/comp-fieldTypes-create-js-v1.js')); });
+//edit
+webserver.get('/comp-fieldTypes-edit', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/FieldTypes/comp-fieldTypes-edit.html')); });
+webserver.get('/comp-fieldTypes-edit/js', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/FieldTypes/comp-fieldTypes-edit-js-v1.js')); });
+//view
+webserver.get('/comp-fieldTypes-view', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/FieldTypes/comp-fieldTypes-view.html')); });
+webserver.get('/comp-fieldTypes-view/js', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/FieldTypes/comp-fieldTypes-view-js-v1.js')); });
 
 
 
