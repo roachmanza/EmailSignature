@@ -73,18 +73,15 @@
             <!-- /.container -->
         </nav>
         <!-- NAV END -->
-    
+        <link rel="import" href="/client/content/js/polymer" />
+        <link rel="import" href="../comp-csiContactTypes-list" />
         <div class="container">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3><img src="/client/content/img/config"></span>&nbsp;CSI contact categories</h3>
+                    <h3><img src="/client/content/img/config"></span>&nbsp;CSI contact type list</h3>
                 </div>
                 <div class="panel-body">
-                    CSI contact categories
-    
-                    <br/>
-                    <!-- <button class="btn btn-default" onclick="window.location.replace('people/list')">List of people</button>
-                    <button class="btn btn-default" onclick="window.location.replace('people/search')">Search</button> -->
+                    <comp-csiContactTypes-list id="peopleid" environment-Url="DEV"></comp-csiContactTypes-list>
                 </div>
             </div>
         </div>
