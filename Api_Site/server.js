@@ -77,6 +77,10 @@ var csiMainContactTypesRoutes = require('./api/routes/CsiMainContactTypesRoutes'
 csiMainContactTypesRoutes(webserver);
 
 
+//2.1 Db table
+var csiContactCategoryMappingsRoutes = require('./api/routes/CsiContactCategoryMappingsRoutes');
+csiContactCategoryMappingsRoutes(webserver);
+
 
 
 

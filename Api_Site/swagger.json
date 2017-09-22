@@ -8,64 +8,57 @@
 	"host": "localhost:4010/MailEnhancement/api",
 	"basePath": "/v1/",
 	"tags": [
-		{
-			"name": "AwdContactTypeMappings",
-			"description": "Link AWD regions and roles to contact types.",
-			"externalDocs": {
-				"description": "Repo",
-				"url": "https://github.com/roachmanza/MailEnhancement/blob/master/Api_Site/api/controllers/"
-			}
-		},
-		{
-			"name": "ContactTypes",
+		{"name": "ContactTypes",
 			"description": "Contact types with email address linked to contact type.",
 			"externalDocs": {
 				"description": "Repo",
 				"url": "https://github.com/roachmanza/MailEnhancement/blob/master/Api_Site/api/controllers/"
 			}
 		},
-		{
-			"name": "CsiContactCategories",
-			"description": "CSI Contact categories.",
-			"externalDocs": {
-				"description": "Repo",
-				"url": "https://github.com/roachmanza/MailEnhancement/blob/master/Api_Site/api/controllers/"
-			}
-		},
-		{
-			"name": "CsiContactTypes",
-			"description": "CSI Contact types.",
-			"externalDocs": {
-				"description": "Repo",
-				"url": "https://github.com/roachmanza/MailEnhancement/blob/master/Api_Site/api/controllers/"
-			}
-		},
-		{
-			"name": "CsiMainContactTypes",
-			"description": "CSI Main Contact types.",
-			"externalDocs": {
-				"description": "Repo",
-				"url": "https://github.com/roachmanza/MailEnhancement/blob/master/Api_Site/api/controllers/"
-			}
-		},
-		{
-			"name": "FieldTypes",
+		{"name": "FieldTypes",
 			"description": "Field types.",
 			"externalDocs": {
 				"description": "Repo",
 				"url": "https://github.com/roachmanza/MailEnhancement/blob/master/Api_Site/api/controllers/"
 			}
 		},
-		{
-			"name": "Languages",
+		{"name": "Languages",
 			"description": "Languages that can be chosen from.",
 			"externalDocs": {
 				"description": "Repo",
 				"url": "https://github.com/roachmanza/MailEnhancement/blob/master/Api_Site/api/controllers/"
 			}
+		},	
+		{"name": "CsiContactCategories",
+			"description": "CSI Contact categories.",
+			"externalDocs": {
+				"description": "Repo",
+				"url": "https://github.com/roachmanza/MailEnhancement/blob/master/Api_Site/api/controllers/"
+			}
 		},
-		{
-			"name": "SignatureItems",
+		{"name": "CsiMainContactTypes",
+			"description": "CSI Main Contact types.",
+			"externalDocs": {
+				"description": "Repo",
+				"url": "https://github.com/roachmanza/MailEnhancement/blob/master/Api_Site/api/controllers/"
+			}
+		},		
+		
+		{"name": "AwdContactTypeMappings",
+			"description": "Link AWD regions and roles to contact types.",
+			"externalDocs": {
+				"description": "Repo",
+				"url": "https://github.com/roachmanza/MailEnhancement/blob/master/Api_Site/api/controllers/"
+			}
+		},	
+		{"name": "CsiContactTypes",
+			"description": "CSI Contact types.",
+			"externalDocs": {
+				"description": "Repo",
+				"url": "https://github.com/roachmanza/MailEnhancement/blob/master/Api_Site/api/controllers/"
+			}
+		},
+		{"name": "SignatureItems",
 			"description": "Signature items that can be chosen from.",
 			"externalDocs": {
 				"description": "Repo",
@@ -78,133 +71,6 @@
 		"http"
 	],
 	"paths": {
-		"/AwdContactTypeMappings": {
-			"get": {
-				"tags": [
-					"AwdContactTypeMappings"
-				],
-				"description": "Get all the AwdContactTypeMappings from the database.",
-				"parameters": [],
-				"responses": {
-					"200": {
-						"description": "OK"
-					},
-					"400": {
-						"description": "Bad Request"
-					}
-				}
-			},
-
-			"post": {
-				"tags": [
-					"AwdContactTypeMappings"
-				],
-				"description": "Create a new AwdContactTypeMapping on the database.",
-				"parameters": [
-					{
-						"in": "body",
-						"name": "body",
-						"description": "AWD contact mapping that needs to be added to the system",
-						"required": true,
-						"schema": {
-							"$ref": "#/definitions/AwdContactTypeMappingsModel"
-						}
-					}
-				],
-				"responses": {
-					"201": {
-						"description": "Created"
-					},
-					"400": {
-						"description": "Bad Request"
-					}
-				}
-			}
-
-		},
-		"/AwdContactTypeMappings/{Id}": {
-			"get": {
-				"tags": [
-					"AwdContactTypeMappings"
-				],
-				"description": "Get the AwdContactTypeMappings from the database by the id.",
-				"parameters": [
-					{
-					"name": "Id",
-					"in": "path",
-					"description": "Id of AWD contact type mapping that needs to be fetched",
-					"required": true,
-					"type": "integer",
-					"format": "int32"
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "OK"
-					},
-					"400": {
-						"description": "Bad Request"
-					}
-				}
-			},
-			"put":{
-				"tags": [
-					"AwdContactTypeMappings"
-				],
-				"description": "Update a record on the database.",
-				"parameters": [
-					{
-					"name": "Id",
-					"in": "path",
-					"description": "Id of AWD contact type mapping that needs to be edited",
-					"required": true,
-					"type": "integer",
-					"format": "int32"
-					},
-					{
-						"in": "body",
-						"name": "body",
-						"description": "AWD contact mapping that needs to be edited",
-						"required": true,
-						"schema": {
-							"$ref": "#/definitions/AwdContactTypeMappingsModel"
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "OK"
-					},
-					"400": {
-						"description": "Bad Request"
-					}
-				}
-			},
-			"delete": {
-				"tags": [
-					"AwdContactTypeMappings"
-				],
-				"description": "Delete a record from the database.",
-				"parameters": [
-					{
-					"name": "Id",
-					"in": "path",
-					"description": "Id of AWD contact type mapping that needs to be removed",
-					"required": true,
-					"type": "integer",
-					"format": "int32"
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "OK"
-					},
-					"400": {
-						"description": "Bad Request"
-					}
-				}
-			}
-		},
 		"/ContactTypes": {
 			"get": {
 				"tags": [
@@ -357,389 +223,6 @@
 				}
 			}
 		},
-		"/CsiContactCategories": {
-			"get": {
-				"tags": [
-					"CsiContactCategories"
-				],
-				"description": "Get all the csi contact categories from the database.",
-				"parameters": [],
-				"responses": {
-					"200": {
-						"description": "OK"
-					},
-					"400": {
-						"description": "Bad Request"
-					}
-				}
-			},
-
-			"post": {
-				"tags": [
-					"CsiContactCategories"
-				],
-				"description": "Create a new csi contact category on the database.",
-				"parameters": [
-					{
-						"in": "body",
-						"name": "body",
-						"description": "csi contact category that needs to be added to the system",
-						"required": true,
-						"schema": {
-							"$ref": "#/definitions/CsiContactCategoriesModel"
-						}
-					}
-				],
-				"responses": {
-					"201": {
-						"description": "Created"
-					},
-					"400": {
-						"description": "Bad Request"
-					}
-				}
-			}
-
-		},
-		"/CsiContactCategories/{Id}": {
-			"get": {
-				"tags": [
-					"CsiContactCategories"
-				],
-				"description": "Get the csi contact category from the database by the id.",
-				"parameters": [
-					{
-					"name": "Id",
-					"in": "path",
-					"description": "Id of csi contact category that needs to be fetched",
-					"required": true,
-					"type": "integer",
-					"format": "int32"
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "OK"
-					},
-					"400": {
-						"description": "Bad Request"
-					}
-				}
-			},
-			"put":{
-				"tags": [
-					"CsiContactCategories"
-				],
-				"description": "Update a csi contact category record on the database.",
-				"parameters": [
-					{
-					"name": "Id",
-					"in": "path",
-					"description": "Id of csi contact category that needs to be edited",
-					"required": true,
-					"type": "integer",
-					"format": "int32"
-					},
-					{
-						"in": "body",
-						"name": "body",
-						"description": "csi contact category that needs to be edited",
-						"required": true,
-						"schema": {
-							"$ref": "#/definitions/CsiContactCategoriesModel"
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "OK"
-					},
-					"400": {
-						"description": "Bad Request"
-					}
-				}
-			},
-			"delete": {
-				"tags": [
-					"CsiContactCategories"
-				],
-				"description": "Delete a csi contact category record from the database.",
-				"parameters": [
-					{
-					"name": "Id",
-					"in": "path",
-					"description": "Id of csi contact category that needs to be removed",
-					"required": true,
-					"type": "integer",
-					"format": "int32"
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "OK"
-					},
-					"400": {
-						"description": "Bad Request"
-					}
-				}
-			}
-		},
-		"/CsiContactTypes": {
-			"get": {
-				"tags": [
-					"CsiContactTypes"
-				],
-				"description": "Get all the csi contact types from the database.",
-				"parameters": [],
-				"responses": {
-					"200": {
-						"description": "OK"
-					},
-					"400": {
-						"description": "Bad Request"
-					}
-				}
-			},
-
-			"post": {
-				"tags": [
-					"CsiContactTypes"
-				],
-				"description": "Create a new csi contact type on the database.",
-				"parameters": [
-					{
-						"in": "body",
-						"name": "body",
-						"description": "csi contact type that needs to be added to the system",
-						"required": true,
-						"schema": {
-							"$ref": "#/definitions/CsiContactTypesModel"
-						}
-					}
-				],
-				"responses": {
-					"201": {
-						"description": "Created"
-					},
-					"400": {
-						"description": "Bad Request"
-					}
-				}
-			}
-
-		},
-		"/CsiContactTypes/{Id}": {
-			"get": {
-				"tags": [
-					"CsiContactTypes"
-				],
-				"description": "Get the csi contact type from the database by the id.",
-				"parameters": [
-					{
-					"name": "Id",
-					"in": "path",
-					"description": "Id of csi contact type that needs to be fetched",
-					"required": true,
-					"type": "integer",
-					"format": "int32"
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "OK"
-					},
-					"400": {
-						"description": "Bad Request"
-					}
-				}
-			},
-			"put":{
-				"tags": [
-					"CsiContactTypes"
-				],
-				"description": "Update a csi contact type record on the database.",
-				"parameters": [
-					{
-					"name": "Id",
-					"in": "path",
-					"description": "Id of csi contact type that needs to be edited",
-					"required": true,
-					"type": "integer",
-					"format": "int32"
-					},
-					{
-						"in": "body",
-						"name": "body",
-						"description": "csi contact type that needs to be edited",
-						"required": true,
-						"schema": {
-							"$ref": "#/definitions/CsiContactTypesModel"
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "OK"
-					},
-					"400": {
-						"description": "Bad Request"
-					}
-				}
-			},
-			"delete": {
-				"tags": [
-					"CsiContactTypes"
-				],
-				"description": "Delete a csi contact type record from the database.",
-				"parameters": [
-					{
-					"name": "Id",
-					"in": "path",
-					"description": "Id of csi contact type that needs to be removed",
-					"required": true,
-					"type": "integer",
-					"format": "int32"
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "OK"
-					},
-					"400": {
-						"description": "Bad Request"
-					}
-				}
-			}
-		},
-		
-		"/CsiMainContactTypes": {
-			"get": {
-				"tags": [
-					"CsiMainContactTypes"
-				],
-				"description": "Get all the csi main contact types from the database.",
-				"parameters": [],
-				"responses": {
-					"200": {
-						"description": "OK"
-					},
-					"400": {
-						"description": "Bad Request"
-					}
-				}
-			},
-
-			"post": {
-				"tags": [
-					"CsiMainContactTypes"
-				],
-				"description": "Create a new  csi main contact  type on the database.",
-				"parameters": [
-					{
-						"in": "body",
-						"name": "body",
-						"description": "csi main contact type that needs to be added to the system",
-						"required": true,
-						"schema": {
-							"$ref": "#/definitions/CsiMainContactTypesModel"
-						}
-					}
-				],
-				"responses": {
-					"201": {
-						"description": "Created"
-					},
-					"400": {
-						"description": "Bad Request"
-					}
-				}
-			}
-
-		},
-		"/CsiMainContactTypes/{Id}": {
-			"get": {
-				"tags": [
-					"CsiMainContactTypes"
-				],
-				"description": "Get the csi main contact type from the database by the id.",
-				"parameters": [
-					{
-					"name": "Id",
-					"in": "path",
-					"description": "Id of csi main contact type that needs to be fetched",
-					"required": true,
-					"type": "integer",
-					"format": "int32"
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "OK"
-					},
-					"400": {
-						"description": "Bad Request"
-					}
-				}
-			},
-			"put":{
-				"tags": [
-					"CsiMainContactTypes"
-				],
-				"description": "Update a csi main contact type record on the database.",
-				"parameters": [
-					{
-					"name": "Id",
-					"in": "path",
-					"description": "Id of csi main contact type that needs to be edited",
-					"required": true,
-					"type": "integer",
-					"format": "int32"
-					},
-					{
-						"in": "body",
-						"name": "body",
-						"description": "csi main contact type that needs to be edited",
-						"required": true,
-						"schema": {
-							"$ref": "#/definitions/CsiMainContactTypesModel"
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "OK"
-					},
-					"400": {
-						"description": "Bad Request"
-					}
-				}
-			},
-			"delete": {
-				"tags": [
-					"CsiMainContactTypes"
-				],
-				"description": "Delete a csi main contact type record from the database.",
-				"parameters": [
-					{
-					"name": "Id",
-					"in": "path",
-					"description": "Id of csi main contact type that needs to be removed",
-					"required": true,
-					"type": "integer",
-					"format": "int32"
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "OK"
-					},
-					"400": {
-						"description": "Bad Request"
-					}
-				}
-			}
-		},
-		
 		"/FieldTypes": {
 			"get": {
 				"tags": [
@@ -994,6 +477,518 @@
 				}
 			}
 		},
+		"/CsiContactCategories": {
+			"get": {
+				"tags": [
+					"CsiContactCategories"
+				],
+				"description": "Get all the csi contact categories from the database.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					}
+				}
+			},
+
+			"post": {
+				"tags": [
+					"CsiContactCategories"
+				],
+				"description": "Create a new csi contact category on the database.",
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"description": "csi contact category that needs to be added to the system",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/CsiContactCategoriesModel"
+						}
+					}
+				],
+				"responses": {
+					"201": {
+						"description": "Created"
+					},
+					"400": {
+						"description": "Bad Request"
+					}
+				}
+			}
+
+		},
+		"/CsiContactCategories/{Id}": {
+			"get": {
+				"tags": [
+					"CsiContactCategories"
+				],
+				"description": "Get the csi contact category from the database by the id.",
+				"parameters": [
+					{
+					"name": "Id",
+					"in": "path",
+					"description": "Id of csi contact category that needs to be fetched",
+					"required": true,
+					"type": "integer",
+					"format": "int32"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					}
+				}
+			},
+			"put":{
+				"tags": [
+					"CsiContactCategories"
+				],
+				"description": "Update a csi contact category record on the database.",
+				"parameters": [
+					{
+					"name": "Id",
+					"in": "path",
+					"description": "Id of csi contact category that needs to be edited",
+					"required": true,
+					"type": "integer",
+					"format": "int32"
+					},
+					{
+						"in": "body",
+						"name": "body",
+						"description": "csi contact category that needs to be edited",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/CsiContactCategoriesModel"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					}
+				}
+			},
+			"delete": {
+				"tags": [
+					"CsiContactCategories"
+				],
+				"description": "Delete a csi contact category record from the database.",
+				"parameters": [
+					{
+					"name": "Id",
+					"in": "path",
+					"description": "Id of csi contact category that needs to be removed",
+					"required": true,
+					"type": "integer",
+					"format": "int32"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					}
+				}
+			}
+		},
+		"/CsiMainContactTypes": {
+			"get": {
+				"tags": [
+					"CsiMainContactTypes"
+				],
+				"description": "Get all the csi main contact types from the database.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					}
+				}
+			},
+
+			"post": {
+				"tags": [
+					"CsiMainContactTypes"
+				],
+				"description": "Create a new  csi main contact  type on the database.",
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"description": "csi main contact type that needs to be added to the system",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/CsiMainContactTypesModel"
+						}
+					}
+				],
+				"responses": {
+					"201": {
+						"description": "Created"
+					},
+					"400": {
+						"description": "Bad Request"
+					}
+				}
+			}
+
+		},
+		"/CsiMainContactTypes/{Id}": {
+			"get": {
+				"tags": [
+					"CsiMainContactTypes"
+				],
+				"description": "Get the csi main contact type from the database by the id.",
+				"parameters": [
+					{
+					"name": "Id",
+					"in": "path",
+					"description": "Id of csi main contact type that needs to be fetched",
+					"required": true,
+					"type": "integer",
+					"format": "int32"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					}
+				}
+			},
+			"put":{
+				"tags": [
+					"CsiMainContactTypes"
+				],
+				"description": "Update a csi main contact type record on the database.",
+				"parameters": [
+					{
+					"name": "Id",
+					"in": "path",
+					"description": "Id of csi main contact type that needs to be edited",
+					"required": true,
+					"type": "integer",
+					"format": "int32"
+					},
+					{
+						"in": "body",
+						"name": "body",
+						"description": "csi main contact type that needs to be edited",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/CsiMainContactTypesModel"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					}
+				}
+			},
+			"delete": {
+				"tags": [
+					"CsiMainContactTypes"
+				],
+				"description": "Delete a csi main contact type record from the database.",
+				"parameters": [
+					{
+					"name": "Id",
+					"in": "path",
+					"description": "Id of csi main contact type that needs to be removed",
+					"required": true,
+					"type": "integer",
+					"format": "int32"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					}
+				}
+			}
+		},
+
+		
+		"/AwdContactTypeMappings": {
+			"get": {
+				"tags": [
+					"AwdContactTypeMappings"
+				],
+				"description": "Get all the AwdContactTypeMappings from the database.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					}
+				}
+			},
+
+			"post": {
+				"tags": [
+					"AwdContactTypeMappings"
+				],
+				"description": "Create a new AwdContactTypeMapping on the database.",
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"description": "AWD contact mapping that needs to be added to the system",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/AwdContactTypeMappingsModel"
+						}
+					}
+				],
+				"responses": {
+					"201": {
+						"description": "Created"
+					},
+					"400": {
+						"description": "Bad Request"
+					}
+				}
+			}
+
+		},
+		"/AwdContactTypeMappings/{Id}": {
+			"get": {
+				"tags": [
+					"AwdContactTypeMappings"
+				],
+				"description": "Get the AwdContactTypeMappings from the database by the id.",
+				"parameters": [
+					{
+					"name": "Id",
+					"in": "path",
+					"description": "Id of AWD contact type mapping that needs to be fetched",
+					"required": true,
+					"type": "integer",
+					"format": "int32"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					}
+				}
+			},
+			"put":{
+				"tags": [
+					"AwdContactTypeMappings"
+				],
+				"description": "Update a record on the database.",
+				"parameters": [
+					{
+					"name": "Id",
+					"in": "path",
+					"description": "Id of AWD contact type mapping that needs to be edited",
+					"required": true,
+					"type": "integer",
+					"format": "int32"
+					},
+					{
+						"in": "body",
+						"name": "body",
+						"description": "AWD contact mapping that needs to be edited",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/AwdContactTypeMappingsModel"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					}
+				}
+			},
+			"delete": {
+				"tags": [
+					"AwdContactTypeMappings"
+				],
+				"description": "Delete a record from the database.",
+				"parameters": [
+					{
+					"name": "Id",
+					"in": "path",
+					"description": "Id of AWD contact type mapping that needs to be removed",
+					"required": true,
+					"type": "integer",
+					"format": "int32"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					}
+				}
+			}
+		},
+
+		"/CsiContactTypes": {
+			"get": {
+				"tags": [
+					"CsiContactTypes"
+				],
+				"description": "Get all the csi contact types from the database.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					}
+				}
+			},
+
+			"post": {
+				"tags": [
+					"CsiContactTypes"
+				],
+				"description": "Create a new csi contact type on the database.",
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"description": "csi contact type that needs to be added to the system",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/CsiContactTypesModel"
+						}
+					}
+				],
+				"responses": {
+					"201": {
+						"description": "Created"
+					},
+					"400": {
+						"description": "Bad Request"
+					}
+				}
+			}
+
+		},
+		"/CsiContactTypes/{Id}": {
+			"get": {
+				"tags": [
+					"CsiContactTypes"
+				],
+				"description": "Get the csi contact type from the database by the id.",
+				"parameters": [
+					{
+					"name": "Id",
+					"in": "path",
+					"description": "Id of csi contact type that needs to be fetched",
+					"required": true,
+					"type": "integer",
+					"format": "int32"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					}
+				}
+			},
+			"put":{
+				"tags": [
+					"CsiContactTypes"
+				],
+				"description": "Update a csi contact type record on the database.",
+				"parameters": [
+					{
+					"name": "Id",
+					"in": "path",
+					"description": "Id of csi contact type that needs to be edited",
+					"required": true,
+					"type": "integer",
+					"format": "int32"
+					},
+					{
+						"in": "body",
+						"name": "body",
+						"description": "csi contact type that needs to be edited",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/CsiContactTypesModel"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					}
+				}
+			},
+			"delete": {
+				"tags": [
+					"CsiContactTypes"
+				],
+				"description": "Delete a csi contact type record from the database.",
+				"parameters": [
+					{
+					"name": "Id",
+					"in": "path",
+					"description": "Id of csi contact type that needs to be removed",
+					"required": true,
+					"type": "integer",
+					"format": "int32"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					}
+				}
+			}
+		},
+
 		"/SignatureItems": {
 			"get": {
 				"tags": [
