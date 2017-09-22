@@ -3,3 +3,4 @@
 .vscode/launch.json
 /**/package-lock.json/**/
 Api_Site/package-lock.json
+*.~vsdx
