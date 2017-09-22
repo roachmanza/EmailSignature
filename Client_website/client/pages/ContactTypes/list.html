@@ -73,14 +73,15 @@
             <!-- /.container -->
         </nav>
         <!-- NAV END -->
-    
+        <link rel="import" href="/client/content/js/polymer" />
+        <link rel="import" href="../comp-contactTypes-list" />
         <div class="container">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3><img src="/client/content/img/config"></span>&nbsp;Contact types</h3>
+                    <h3><img src="/client/content/img/config"></span>&nbsp;Contact type list</h3>
                 </div>
                 <div class="panel-body">
-                        <button class="btn btn-default" onclick="window.location.replace('ContactTypes/List')">View all contact types</button>
+                    <comp-contactTypes-list id="peopleid" environment-Url="DEV"></comp-contactTypes-list>
                 </div>
             </div>
         </div>

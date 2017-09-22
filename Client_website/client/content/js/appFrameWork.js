@@ -30,11 +30,11 @@ var applicationTools = {
 
         if (env.length >= 3) {
             if (webApiUrl.toUpperCase() === "DEV") {
-                webApiUrl = 'http://localhost:3000/';
+                webApiUrl = 'http://localhost:4010/MailEnhancement/';
             } else if (webApiUrl.toUpperCase() === "STAGING") {
-                webApiUrl = 'http://localhost:3000/';
+                webApiUrl = 'http://localhost:4010/MailEnhancement/';
             } else if (webApiUrl.toUpperCase() === "PROD") {
-                webApiUrl = 'http://localhost:3000/';
+                webApiUrl = 'http://localhost:4010/MailEnhancement/';
             }
             if (webApiUrl.length < 20) {
                 urlError = true;
@@ -113,21 +113,22 @@ var ajaxAsync = {
                 onDoneFunction.call(context, returnData);
             },
             error: function (jqXhr, textStatus) {
-                if (jqXhr.responseJSON != null) {
-                    var error = jqXhr.responseJSON.Error;
+                var success = false;
+                var errorcode = "-1";
+                var errormessage = "unknown";
+                var errorItem = null;
+                if (jqXhr.responseJSON) {
+                    var error = jqXhr.responseJSON.error;
+                    errorcode = jqXhr.responseJSON.httpStatusCode;
                     if (error != null) {
-                        returnData.success = false;
-                        returnData.data = error;
-                        returnData.errorCode = error.HttpStatusCode;
-                        returnData.errorMessage = error.Message;
-                        onDoneFunction.call(context, returnData);
-                        return;
+                        errormessage =  error.message;
+                        errorItem = error;
                     }
                 }
-                returnData.success = false;
-                returnData.data = null;
-                returnData.errorCode = -69000;
-                returnData.errorMessage = textStatus;
+                returnData.success = success;
+                returnData.error = errorItem;
+                returnData.errorCode = errorcode;
+                returnData.errorMessage = errormessage;
                 onDoneFunction.call(context, returnData);
             }
         });

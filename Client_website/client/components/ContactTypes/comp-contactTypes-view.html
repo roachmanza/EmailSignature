@@ -1,0 +1,97 @@
+<dom-module id="comp-contactTypes-view">
+    <style>
+         :host {
+            display: block;
+        }
+    </style>
+
+    <template>
+        <content></content>
+        <button class="btn btn-default btn-xs" data-bind="click: $root.OpenContactTypesList">List</button>
+        <button class="btn btn-default btn-xs" data-bind="click: $root.EditContactTypes">Edit</button>
+
+        <div data-bind="visible : ContactTypesHasError()">
+            <div data-bind="text: ContactTypesError()"></div>
+        </div>
+
+        <hr>
+
+        <div class="loader-wrapper p-a-md " data-bind="visible: ContactTypesLoading()">
+            <i class="fa fa-repeat fa-spin fa-1x"></i>
+            <h4>loading</h4>
+        </div>
+
+        <div data-bind="visible: !ContactTypesLoading()">
+            <div>
+
+                <div class="row" style="margin-bottom:3px;">
+                    <div class="clearfix col-lg-8 col-md-12 p-x-0">
+                        <strong class="col-sm-5 col-xs-12 control-label">Name : </strong>
+                        <span class="col-sm-7 col-xs-12"><input type="text" class="form-control" data-bind="value : name" disabled="disabled"/> </span>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-bottom:3px;">
+                    <div class="clearfix col-lg-8 col-md-12 p-x-0">
+                        <strong class="col-sm-5 col-xs-12 control-label">Description : </strong>
+                        <span class="col-sm-7 col-xs-12"><input type="text" class="form-control" data-bind="value : description" disabled="disabled"/> </span>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-bottom:3px;">
+                    <div class="clearfix col-lg-8 col-md-12 p-x-0">
+                        <strong class="col-sm-5 col-xs-12 control-label">contacttypeemailaddress : </strong>
+                        <span class="col-sm-7 col-xs-12"><input type="text" class="form-control" data-bind="value : contacttypeemailaddress" disabled="disabled"/> </span>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-bottom:3px;" data-bind="visible: inactivechecked">
+                    <div class="clearfix col-lg-8 col-md-12 p-x-0">
+                        <strong class="col-sm-5 col-xs-12 control-label">Inactive date : </strong>
+                        <span class="col-sm-7 col-xs-12"><input type="text" class="form-control" data-bind="value : inactivedate" disabled="disabled"/> </span>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-bottom:3px;margin-top:2px;">
+                    <div class="clearfix col-lg-8 col-md-12 p-x-0">
+                        <strong class="col-sm-5 col-xs-12 control-label">Inactive : </strong>
+                        <span class="col-sm-7 col-xs-12"><input type="checkbox" data-bind="checked: inactivechecked" text="inactive"  disabled="disabled" /> 
+                            </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </template>
+
+    <!-- Uncomment the link below if this page will be used outside the application.
+    This is the path of the js file relative to this html file.
+    <script src="comp-ContactTypes-list-js-v1.js"></script> -->
+
+    <script src="/comp-contactTypes-view/js"></script>
+
+    <script>
+        Polymer({
+            is: 'comp-contactTypes-view',
+
+            properties: {
+                environmentUrl: {
+                    type: String,
+                    value: 'DEV'
+                }
+            },
+
+            contactTypesViewViewModel: null,
+
+            ready: function () {
+                var self = this;
+                var itemId = applicationTools.getqueryValue("id");
+                self.contactTypesViewViewModel = new ContactTypesViewViewModel(this);
+                ko.applyBindings(self.contactTypesViewViewModel, this);
+                var vm = self.contactTypesViewViewModel;
+                vm.Initialize(self.environmentUrl, self, self.contactTypesViewViewModel, itemId);
+                vm.GetContactTypeById();
+            }
+        });
+    </script>
+</dom-module>

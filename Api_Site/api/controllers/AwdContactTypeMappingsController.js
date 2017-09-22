@@ -4,13 +4,16 @@ exports.get_all_AwdContactTypeMappings = function (req, res) {
     dataGet('SELECT '+
     ' ACTM."AwdContactTypeMappingId" as AwdContactTypeMappingId,'+
     ' ACTM."ContactTypeId" as ContactTypeId,'+
+    ' CT."Name" as ContactTypeIdString,'+
     ' ACTM."AwdRegion" as AwdRegion,'+
     ' ACTM."AwdContactRole" as AwdContactRole,'+
     ' ACTM."Name" as Name,'+
     ' ACTM."Description" as Description,'+
     ' ACTM."InActiveDate" as InActiveDate,'+
     ' ACTM."InActive" as InActive'+    
-    ' FROM public."AwdContactTypeMappings" AS ACTM',
+    ' FROM public."AwdContactTypeMappings" AS ACTM'+
+    ' JOIN public."ContactTypes" as CT ON CT."ContactTypeId" = ACTM."ContactTypeId" '+
+    ' ORDER BY CT."Name" ASC , ACTM."Name" ASC ',
         function (results, err) {
             if (err) {
                 res.status(400).type('application/json').json({ success: false, httpStatusCode: 400, error: { status: "Bad Request", message: results } });
@@ -56,6 +59,7 @@ exports.read_a_AwdContactTypeMapping = function (req, res) {
     'SELECT '+
     ' ACTM."AwdContactTypeMappingId" as AwdContactTypeMappingId,'+
     ' ACTM."ContactTypeId" as ContactTypeId,'+
+    ' CT."Name" as ContactTypeIdString,'+
     ' ACTM."AwdRegion" as AwdRegion,'+
     ' ACTM."AwdContactRole" as AwdContactRole,'+
     ' ACTM."Name" as Name,'+
@@ -63,7 +67,8 @@ exports.read_a_AwdContactTypeMapping = function (req, res) {
     ' ACTM."InActiveDate" as InActiveDate,'+
     ' ACTM."InActive" as InActive'+   
     ' FROM public."AwdContactTypeMappings" AS ACTM'+
-    ' where ACTM."AwdContactTypeMappingId" = ' + id,
+    ' JOIN public."ContactTypes" as CT ON CT."ContactTypeId" = ACTM."ContactTypeId" '+
+    ' AND ACTM."AwdContactTypeMappingId" = ' + id,
         function (results, err) {
             if (err) {
                 res.status(400).type('application/json').json({ success: false, httpStatusCode: 400, error: { status: "Bad Request", message: results } });
