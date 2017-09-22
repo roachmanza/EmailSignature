@@ -73,6 +73,14 @@ var csiContactCategoriesRoutes = require('./api/routes/CsiContactCategoriesRoute
 csiContactCategoriesRoutes(webserver);
 
 //1.5 Db table
+var csiMainContactTypesRoutes = require('./api/routes/CsiMainContactTypesRoutes');
+csiMainContactTypesRoutes(webserver);
+
+
+
+
+
+//1.5 Db table
 var csiContactTypesRoutes = require('./api/routes/CsiContactTypesRoutes');
 csiContactTypesRoutes(webserver);
 

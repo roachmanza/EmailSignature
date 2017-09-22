@@ -78,7 +78,7 @@ CREATE TABLE public."CsiMainContactTypes"
     "Description" character varying COLLATE pg_catalog."default",
     "InActiveDate" date,
     "InActive" bit(1),
-    CONSTRAINT "CsiContactType_pkey" PRIMARY KEY ("CsiContactTypeId")
+    CONSTRAINT "CsiMainContactTypeId_pkey" PRIMARY KEY ("CsiMainContactTypeId")
 )
 WITH (
     OIDS = FALSE
@@ -99,7 +99,7 @@ CREATE TABLE public."CsiContactCategoryMappings"
     "Description" character varying COLLATE pg_catalog."default",
     "InActiveDate" date,
     "InActive" bit(1),
-    CONSTRAINT "CsiContactType_pkey" PRIMARY KEY ("CsiContactTypeId"),
+    CONSTRAINT "CsiContactCategoryMappings_pkey" PRIMARY KEY ("CsiContactCategoryMappingId"),
     CONSTRAINT "CsiContactCategoryMappings_CsiContactCategories_fkey" FOREIGN KEY ("CsiContactCategoryId")
         REFERENCES public."CsiContactCategories" ("CsiContactCategoryId") MATCH SIMPLE
         ON UPDATE NO ACTION
@@ -125,7 +125,7 @@ CREATE TABLE public."CsiContactTypes"
     "Description" character varying COLLATE pg_catalog."default",
     "InActiveDate" date,
     "InActive" bit(1),
-    CONSTRAINT "CsiContactType_pkey" PRIMARY KEY ("CsiContactTypeId"),
+    CONSTRAINT "CsiContactTypes_pkey" PRIMARY KEY ("CsiContactTypeId"),
     CONSTRAINT "CsiContactTypes_CsiMainContactTypes_fkey" FOREIGN KEY ("CsiMainContactTypeId")
         REFERENCES public."CsiMainContactTypes" ("CsiMainContactTypeId") MATCH SIMPLE
         ON UPDATE NO ACTION

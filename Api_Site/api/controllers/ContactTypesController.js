@@ -6,7 +6,7 @@ exports.get_all_ContactTypes = function (req, res) {
         ' CT."ContactTypeId" as ContactTypeId,'+
         ' CT."Name" as Name,'+
         ' CT."Description" as Description,'+
-        ' CT."ContactTypeEmailAddress" as ContactTypeEmailAddress,'+
+        ' CT."EmailAddress" as EmailAddress,'+
         ' CT."InActiveDate" as InActiveDate,'+
         ' CT."InActive" as InActive'+   
         ' FROM public."ContactTypes" AS CT',
@@ -29,11 +29,11 @@ exports.create_a_ContactType = function (req, res) {
             }
             var name = req.body.name;
             var description = req.body.description;
-            var email = req.body.contactTypeEmailAddress;
+            var email = req.body.emailAddress;
             var inactiveDate = new Date(1900, 01, 01).toJSON().slice(0, 10).replace(/-/g, '/');
             var inactive = 0;
             var dataPost = require('../dataAccess/dataPost');
-            dataPost('INSERT INTO public."ContactTypes"("ContactTypeId", "Name", "Description", "ContactTypeEmailAddress","InActiveDate", "InActive") ' +
+            dataPost('INSERT INTO public."ContactTypes"("ContactTypeId", "Name", "Description", "EmailAddress","InActiveDate", "InActive") ' +
                 'VALUES' +
                 '(' + id + ',\'' + name + '\' ,\'' + description + '\' ,\'' + email + '\' ,\'' + inactiveDate + '\' ,\'' + inactive + '\')',
                 function (results, err) {
@@ -54,7 +54,7 @@ exports.read_a_ContactType = function (req, res) {
         ' CT."ContactTypeId" as ContactTypeId,'+
         ' CT."Name" as Name,'+
         ' CT."Description" as Description,'+
-        ' CT."ContactTypeEmailAddress" as ContactTypeEmailAddress,'+
+        ' CT."EmailAddress" as EmailAddress,'+
         ' CT."InActiveDate" as InActiveDate,'+
         ' CT."InActive" as InActive'+   
         ' FROM public."ContactTypes" AS CT'+
@@ -77,11 +77,11 @@ exports.read_a_ContactType_for_EmailAddress = function (req, res) {
         ' CT."ContactTypeId" as ContactTypeId,'+
         ' CT."Name" as Name,'+
         ' CT."Description" as Description,'+
-        ' CT."ContactTypeEmailAddress" as ContactTypeEmailAddress,'+
+        ' CT."EmailAddress" as EmailAddress,'+
         ' CT."InActiveDate" as InActiveDate,'+
         ' CT."InActive" as InActive'+   
         ' FROM public."ContactTypes" AS CT'+
-        ' WHERE CT."ContactTypeEmailAddress" = \'' + email + '\'',
+        ' WHERE CT."EmailAddress" = \'' + email + '\'',
         function (results, err) {
             if (err) {
                 res.status(400).type('application/json').json({ success: false, httpStatusCode: 400, error: { status: "Bad Request", message: results } });
@@ -95,7 +95,7 @@ exports.update_a_ContactType = function (req, res) {
     var id = req.params.Id;
     var name = req.body.name;
     var description = req.body.description;
-    var email = req.body.contactTypeEmailAddress;
+    var email = req.body.emailAddress;
     var inactiveDate;
     var inactive;
     if (req.body.inActive === "1") {
@@ -112,7 +112,7 @@ exports.update_a_ContactType = function (req, res) {
         'SET ' +
         ' "Name"=\'' + name + '\', ' +
         ' "Description"=\'' + description + '\', ' +
-        ' "ContactTypeEmailAddress"=\'' + email + '\', ' +
+        ' "EmailAddress"=\'' + email + '\', ' +
         ' "InActiveDate"=\'' + inactiveDate + '\', ' +
         ' "InActive"=\'' + inactive + '\' ' +
         'where "ContactTypeId" = ' + id,
