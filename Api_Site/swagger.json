@@ -41,6 +41,14 @@
 			}
 		},
 		{
+			"name": "CsiMainContactTypes",
+			"description": "CSI Main Contact types.",
+			"externalDocs": {
+				"description": "Repo",
+				"url": "https://github.com/roachmanza/MailEnhancement/blob/master/Api_Site/api/controllers/"
+			}
+		},
+		{
 			"name": "FieldTypes",
 			"description": "Field types.",
 			"externalDocs": {
@@ -603,6 +611,135 @@
 				}
 			}
 		},
+		
+		"/CsiMainContactTypes": {
+			"get": {
+				"tags": [
+					"CsiMainContactTypes"
+				],
+				"description": "Get all the csi main contact types from the database.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					}
+				}
+			},
+
+			"post": {
+				"tags": [
+					"CsiMainContactTypes"
+				],
+				"description": "Create a new  csi main contact  type on the database.",
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"description": "csi main contact type that needs to be added to the system",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/CsiMainContactTypesModel"
+						}
+					}
+				],
+				"responses": {
+					"201": {
+						"description": "Created"
+					},
+					"400": {
+						"description": "Bad Request"
+					}
+				}
+			}
+
+		},
+		"/CsiMainContactTypes/{Id}": {
+			"get": {
+				"tags": [
+					"CsiMainContactTypes"
+				],
+				"description": "Get the csi main contact type from the database by the id.",
+				"parameters": [
+					{
+					"name": "Id",
+					"in": "path",
+					"description": "Id of csi main contact type that needs to be fetched",
+					"required": true,
+					"type": "integer",
+					"format": "int32"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					}
+				}
+			},
+			"put":{
+				"tags": [
+					"CsiMainContactTypes"
+				],
+				"description": "Update a csi main contact type record on the database.",
+				"parameters": [
+					{
+					"name": "Id",
+					"in": "path",
+					"description": "Id of csi main contact type that needs to be edited",
+					"required": true,
+					"type": "integer",
+					"format": "int32"
+					},
+					{
+						"in": "body",
+						"name": "body",
+						"description": "csi main contact type that needs to be edited",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/CsiMainContactTypesModel"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					}
+				}
+			},
+			"delete": {
+				"tags": [
+					"CsiMainContactTypes"
+				],
+				"description": "Delete a csi main contact type record from the database.",
+				"parameters": [
+					{
+					"name": "Id",
+					"in": "path",
+					"description": "Id of csi main contact type that needs to be removed",
+					"required": true,
+					"type": "integer",
+					"format": "int32"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					}
+				}
+			}
+		},
+		
 		"/FieldTypes": {
 			"get": {
 				"tags": [
@@ -1085,7 +1222,7 @@
 			"required": [
 				"name",
 				"description",
-				"contactTypeEmailAddress"
+				"emailAddress"
 			],
 			"properties": {
 				"name": {
@@ -1096,9 +1233,9 @@
 					"type": "string",
 					"example": "description"
 				},
-				"contactTypeEmailAddress": {
+				"emailAddress": {
 					"type": "string",
-					"example": "contactTypeEmailAddress"
+					"example": "emailAddress"
 				},
 				"inActive": {
 					"type": "bool",
@@ -1148,6 +1285,27 @@
 				}
 			}
 		},
+		"CsiMainContactTypesModel": {
+			"type": "object",
+			"required": [
+				"name",
+				"description"
+			],
+			"properties": {
+				"name": {
+					"type": "string",
+					"example": "name"
+				},
+				"description": {
+					"type": "string",
+					"example": "description"
+				},
+				"inActive": {
+					"type": "bool",
+					"example": false
+				}
+			}
+		},		
 		"FieldTypesModel": {
 			"type": "object",
 			"required": [

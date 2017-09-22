@@ -32,7 +32,7 @@ function ContactTypesCreateViewModel(hostThisContext) {
     self.contacttypeid = ko.observable("");
     self.name = ko.observable("");
     self.description = ko.observable("");
-    self.contacttypeemailaddress = ko.observable("");
+    self.emailaddress = ko.observable("");
     self.inactive = ko.observable("");
     self.inactivechecked = ko.observable("");
     self.inactivedate = ko.observable("");
@@ -53,7 +53,7 @@ function ContactTypesCreateViewModel(hostThisContext) {
             self.ContactTypesError("Please supply a description");
             return;
         };
-        if (!self.contacttypeemailaddress()) {
+        if (!self.emailaddress()) {
             self.ContactTypesHasError(true);
             self.ContactTypesError("Please supply a email address");
             return;
@@ -61,7 +61,7 @@ function ContactTypesCreateViewModel(hostThisContext) {
         var jsonObject = JSON.stringify({
             name: self.name(),
             description: self.description(),
-            contactTypeEmailAddress: self.contacttypeemailaddress(),
+            emailaAddress: self.emailaddress(),
             inActive: inactive
         });
         console.log(jsonObject)

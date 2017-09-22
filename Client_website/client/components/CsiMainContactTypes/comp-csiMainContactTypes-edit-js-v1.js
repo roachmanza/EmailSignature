@@ -1,4 +1,4 @@
-function ContactTypesEditViewModel(hostThisContext) {
+function CsiMainContactTypesEditViewModel(hostThisContext) {
     var self = this;
     self.hostContext = hostThisContext;
     var parent;
@@ -8,16 +8,16 @@ function ContactTypesEditViewModel(hostThisContext) {
 
     self.ApiBaseUri = ko.observable();
 
-    self.ContactTypesHasError = ko.observable(false);
-    self.ContactTypesError = ko.observable();
+    self.CsiMainContactTypesHasError = ko.observable(false);
+    self.CsiMainContactTypesError = ko.observable();
 
-    self.ContactTypesLoading = ko.observable(false);
-    self.ContactTypesList = ko.observableArray([]);
+    self.CsiMainContactTypesLoading = ko.observable(false);
+    self.CsiMainContactTypesList = ko.observableArray([]);
 
     self.apiUrl = {
-        getAllContactTypeById: "api/v1/ContactTypes",
-        getAllContactTypes: "api/v1/ContactTypes",
-        updateContactType: "api/v1/ContactTypes",
+        getAllContactTypeById: "api/v1/CsiMainContactTypes",
+        getAllCsiMainContactTypes: "api/v1/CsiMainContactTypes",
+        updateContactType: "api/v1/CsiMainContactTypes",
     }
     //Initialize and get the nominations
     self.Initialize = function (env, parentContext, model, itemId) {
@@ -27,96 +27,88 @@ function ContactTypesEditViewModel(hostThisContext) {
         self.ApiBaseUri(applicationTools.baseUrl(environment));
     };
 
-    self.OpenContactTypesList = function () {
-        window.location.replace("../ContactTypes/list");
+    self.OpenCsiMainContactTypesList = function () {
+        window.location.replace("../CsiMainContactTypes/list");
     };
 
-    self.OpenContactTypes = function () {
-        window.location.replace("../ContactTypes/view?id=" + currentId);
+    self.OpenCsiMainContactTypes = function () {
+        window.location.replace("../CsiMainContactTypes/view?id=" + currentId);
     };
 
-    self.SaveContactTypes = function () {
-        self.ContactTypesHasError(false);
-        self.ContactTypesError("");
+    self.SaveCsiMainContactTypes = function () {
+        self.CsiMainContactTypesHasError(false);
+        self.CsiMainContactTypesError("");
         var inactive = "0";
         if (self.inactivechecked() === true) {
             inactive = "1"
         };
         if (!self.name()) {
-            self.ContactTypesHasError(true);
-            self.ContactTypesError("Please supply a name");
+            self.CsiMainContactTypesHasError(true);
+            self.CsiMainContactTypesError("Please supply a name");
             return;
         };
         if (!self.description()) {
-            self.ContactTypesHasError(true);
-            self.ContactTypesError("Please supply a description");
-            return;
-        };
-        if (!self.emailaddress()) {
-            self.ContactTypesHasError(true);
-            self.ContactTypesError("Please supply a email address");
+            self.CsiMainContactTypesHasError(true);
+            self.CsiMainContactTypesError("Please supply a description");
             return;
         };
         var jsonObject = JSON.stringify({
             name: self.name(),
             description: self.description(),
-            emailAddress: self.emailaddress(),
             inActive: inactive
         });
         console.log(jsonObject)
         var url = "";
         var headers = [applicationTools.appAuth.claimsHeader([applicationTools.appAuth.domainNameClaim(currentDomainLogin)])];
         url = self.ApiBaseUri() + self.apiUrl.updateContactType + "/" + currentId;
-        ajaxAsync.ajaxPut(self, self._SaveContactTypes, url, null, jsonObject, null, headers);
+        ajaxAsync.ajaxPut(self, self._SaveCsiMainContactTypes, url, null, jsonObject, null, headers);
     };
-    self._SaveContactTypes = function (result) {
+    self._SaveCsiMainContactTypes = function (result) {
         if (result.success) {
-            self.OpenContactTypes();
+            self.OpenCsiMainContactTypes();
         } else {
-            self.ContactTypesHasError(true);
-            self.ContactTypesError(result.errorMessage);
+            self.CsiMainContactTypesHasError(true);
+            self.CsiMainContactTypesError(result.errorMessage);
         }
     };
 
     self.GetContactTypeById = function () {
-        self.ContactTypesLoading(true);
-        self.ContactTypesList.removeAll();
+        self.CsiMainContactTypesLoading(true);
+        self.CsiMainContactTypesList.removeAll();
         var url = "";
         var headers = [applicationTools.appAuth.claimsHeader([applicationTools.appAuth.domainNameClaim("metmom\\roolivier")])];
         url = self.ApiBaseUri() + self.apiUrl.getAllContactTypeById + "/" + currentId;
         console.log("Getting all people : for " + currentDomainLogin);
-        ajaxAsync.ajaxGet(self, self._populateContactTypesItem, url, null, null, null, headers);
+        ajaxAsync.ajaxGet(self, self._populateCsiMainContactTypesItem, url, null, null, null, headers);
     };
 
-    self.contacttypeid = ko.observable("");
+    self.csimaincontacttypeid = ko.observable("");
     self.name = ko.observable("");
     self.description = ko.observable("");
-    self.emailaddress = ko.observable("");
     self.inactive = ko.observable("");
     self.inactivechecked = ko.observable("");
     self.inactivedate = ko.observable("");
-    self._populateContactTypesItem = function (result) {
+    self._populateCsiMainContactTypesItem = function (result) {
         if (result.success) {
             if (result.success) {
                 var data = result.data.data;
-                self.contacttypeid(data[0].contacttypeid);
+                self.csimaincontacttypeid(data[0].csimaincontacttypeid);
                 self.name(data[0].name);
                 self.description(data[0].description);
-                self.emailaddress(data[0].emailaddress);
                 self.inactive(data[0].inactive);
                 self.inactivechecked(self.getInActive(data[0].inactive));
                 self.inactivedate(data[0].inactivedate);
             }
         } else {
             if (result.errorMessage === "error") {
-                self.ContactTypesHasError(true);
-                self.ContactTypesError("");
+                self.CsiMainContactTypesHasError(true);
+                self.CsiMainContactTypesError("");
             } else {
-                self.ContactTypesHasError(true);
-                self.ContactTypesError(result.errorMessage);
+                self.CsiMainContactTypesHasError(true);
+                self.CsiMainContactTypesError(result.errorMessage);
             }
         }
-        self.ContactTypesLoading(false);
+        self.CsiMainContactTypesLoading(false);
     };
     self.getInActive = function (inactiveValue) {
         var isckecked = false;
