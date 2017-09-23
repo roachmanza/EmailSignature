@@ -5,8 +5,8 @@
 		"version": "1.0.0",
 		"title": "Mail enhancement API documentation"
 	},
-	"host": "localhost:4010/MailEnhancement/api",
-	"basePath": "/v1/",
+	"host": "localhost:4010",
+	"basePath": "/MailEnhancement/api/v1/",
 	"tags": [
 		{"name": "ContactTypes",
 			"description": "Contact types with email address linked to contact type.",
@@ -1333,7 +1333,7 @@
 					"example": "emailAddress"
 				},
 				"inActive": {
-					"type": "bool",
+					"type": "boolean",
 					"example": false
 				}
 			}
@@ -1401,7 +1401,7 @@
 					"example": "description"
 				},
 				"inActive": {
-					"type": "bool",
+					"type": "boolean",
 					"example": false
 				}
 			}
@@ -1422,7 +1422,7 @@
 					"example": "description"
 				},
 				"inActive": {
-					"type": "bool",
+					"type": "boolean",
 					"example": false
 				}
 			}
@@ -1456,7 +1456,7 @@
 					"example": "description"
 				},
 				"inActive": {
-					"type": "bool",
+					"type": "boolean",
 					"example": false
 				}
 			}
@@ -1483,7 +1483,7 @@
 					"example": "description"
 				},
 				"inActive": {
-					"type": "bool",
+					"type": "boolean",
 					"example": false
 				}
 			}
@@ -1520,7 +1520,7 @@
 					"example": "description"
 				},
 				"inActive": {
-					"type": "bool",
+					"type": "boolean",
 					"example": false
 				}
 			}
