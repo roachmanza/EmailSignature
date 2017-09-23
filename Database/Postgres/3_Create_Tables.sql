@@ -167,8 +167,7 @@ CREATE TABLE public."CsiContactTypeMappings"
 (
     "CsiContactTypeMappingId" integer NOT NULL,
     "ContactTypeId" integer NOT NULL,
-    "AwdRegion" character varying COLLATE pg_catalog."default",
-    "AwdContactRole" character varying COLLATE pg_catalog."default",
+    "CsiContactTypeId"integer NOT NULL,
     "Name" character varying COLLATE pg_catalog."default",
     "Description" character varying COLLATE pg_catalog."default",
     "InActiveDate" date,
@@ -176,6 +175,10 @@ CREATE TABLE public."CsiContactTypeMappings"
     CONSTRAINT "CsiContactTypeMappings_pkey" PRIMARY KEY ("CsiContactTypeMappingId"),
     CONSTRAINT "CsiContactTypeMappings_ContactTypes_fkey" FOREIGN KEY ("ContactTypeId")
         REFERENCES public."ContactTypes" ("ContactTypeId") MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT "CsiContactTypeMappings_CsiContactTypes_fkey" FOREIGN KEY ("CsiContactTypeId")
+        REFERENCES public."CsiContactTypes" ("CsiContactTypeId") MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
 )

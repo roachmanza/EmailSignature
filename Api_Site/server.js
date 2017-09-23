@@ -81,16 +81,19 @@ csiMainContactTypesRoutes(webserver);
 var csiContactCategoryMappingsRoutes = require('./api/routes/CsiContactCategoryMappingsRoutes');
 csiContactCategoryMappingsRoutes(webserver);
 
-
-
-
-//1.5 Db table
+//2.2 Db table
 var csiContactTypesRoutes = require('./api/routes/CsiContactTypesRoutes');
 csiContactTypesRoutes(webserver);
 
-//1.6 Db table
+//2.3 Db table
 var awdContactTypeMappingsRoutes = require('./api/routes/AwdContactTypeMappingsRoutes');
 awdContactTypeMappingsRoutes(webserver);
+
+//2.4 Db table
+var csiContactTypeMappingsRoutes = require('./api/routes/CsiContactTypeMappingsRoutes');
+csiContactTypeMappingsRoutes(webserver);
+
+
 
 //2.1 Db table
 var signatureItemsRoutes = require('./api/routes/SignatureItemsRoutes');
