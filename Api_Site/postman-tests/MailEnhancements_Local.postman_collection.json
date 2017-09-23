@@ -137,7 +137,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\"name\":\"test1\",\n\"description\":\"1desc\",\n\"contactTypeEmailAddress\":\"1desc@e\"\n}"
+							"raw": "{\n\"name\":\"test1\",\n\"description\":\"1desc\",\n\"emailAddress\":\"1desc@e\"\n}"
 						},
 						"description": ""
 					},
@@ -157,7 +157,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\"name\":\"test1\",\n\"description\":\"1desc\",\n\"contactTypeEmailAddress\":\"a@b.cc\",\n\"inActive\":\"0\"\n}"
+							"raw": "{\n\"name\":\"test1\",\n\"description\":\"1desc\",\n\"emailAddress\":\"a@b.c\",\n\"inActive\":\"0\"\n}"
 						},
 						"description": ""
 					},
@@ -256,6 +256,173 @@
 			]
 		},
 		{
+			"name": "CsiContactCategoryMappings",
+			"description": "",
+			"item": [
+				{
+					"name": "CsiContactCategoryMappings",
+					"request": {
+						"url": "http://localhost:4010/MailEnhancement/api/v1/CsiContactCategoryMappings",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "CsiContactCategoryMappings/1",
+					"request": {
+						"url": "http://localhost:4010/MailEnhancement/api/v1/CsiContactCategoryMappings",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "CsiContactCategoryMappings",
+					"request": {
+						"url": "http://localhost:4010/MailEnhancement/api/v1/CsiContactCategoryMappings",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"csiContactCategoryId\":\"1\",\n\t\t\"contactTypeId\":\"1\",\n\"name\":\"test1\",\n\"description\":\"1desc\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "CsiContactCategoryMappings/2",
+					"request": {
+						"url": "http://localhost:4010/MailEnhancement/api/v1/CsiContactCategoryMappings/2",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"csiContactCategoryId\":\"1\",\n\t\t\"contactTypeId\":\"1\",\n\"name\":\"test1\",\n\"description\":\"1desc\",\n\"inActive\":\"1\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "CsiContactCategoryMappings/3",
+					"request": {
+						"url": "http://localhost:4010/MailEnhancement/api/v1/CsiContactCategoryMappings/3",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"csiContactCategoryId\":\"1\",\n\t\t\"contactTypeId\":\"1\",\n\"name\":\"test1\",\n\"description\":\"1desc\",\n\"inActive\":\"1\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CsiContactTypeMappings",
+			"description": "",
+			"item": [
+				{
+					"name": "CsiContactTypeMappings",
+					"request": {
+						"url": "http://localhost:4010/MailEnhancement/api/v1/CsiContactTypeMappings",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "CsiContactTypeMappings/1",
+					"request": {
+						"url": "http://localhost:4010/MailEnhancement/api/v1/CsiContactTypeMappings/1",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "CsiContactTypeMappings",
+					"request": {
+						"url": "http://localhost:4010/MailEnhancement/api/v1/CsiContactTypeMappings",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"contactTypeId\":\"1\",\n\t\"csiContactTypeId\":\"1\",\n\t\"name\":\"name\",\n\t\"description\":\"description\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "CsiContactTypeMappings/1",
+					"request": {
+						"url": "http://localhost:4010/MailEnhancement/api/v1/CsiContactTypeMappings/1",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"contactTypeId\":\"1\",\n\t\"csiContactTypeId\":\"1\",\n\t\"name\":\"nsssssame\",\n\t\"description\":\"descrissssption\",\n\t\"inActive\":\"1\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "CsiContactTypeMappings/2",
+					"request": {
+						"url": "http://localhost:4010/MailEnhancement/api/v1/CsiContactTypeMappings/2",
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "CsiContactTypes",
 			"description": "",
 			"item": [
@@ -295,7 +462,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\"name\":\"test1\",\n\"description\":\"1desc\"\n}"
+							"raw": "{\n\t\"csiMainContactTypeId\":\"1\",\n\"name\":\"test1\",\n\"description\":\"1desc\"\n}"
 						},
 						"description": ""
 					},
@@ -315,7 +482,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\"name\":\"testsss1\",\n\"description\":\"1ssdsdsddesc\",\n\"inActive\":\"1\"\n}"
+							"raw": "{\n\"csiMainContactTypeId\":\"1\",\n\"name\":\"test1111\",\n\"description\":\"1des111c\",\n\"inActive\":\"1\"\n}"
 						},
 						"description": ""
 					},
@@ -328,6 +495,182 @@
 						"method": "DELETE",
 						"header": [],
 						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CsiMainContactType",
+			"description": "",
+			"item": [
+				{
+					"name": "CsiMainContactTypes",
+					"request": {
+						"url": "http://localhost:4010/MailEnhancement/api/v1/CsiMainContactTypes",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "CsiMainContactTypes/1",
+					"request": {
+						"url": "http://localhost:4010/MailEnhancement/api/v1/CsiMainContactTypes/1",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "CsiMainContactTypes",
+					"request": {
+						"url": "http://localhost:4010/MailEnhancement/api/v1/CsiMainContactTypes",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"name\":\"test1\",\n\"description\":\"1desc\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "CsiMainContactTypes/1",
+					"request": {
+						"url": "http://localhost:4010/MailEnhancement/api/v1/CsiMainContactTypes/1",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"name\":\"test1\",\n\"description\":\"1desc altered\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "CsiMainContactTypes/2",
+					"request": {
+						"url": "http://localhost:4010/MailEnhancement/api/v1/CsiMainContactTypes/2",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"name\":\"test1\",\n\"description\":\"1desc altered\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "FieldItems",
+			"description": "",
+			"item": [
+				{
+					"name": "FieldItems",
+					"request": {
+						"url": "http://localhost:4010//MailEnhancement/api/v1/FieldItems",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "FieldItems/1",
+					"request": {
+						"url": "http://localhost:4010//MailEnhancement/api/v1/FieldItems/1",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "FieldItems",
+					"request": {
+						"url": "http://localhost:4010//MailEnhancement/api/v1/FieldItems",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"languageId\":\"1\",\n\t\"fieldTypeId\":\"1\",\n\t\"name\":\"name\",\n\t\"description\":\"description\",\n\t\"label\":\"label\",\n\t\"value\":\"value\",\n\t\"printFormat\":\"printFormat\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "FieldItems/2",
+					"request": {
+						"url": "http://localhost:4010//MailEnhancement/api/v1/FieldItems/2",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"languageId\":\"1\",\n\t\"fieldTypeId\":\"1\",\n\t\"name\":\"na222me\",\n\t\"description\":\"descr222iption\",\n\t\"label\":\"labe222l\",\n\t\"value\":\"val222ue\",\n\t\"printFormat\":\"pri22ntFormat\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "FieldItems/3",
+					"request": {
+						"url": "http://localhost:4010//MailEnhancement/api/v1/FieldItems/3",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"languageId\":\"1\",\n\t\"fieldTypeId\":\"1\",\n\t\"name\":\"na222me\",\n\t\"description\":\"descr222iption\",\n\t\"label\":\"labe222l\",\n\t\"value\":\"val222ue\",\n\t\"printFormat\":\"pri22ntFormat\"\n}"
+						},
 						"description": ""
 					},
 					"response": []
@@ -532,7 +875,7 @@
 				{
 					"name": "SignatureItems/EmailAddress/q@b.c",
 					"request": {
-						"url": "http://localhost:4010/MailEnhancement/api/v1/SignatureItems/EmailAddress/a@b.c",
+						"url": "http://localhost:4010/MailEnhancement/api/v1/SignatureItems/EmailAddress/zz",
 						"method": "GET",
 						"header": [],
 						"body": {},
@@ -554,7 +897,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\"contactTypeId\":\"1\",\n\"fieldTypeId\":\"1\",\n\"languageId\":\"1\",\n\"csiContactCategoryId\":\"1\",\n\"csiContactTypeId\":\"1\",\n\"csiMainContactTypeId\":\"1\",\n\"sequence\":\"1\",\n\"label\":\"EasdN\",\n\"value\":\"EasdasdN\",\n\"printFormat\":\"EasdasdN\"\n}"
+							"raw": "{\n\"contactTypeId\":\"1\",\n\"fieldItemId\":\"1\",\n\"sequence\":\"1\"\n}"
 						},
 						"description": ""
 					},
@@ -574,7 +917,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\"contactTypeId\":\"2\",\n\"fieldTypeId\":\"1\",\n\"languageId\":\"1\",\n\"csiContactCategoryId\":\"1\",\n\"csiContactTypeId\":\"1\",\n\"csiMainContactTypeId\":\"1\",\n\"sequence\":\"1\",\n\"label\":\"web\",\n\"value\":\"http://www.momentum.co.za\",\n\"printFormat\":\"ascii\",\n\"inActive\":\"1\"\n}"
+							"raw": "{\n\"contactTypeId\":\"1\",\n\"fieldItemId\":\"1\",\n\"sequence\":\"1\",\n\"inActive\":\"1\"\n}"
 						},
 						"description": ""
 					},
