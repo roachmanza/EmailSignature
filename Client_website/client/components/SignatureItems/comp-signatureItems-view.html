@@ -27,45 +27,15 @@
                 <div class="row" style="margin-bottom:3px;">
                     <div class="clearfix col-lg-8 col-md-12 p-x-0">
                         <strong class="col-sm-5 col-xs-12 control-label">Contact type</strong>
-                        <span class="col-sm-7 col-xs-12"><select class="form-control" data-bind="options: availableContactTypes, optionsText: 'name', value: contacttypes, optionsCaption: 'Please select...'"   disabled="disabled"></select></span>
+                        <span class="col-sm-7 col-xs-12"><select class="form-control" data-bind="options: availableContactTypes, optionsText: 'name', value: contacttypes, optionsCaption: 'Please select...'" disabled="disabled" ></select></span>
                     </div>
                 </div>
 
 
                 <div class="row" style="margin-bottom:3px;">
                     <div class="clearfix col-lg-8 col-md-12 p-x-0">
-                        <strong class="col-sm-5 col-xs-12 control-label">Field type</strong>
-                        <span class="col-sm-7 col-xs-12"><select class="form-control" data-bind="options: availableFieldTypes, optionsText: 'name', value: fieldtypes, optionsCaption: 'Please select...'"   disabled="disabled"></select></span>
-                    </div>
-                </div>
-
-                
-                <div class="row" style="margin-bottom:3px;">
-                    <div class="clearfix col-lg-8 col-md-12 p-x-0">
-                        <strong class="col-sm-5 col-xs-12 control-label">Language</strong>
-                        <span class="col-sm-7 col-xs-12"><select class="form-control" data-bind="options: availableLanguages, optionsText: 'name', value: languages, optionsCaption: 'Please select...'"    disabled="disabled"></select></span>
-                    </div>
-                </div>
-
-                <div class="row" style="margin-bottom:3px;">
-                    <div class="clearfix col-lg-8 col-md-12 p-x-0">
-                        <strong class="col-sm-5 col-xs-12 control-label">CSI Contract category</strong>
-                        <span class="col-sm-7 col-xs-12"><select class="form-control" data-bind="options: availableCsiContactCategories, optionsText: 'name', value: csiContactCategories, optionsCaption: 'Please select...'"  disabled="disabled" ></select></span>
-                    </div>
-                </div>
-
-
-                <div class="row" style="margin-bottom:3px;">
-                    <div class="clearfix col-lg-8 col-md-12 p-x-0">
-                        <strong class="col-sm-5 col-xs-12 control-label">CSI Contract type</strong>
-                        <span class="col-sm-7 col-xs-12"><select class="form-control" data-bind="options: availableCsiContactTypes, optionsText: 'name', value: csiContactTypes, optionsCaption: 'Please select...'"   disabled="disabled"></select></span>
-                    </div>
-                </div>
-
-                <div class="row" style="margin-bottom:3px;">
-                    <div class="clearfix col-lg-8 col-md-12 p-x-0">
-                        <strong class="col-sm-5 col-xs-12 control-label">CSI Main Contract type</strong>
-                        <span class="col-sm-7 col-xs-12"><select class="form-control" data-bind="options: availableCsiMainContactTypes, optionsText: 'name', value: csiMainContactTypes, optionsCaption: 'Please select...'"   disabled="disabled"></select></span>
+                        <strong class="col-sm-5 col-xs-12 control-label">Field item</strong>
+                        <span class="col-sm-7 col-xs-12"><select class="form-control" data-bind="options: availableFieldItems, optionsText: 'name', value: fielditems, optionsCaption: 'Please select...'"   disabled="disabled"></select></span>
                     </div>
                 </div>
 
@@ -73,27 +43,6 @@
                     <div class="clearfix col-lg-8 col-md-12 p-x-0">
                         <strong class="col-sm-5 col-xs-12 control-label">sequence : </strong>
                         <span class="col-sm-7 col-xs-12"><input type="text" class="form-control" data-bind="value : sequence" disabled="disabled"/> </span>
-                    </div>
-                </div>
-
-                <div class="row" style="margin-bottom:3px;">
-                    <div class="clearfix col-lg-8 col-md-12 p-x-0">
-                        <strong class="col-sm-5 col-xs-12 control-label">label : </strong>
-                        <span class="col-sm-7 col-xs-12"><input type="text" class="form-control" data-bind="value : label" disabled="disabled"/> </span>
-                    </div>
-                </div>
-
-                <div class="row" style="margin-bottom:3px;">
-                    <div class="clearfix col-lg-8 col-md-12 p-x-0">
-                        <strong class="col-sm-5 col-xs-12 control-label">value : </strong>
-                        <span class="col-sm-7 col-xs-12"><input type="text" class="form-control" data-bind="value : value" disabled="disabled"/> </span>
-                    </div>
-                </div>
-
-                <div class="row" style="margin-bottom:3px;">
-                    <div class="clearfix col-lg-8 col-md-12 p-x-0">
-                        <strong class="col-sm-5 col-xs-12 control-label">printformat : </strong>
-                        <span class="col-sm-7 col-xs-12"><input type="text" class="form-control" data-bind="value : printformat" disabled="disabled"/> </span>
                     </div>
                 </div>
 
@@ -143,10 +92,7 @@
                 var vm = self.SignatureItemsModel;
                 vm.Initialize(self.environmentUrl, self, self.SignatureItemsModel, itemId);
                 vm.GetContactTypes();
-                vm.GetFieldTypes();
-                vm.GetLanguages();
-                vm.GetCsiContactCategories();
-                vm.GetCsiContactTypes();
+                vm.GetFieldItems();
                 
                 vm.GetSignatureItemById();
             }

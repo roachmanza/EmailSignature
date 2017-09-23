@@ -7,7 +7,7 @@
 
     <template>
         <content></content>
-        <button class="btn btn-default btn-xs" data-bind="click: $root.CreateSignatureItems">Add a new awd contact type mapping</button>
+        <button class="btn btn-default btn-xs" data-bind="click: $root.CreateSignatureItems">Add a new signature item</button>
 
         <div class="loader-wrapper p-a-md " data-bind="visible: SignatureItemsLoading()">
             <i class="fa fa-repeat fa-spin fa-1x"></i>
@@ -30,16 +30,9 @@
 
                     <tr>
                         <th style="font-size:12px;width: 5%;" class="hidden-xs">Id</th>
-                        <th style="font-size:12px;width: 20%;">Contact</th>
-                        <!-- <th style="font-size:12px;width: 5%;">fieldeid</th> -->
-                        <th style="font-size:12px;width: 5%;">Lang</th>
-                        <th style="font-size:12px;width: 5%;">csic</th>
-                        <th style="font-size:12px;width: 5%;">csictid</th>
-                        <th style="font-size:12px;width: 5%;">csimain</th>
-                        <!-- <th style="font-size:12px;width: 5%;">sequence</th> -->
-                        <th style="font-size:12px;width: 20%;">label</th>
-                        <th style="font-size:12px;width: 20%;">value</th>
-                        <!-- <th style="font-size:12px;width: 5%;">printformat</th> -->
+                        <th style="font-size:12px;width: 35%;">Contact type</th>
+                        <th style="font-size:12px;width: 20%;">Field item</th>
+                        <th style="font-size:12px;width: 25%;">Sequence</th>
                         <th style="font-size:12px;width: 5%;">Active</th>
                         <th style="font-size:12px;width: 10%;">Actions</th>
                     </tr>
@@ -47,17 +40,9 @@
                 <tbody data-bind="foreach : SignatureItemsList()">
                     <tr>
                         <td style="font-size:12px;" data-bind="text : signatureitemid" class="hidden-xs"></td>
-                        <!-- <td style="font-size:12px;" data-bind="text : contacttypeid"></td> -->
                         <td style="font-size:12px;" data-bind="text : contacttypeidstring"></td>
-                        <!-- <td style="font-size:12px;" data-bind="text : fieldtypeid"></td> -->
-                        <td style="font-size:12px;" data-bind="text : languagecode"></td>
-                        <td style="font-size:12px;" data-bind="text : csicontactcategoryid"></td>
-                        <td style="font-size:12px;" data-bind="text : csicontacttypeid"></td>
-                        <td style="font-size:12px;" data-bind="text : csimaincontacttypeid"></td>
-                        <!-- <td style="font-size:12px;" data-bind="text : sequence"></td> -->
-                        <td style="font-size:12px;" data-bind="text : label"></td>
-                        <td style="font-size:12px;" data-bind="text : value"></td>
-                        <!-- <td style="font-size:12px;" data-bind="text : printformat"></td> -->
+                        <td style="font-size:12px;" data-bind="text : fielditemidstring"></td>
+                        <td style="font-size:12px;" data-bind="text : sequence"></td>
                         <td style="font-size:12px;">
                             <span class="glyphicon glyphicon-ok-circle" style="color:green" data-bind="visible : !inactivechecked"></span>
                             <span class="glyphicon glyphicon-ban-circle" style="color:red" data-bind="visible : inactivechecked"></span>
