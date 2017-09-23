@@ -17,53 +17,71 @@
         </div>
 
         <div data-bind="visible: !FieldItemsLoading()">
-                <div>
-    
-                    <div class="row" style="margin-bottom:3px;">
-                        <div class="clearfix col-lg-8 col-md-12 p-x-0">
-                            <strong class="col-sm-5 col-xs-12 control-label">Contact type</strong>
-                            <span class="col-sm-7 col-xs-12"><select class="form-control" data-bind="options: availableContactTypes, optionsText: 'name', value: contacttypes, optionsCaption: 'Please select...'"  ></select></span>
-                        </div>
+            <div>
+
+                <div class="row" style="margin-bottom:3px;">
+                    <div class="clearfix col-lg-8 col-md-12 p-x-0">
+                        <strong class="col-sm-5 col-xs-12 control-label">Language</strong>
+                        <span class="col-sm-7 col-xs-12"><select class="form-control" data-bind="options: availableLanguages, optionsText: 'name', value: languages, optionsCaption: 'Please select...'"   ></select></span>
                     </div>
-    
-                    <div class="row" style="margin-bottom:3px;">
-                        <div class="clearfix col-lg-8 col-md-12 p-x-0">
-                            <strong class="col-sm-5 col-xs-12 control-label">Csi Contact categories</strong>
-                            <span class="col-sm-7 col-xs-12"><select class="form-control" data-bind="options: availableCsiContactCategories, optionsText: 'name', value: csiContactCategories, optionsCaption: 'Please select...'" ></select></span>
-                        </div>
+                </div>
+
+                <div class="row" style="margin-bottom:3px;">
+                    <div class="clearfix col-lg-8 col-md-12 p-x-0">
+                        <strong class="col-sm-5 col-xs-12 control-label">File Type</strong>
+                        <span class="col-sm-7 col-xs-12"><select class="form-control" data-bind="options: availableFieldTypes, optionsText: 'name', value: fieldtypes, optionsCaption: 'Please select...'"   ></select></span>
                     </div>
-    
-    
-                    <div class="row" style="margin-bottom:3px;">
-                        <div class="clearfix col-lg-8 col-md-12 p-x-0">
-                            <strong class="col-sm-5 col-xs-12 control-label">Name : </strong>
-                            <span class="col-sm-7 col-xs-12"><input type="text" class="form-control" data-bind="value : name" /> </span>
-                        </div>
+                </div>
+
+
+                <div class="row" style="margin-bottom:3px;">
+                    <div class="clearfix col-lg-8 col-md-12 p-x-0">
+                        <strong class="col-sm-5 col-xs-12 control-label">Name : </strong>
+                        <span class="col-sm-7 col-xs-12"><input type="text" class="form-control" data-bind="value : name" /> </span>
                     </div>
-    
-                    <div class="row" style="margin-bottom:3px;">
-                        <div class="clearfix col-lg-8 col-md-12 p-x-0">
-                            <strong class="col-sm-5 col-xs-12 control-label">Description : </strong>
-                            <span class="col-sm-7 col-xs-12"><input type="text" class="form-control" data-bind="value : description" /> </span>
-                        </div>
+                </div>
+
+                <div class="row" style="margin-bottom:3px;">
+                    <div class="clearfix col-lg-8 col-md-12 p-x-0">
+                        <strong class="col-sm-5 col-xs-12 control-label">Description : </strong>
+                        <span class="col-sm-7 col-xs-12"><input type="text" class="form-control" data-bind="value : description" /> </span>
                     </div>
-    
-                    <div class="row" style="margin-bottom:3px;" data-bind="visible: inactivechecked">
-                        <div class="clearfix col-lg-8 col-md-12 p-x-0">
-                            <strong class="col-sm-5 col-xs-12 control-label">Inactive date : </strong>
-                            <span class="col-sm-7 col-xs-12"><input type="text" class="form-control" data-bind="value : inactivedate" /> </span>
-                        </div>
+                </div>
+                <div class="row" style="margin-bottom:3px;">
+                    <div class="clearfix col-lg-8 col-md-12 p-x-0">
+                        <strong class="col-sm-5 col-xs-12 control-label">label : </strong>
+                        <span class="col-sm-7 col-xs-12"><input type="text" class="form-control" data-bind="value : label" /> </span>
                     </div>
-    
-                    <div class="row" style="margin-bottom:3px;margin-top:2px;">
-                        <div class="clearfix col-lg-8 col-md-12 p-x-0">
-                            <strong class="col-sm-5 col-xs-12 control-label">Inactive : </strong>
-                            <span class="col-sm-7 col-xs-12"><input type="checkbox" data-bind="checked: inactivechecked" text="inactive"  /> 
+                </div>
+                <div class="row" style="margin-bottom:3px;">
+                    <div class="clearfix col-lg-8 col-md-12 p-x-0">
+                        <strong class="col-sm-5 col-xs-12 control-label">value : </strong>
+                        <span class="col-sm-7 col-xs-12"><input type="text" class="form-control" data-bind="value : value" /> </span>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom:3px;">
+                    <div class="clearfix col-lg-8 col-md-12 p-x-0">
+                        <strong class="col-sm-5 col-xs-12 control-label">printformat : </strong>
+                        <span class="col-sm-7 col-xs-12"><input type="text" class="form-control" data-bind="value : printformat" /> </span>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-bottom:3px;" data-bind="visible: inactivechecked">
+                    <div class="clearfix col-lg-8 col-md-12 p-x-0">
+                        <strong class="col-sm-5 col-xs-12 control-label">Inactive date : </strong>
+                        <span class="col-sm-7 col-xs-12"><input type="text" class="form-control" data-bind="value : inactivedate" /> </span>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-bottom:3px;margin-top:2px;">
+                    <div class="clearfix col-lg-8 col-md-12 p-x-0">
+                        <strong class="col-sm-5 col-xs-12 control-label">Inactive : </strong>
+                        <span class="col-sm-7 col-xs-12"><input type="checkbox" data-bind="checked: inactivechecked" text="inactive"   /> 
                                     </span>
-                        </div>
                     </div>
                 </div>
             </div>
+        </div>
         <hr>
         <div data-bind="visible : FieldItemsHasError()">
             <div data-bind="text: FieldItemsError()"></div>
@@ -96,8 +114,8 @@
                 ko.applyBindings(self.FieldItemsModel, this);
                 var vm = self.FieldItemsModel;
                 vm.Initialize(self.environmentUrl, self, self.FieldItemsModel);
-                vm.GetCsiContactCategories();
-                vm.GetContactTypes();
+                vm.GetLanguages();
+                vm.GetFieldTypes();
             }
         });
     </script>

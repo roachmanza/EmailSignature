@@ -18,7 +18,8 @@ function FieldItemsViewViewModel(hostThisContext) {
         getFieldItemsById: "api/v1/FieldItems",
         getAllFieldItems : "api/v1/FieldItems",
         getAllContactTypes : "api/v1/ContactTypes",        
-        getAllCsiContactCategories : "api/v1/CsiContactCategories"
+        getFieldTypes : "api/v1/FieldTypes",
+        getAllLanguages : "api/v1/Languages"
 	}
     //Initialize and get the nominations
     self.Initialize = function (env, parentContext, model,itemId) {
@@ -47,11 +48,16 @@ function FieldItemsViewViewModel(hostThisContext) {
         ajaxAsync.ajaxGet(self, self._populateFieldItemsItem, url, null, null, null, headers);
     };
 
-    self.csicontactcategorymappingid = ko.observable("");
-    self.csicontactcategoryid = ko.observable("");
-    self.contacttypeid = ko.observable("");
+    self.fielditemid = ko.observable("");
+    self.languageid = ko.observable("");
+    self.languageidstring = ko.observable("");
+    self.fieldtypeid = ko.observable("");
+    self.fieldtypeidstring = ko.observable("");
     self.name = ko.observable("");
     self.description = ko.observable("");
+    self.label = ko.observable("");
+    self.value = ko.observable("");
+    self.printformat = ko.observable("");
     self.inactive = ko.observable("");
     self.inactivechecked = ko.observable("");
     self.inactivedate = ko.observable("");
@@ -59,17 +65,22 @@ function FieldItemsViewViewModel(hostThisContext) {
         if (result.success) {
             if (result.success) {
                 var data = result.data.data;
-                self.csicontactcategorymappingid(data[0].csicontactcategorymappingid);
-                self.csicontactcategoryid(data[0].csicontactcategoryid);
-                self.contacttypeid(data[0].contacttypeid);
+                self.fielditemid(data[0].fielditemid);
+                self.languageid(data[0].languageid);
+                self.languageidstring(data[0].languageidstring);
+                self.fieldtypeid(data[0].fieldtypeid);
+                self.fieldtypeidstring(data[0].fieldtypeidstring);
                 self.name(data[0].name);
                 self.description(data[0].description);
+                self.label(data[0].label);
+                self.value(data[0].value);
+                self.printformat(data[0].printformat);
                 self.inactive(data[0].inactive);
                 self.inactivechecked(self.getInActive(data[0].inactive));
                 self.inactivedate(data[0].inactivedate);
 
-                self.contacttypes(self.getContactTypesItem(data[0].contacttypeid));  
-                self.csiContactCategories(self.getCsiContactCategories(data[0].csicontactcategoryid)); 
+                self.languages(self.getLanguagesItem(data[0].languageid));  
+                self.fieldtypes(self.getFieldTypesItem(data[0].fieldtypeid)); 
             }
         } else {
              if(result.errorMessage==="error"){
@@ -92,61 +103,58 @@ function FieldItemsViewViewModel(hostThisContext) {
 
 
     //Get the ContactTypes dropdown
-    self.availableContactTypes = ko.observableArray([{name : 'NONE AVAILABLE'}]);
-    self.contacttypes = ko.observable("");
-    self.GetContactTypes = function () {
-        self.availableContactTypes.removeAll();
+    self.availableLanguages = ko.observableArray([{name : 'NONE AVAILABLE'}]);
+    self.languages = ko.observable("");
+    self.GetLanguages = function () {
+        self.availableLanguages.removeAll();
         var url = "";
         var headers = [applicationTools.appAuth.claimsHeader([applicationTools.appAuth.domainNameClaim(currentDomainLogin)])];
-        url = self.ApiBaseUri() + self.apiUrl.getAllContactTypes;
-        ajaxAsync.ajaxGet(self, self._GetContactTypes, url, null, null, null, headers);
+        url = self.ApiBaseUri() + self.apiUrl.getAllLanguages;
+        ajaxAsync.ajaxGet(self, self._GetLanguages, url, null, null, null, headers);
     };
-    self._GetContactTypes = function (result) {
+    self._GetLanguages = function (result) {
         if (result.success) {
             var data = result.data.data;
             for (var i = 0; i < data.length; i++) {
                 var dataItem = data[i];
-                dataItem.testvalue = data[i].Name+" "+data[i].Name
-                self.availableContactTypes.push(dataItem);
+                self.availableLanguages.push(dataItem);
             }
         }
     };
-    self.getContactTypesItem = function (id) {
-        for (var i = 0; i < self.availableContactTypes().length; i++) {
-            var curId = self.availableContactTypes()[i].contacttypeid
+    self.getLanguagesItem = function (id) {
+        for (var i = 0; i < self.availableLanguages().length; i++) {
+            var curId = self.availableLanguages()[i].languageid
             if ( curId === id) {
-                console.log(self.availableContactTypes()[i]);
-                return self.availableContactTypes()[i];
+                return self.availableLanguages()[i];
             }
         }
     };
            
     //Get the CsiContactCategories dropdown
-    self.availableCsiContactCategories = ko.observableArray([{name : 'NONE AVAILABLE'}]);
-    self.csiContactCategories = ko.observable("");
-    self.GetCsiContactCategories = function () {
-        self.availableCsiContactCategories.removeAll();
+    self.availableFieldTypes = ko.observableArray([{name : 'NONE AVAILABLE'}]);
+    self.fieldtypes = ko.observable("");
+    self.GetFieldTypes = function () {
+        self.availableFieldTypes.removeAll();
         var url = "";
         var headers = [applicationTools.appAuth.claimsHeader([applicationTools.appAuth.domainNameClaim(currentDomainLogin)])];
-        url = self.ApiBaseUri() + self.apiUrl.getAllCsiContactCategories;
-        ajaxAsync.ajaxGet(self, self._GetCsiContactCategories, url, null, null, null, headers);
+        url = self.ApiBaseUri() + self.apiUrl.getFieldTypes;
+        ajaxAsync.ajaxGet(self, self._GetFieldTypes, url, null, null, null, headers);
     };
-    self._GetCsiContactCategories = function (result) {
+    self._GetFieldTypes = function (result) {
         if (result.success) {
             var data = result.data.data;
             for (var i = 0; i < data.length; i++) {
                 var dataItem = data[i];
-                dataItem.testvalue = data[i].Name+" "+data[i].Name
-                self.availableCsiContactCategories.push(dataItem);
+                self.availableFieldTypes.push(dataItem);
             }
         }
     };
-    self.getCsiContactCategories = function (id) {
-        for (var i = 0; i < self.availableCsiContactCategories().length; i++) {
-            var curId = self.availableCsiContactCategories()[i].csicontactcategoryid
+    self.getFieldTypesItem = function (id) {
+        for (var i = 0; i < self.availableFieldTypes().length; i++) {
+            var curId = self.availableFieldTypes()[i].fieldtypeid
             if ( curId === id) {
-                console.log(self.availableCsiContactCategories()[i]);
-                return self.availableCsiContactCategories()[i];
+                console.log(self.availableFieldTypes()[i]);
+                return self.availableFieldTypes()[i];
             }
         }
     };

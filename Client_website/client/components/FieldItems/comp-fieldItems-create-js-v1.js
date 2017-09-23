@@ -15,9 +15,9 @@ function FieldItemsCreateViewModel(hostThisContext) {
 
     self.apiUrl = {
         getFieldItemsById: "api/v1/FieldItems",
-        createFieldItems: "api/v1/FieldItems",
-        getAllContactTypes : "api/v1/ContactTypes",        
-        getAllCsiContactCategories : "api/v1/CsiContactCategories"
+        createFieldItems: "api/v1/FieldItems",      
+        getFieldTypes : "api/v1/FieldTypes",
+        getAllLanguages : "api/v1/Languages"
     }
     //Initialize and get the nominations
     self.Initialize = function (env, parentContext, model) {
@@ -30,11 +30,16 @@ function FieldItemsCreateViewModel(hostThisContext) {
         window.location.replace("../FieldItems/list");
     };
 
-    self.csicontactcategorymappingid = ko.observable("");
-    self.csicontactcategoryid = ko.observable("");
-    self.contacttypeid = ko.observable("");
+    self.fielditemid = ko.observable("");
+    self.languageid = ko.observable("");
+    self.languageidstring = ko.observable("");
+    self.fieldtypeid = ko.observable("");
+    self.fieldtypeidstring = ko.observable("");
     self.name = ko.observable("");
     self.description = ko.observable("");
+    self.label = ko.observable("");
+    self.value = ko.observable("");
+    self.printformat = ko.observable("");
     self.inactive = ko.observable("");
     self.inactivechecked = ko.observable("");
     self.inactivedate = ko.observable("");
@@ -45,14 +50,14 @@ function FieldItemsCreateViewModel(hostThisContext) {
         if (self.inactivechecked() === true) {
             inactive = "1"
         };
-        if (!self.contacttypes()) {
+        if (!self.languages()) {
             self.FieldItemsHasError(true);
-            self.FieldItemsError("Please supply a contact type");
+            self.FieldItemsError("Please supply a language");
             return;
         };
-        if (!self.csiContactCategories()) {
+        if (!self.fieldtypes()) {
             self.FieldItemsHasError(true);
-            self.FieldItemsError("Please supply a contact category");
+            self.FieldItemsError("Please supply a fieldtype");
             return;
         };
         if (!self.name()) {
@@ -65,11 +70,29 @@ function FieldItemsCreateViewModel(hostThisContext) {
             self.FieldItemsError("Please supply a description");
             return;
         };
+        if (!self.label()) {
+            self.FieldItemsHasError(true);
+            self.FieldItemsError("Please supply a label");
+            return;
+        };
+        if (!self.value()) {
+            self.FieldItemsHasError(true);
+            self.FieldItemsError("Please supply a value");
+            return;
+        };
+        if (!self.printformat()) {
+            self.FieldItemsHasError(true);
+            self.FieldItemsError("Please supply a printformat");
+            return;
+        };
         var jsonObject = JSON.stringify({
-            csiContactCategoryId : self.csiContactCategories().csicontactcategoryid + '',
-            contactTypeId: self.contacttypes().contacttypeid + '',
+            languageId : self.languages().languageid + '',
+            fieldTypeId: self.fieldtypes().fieldtypeid + '',
             name: self.name(),
             description: self.description(),
+            label: self.label(),
+            value: self.value(),
+            printFormat: self.printformat(),
             inActive: inactive
         });
         console.log(jsonObject)
@@ -95,61 +118,58 @@ function FieldItemsCreateViewModel(hostThisContext) {
     };
 
     //Get the ContactTypes dropdown
-    self.availableContactTypes = ko.observableArray([{name : 'NONE AVAILABLE'}]);
-    self.contacttypes = ko.observable("");
-    self.GetContactTypes = function () {
-        self.availableContactTypes.removeAll();
+    self.availableLanguages = ko.observableArray([{name : 'NONE AVAILABLE'}]);
+    self.languages = ko.observable("");
+    self.GetLanguages = function () {
+        self.availableLanguages.removeAll();
         var url = "";
         var headers = [applicationTools.appAuth.claimsHeader([applicationTools.appAuth.domainNameClaim(currentDomainLogin)])];
-        url = self.ApiBaseUri() + self.apiUrl.getAllContactTypes;
-        ajaxAsync.ajaxGet(self, self._GetContactTypes, url, null, null, null, headers);
+        url = self.ApiBaseUri() + self.apiUrl.getAllLanguages;
+        ajaxAsync.ajaxGet(self, self._GetLanguages, url, null, null, null, headers);
     };
-    self._GetContactTypes = function (result) {
+    self._GetLanguages = function (result) {
         if (result.success) {
             var data = result.data.data;
             for (var i = 0; i < data.length; i++) {
                 var dataItem = data[i];
-                dataItem.testvalue = data[i].Name+" "+data[i].Name
-                self.availableContactTypes.push(dataItem);
+                self.availableLanguages.push(dataItem);
             }
         }
     };
-    self.getContactTypesItem = function (id) {
-        for (var i = 0; i < self.availableContactTypes().length; i++) {
-            var curId = self.availableContactTypes()[i].contacttypeid
+    self.getLanguagesItem = function (id) {
+        for (var i = 0; i < self.availableLanguages().length; i++) {
+            var curId = self.availableLanguages()[i].languageid
             if ( curId === id) {
-                console.log(self.availableContactTypes()[i]);
-                return self.availableContactTypes()[i];
+                return self.availableLanguages()[i];
             }
         }
     };
            
     //Get the CsiContactCategories dropdown
-    self.availableCsiContactCategories = ko.observableArray([{name : 'NONE AVAILABLE'}]);
-    self.csiContactCategories = ko.observable("");
-    self.GetCsiContactCategories = function () {
-        self.availableCsiContactCategories.removeAll();
+    self.availableFieldTypes = ko.observableArray([{name : 'NONE AVAILABLE'}]);
+    self.fieldtypes = ko.observable("");
+    self.GetFieldTypes = function () {
+        self.availableFieldTypes.removeAll();
         var url = "";
         var headers = [applicationTools.appAuth.claimsHeader([applicationTools.appAuth.domainNameClaim(currentDomainLogin)])];
-        url = self.ApiBaseUri() + self.apiUrl.getAllCsiContactCategories;
-        ajaxAsync.ajaxGet(self, self._GetCsiContactCategories, url, null, null, null, headers);
+        url = self.ApiBaseUri() + self.apiUrl.getFieldTypes;
+        ajaxAsync.ajaxGet(self, self._GetFieldTypes, url, null, null, null, headers);
     };
-    self._GetCsiContactCategories = function (result) {
+    self._GetFieldTypes = function (result) {
         if (result.success) {
             var data = result.data.data;
             for (var i = 0; i < data.length; i++) {
                 var dataItem = data[i];
-                dataItem.testvalue = data[i].Name+" "+data[i].Name
-                self.availableCsiContactCategories.push(dataItem);
+                self.availableFieldTypes.push(dataItem);
             }
         }
     };
-    self.getCsiContactCategories = function (id) {
-        for (var i = 0; i < self.availableCsiContactCategories().length; i++) {
-            var curId = self.availableCsiContactCategories()[i].csicontactcategoryid
+    self.getFieldTypesItem = function (id) {
+        for (var i = 0; i < self.availableFieldTypes().length; i++) {
+            var curId = self.availableFieldTypes()[i].fieldtypeid
             if ( curId === id) {
-                console.log(self.availableCsiContactCategories()[i]);
-                return self.availableCsiContactCategories()[i];
+                console.log(self.availableFieldTypes()[i]);
+                return self.availableFieldTypes()[i];
             }
         }
     };
