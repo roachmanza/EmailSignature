@@ -56,7 +56,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Configuration <span class="caret"></span></a>
-                            <ul class="dropdown-menu">                              
+                            <ul class="dropdown-menu">                                
                                     <li><a href="/ContactTypes">Contact types</a></li>
                                     <li><a href="/FieldTypes">Field types</a></li>
                                     <li><a href="/Languages">Languages</a></li>
@@ -83,14 +83,14 @@
         </nav>
         <!-- NAV END -->
         <link rel="import" href="/client/content/js/polymer" />
-        <link rel="import" href="../comp-fieldTypes-list" />
+        <link rel="import" href="../comp-csiContactTypeMappings-list" />
         <div class="container">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3><img src="/client/content/img/config"></span>&nbsp;Field type list</h3>
+                    <h3><img src="/client/content/img/config"></span>&nbsp;CSI contact type mapping list</h3>
                 </div>
                 <div class="panel-body">
-                    <comp-fieldTypes-list id="peopleid" environment-Url="DEV"></comp-fieldTypes-list>
+                    <comp-csiContactTypeMappings-list id="peopleid" environment-Url="DEV"></comp-csiContactTypeMappings-list>
                 </div>
             </div>
         </div>

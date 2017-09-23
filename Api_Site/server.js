@@ -93,6 +93,11 @@ awdContactTypeMappingsRoutes(webserver);
 var csiContactTypeMappingsRoutes = require('./api/routes/CsiContactTypeMappingsRoutes');
 csiContactTypeMappingsRoutes(webserver);
 
+//2.5 Db table
+var fieldItemsRoutes = require('./api/routes/FieldItemsRoutes');
+fieldItemsRoutes(webserver);
+
+
 
 
 //2.1 Db table

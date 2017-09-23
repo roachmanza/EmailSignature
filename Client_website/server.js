@@ -37,7 +37,7 @@ webserver.get('/CsiMainContactTypes', function (req, res) { res.sendFile(path.jo
 webserver.get('/CsiContactCategoryMappings', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/CsiContactCategoryMappings/list.html')); });
 webserver.get('/CsiContactTypes', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/CsiContactTypes/list.html')); });
 webserver.get('/AwdContactTypeMappings', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/AwdContactTypeMappings/list.html')); });
-webserver.get('/CsiContactTypeMappings', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/AwdContactTypeMappings/list.html')); });
+webserver.get('/CsiContactTypeMappings', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/CsiContactTypeMappings/list.html')); });
 webserver.get('/FieldItems', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/AwdContactTypeMappings/list.html')); });
 webserver.get('/SignatureItems', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/SignatureItems/list.html')); });
 
@@ -181,21 +181,39 @@ webserver.get('/comp-csiContactCategoryMappings-edit/js', function (req, res) { 
 webserver.get('/comp-csiContactCategoryMappings-view', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/CsiContactCategoryMappings/comp-csiContactCategoryMappings-view.html')); });
 webserver.get('/comp-csiContactCategoryMappings-view/js', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/CsiContactCategoryMappings/comp-csiContactCategoryMappings-view-js-v1.js')); });
 
+//=========================//
+//  CsiContactTypes PATHS  //
+//=========================//
+webserver.get('/CsiContactTypes/List', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/CsiContactTypes/list.html')); });
+webserver.get('/CsiContactTypes/create', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/CsiContactTypes/create.html')); });
+webserver.get('/CsiContactTypes/edit', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/CsiContactTypes/edit.html')); });
+webserver.get('/CsiContactTypes/view', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/CsiContactTypes/view.html')); });
+//===================================//
+//  CsiContactTypes component PATHS  //
+//===================================//
+//list
+webserver.get('/comp-csiContactTypes-list', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/CsiContactTypes/comp-csiContactTypes-list.html')); });
+webserver.get('/comp-csiContactTypes-list/js', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/CsiContactTypes/comp-csiContactTypes-list-js-v1.js')); });
+//create
+webserver.get('/comp-csiContactTypes-create', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/CsiContactTypes/comp-csiContactTypes-create.html')); });
+webserver.get('/comp-csiContactTypes-create/js', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/CsiContactTypes/comp-csiContactTypes-create-js-v1.js')); });
+//edit
+webserver.get('/comp-csiContactTypes-edit', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/CsiContactTypes/comp-csiContactTypes-edit.html')); });
+webserver.get('/comp-csiContactTypes-edit/js', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/CsiContactTypes/comp-csiContactTypes-edit-js-v1.js')); });
+//view
+webserver.get('/comp-csiContactTypes-view', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/CsiContactTypes/comp-csiContactTypes-view.html')); });
+webserver.get('/comp-csiContactTypes-view/js', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/CsiContactTypes/comp-csiContactTypes-view-js-v1.js')); });
 
-
-
-
-
-
-
-
-//AwdContactTypeMappings PATHS
-//============================
+//================================//
+//  AwdContactTypeMappings PATHS  //
+//================================//
 webserver.get('/AwdContactTypeMappings/List', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/AwdContactTypeMappings/list.html')); });
 webserver.get('/AwdContactTypeMappings/create', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/AwdContactTypeMappings/create.html')); });
 webserver.get('/AwdContactTypeMappings/edit', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/AwdContactTypeMappings/edit.html')); });
 webserver.get('/AwdContactTypeMappings/view', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/AwdContactTypeMappings/view.html')); });
-//AwdContactTypeMappings component PATHS
+//==========================================//
+//  AwdContactTypeMappings component PATHS  //
+//==========================================//
 //list
 webserver.get('/comp-awdContactTypeMappings-list', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/AwdContactTypeMappings/comp-awdContactTypeMappings-list.html')); });
 webserver.get('/comp-awdContactTypeMappings-list/js', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/AwdContactTypeMappings/comp-awdContactTypeMappings-list-js-v1.js')); });
@@ -209,29 +227,41 @@ webserver.get('/comp-awdContactTypeMappings-edit/js', function (req, res) { res.
 webserver.get('/comp-awdContactTypeMappings-view', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/AwdContactTypeMappings/comp-awdContactTypeMappings-view.html')); });
 webserver.get('/comp-awdContactTypeMappings-view/js', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/AwdContactTypeMappings/comp-awdContactTypeMappings-view-js-v1.js')); });
 
-
-
-
-
-//CsiContactTypes PATHS
-//============================
-webserver.get('/CsiContactTypes/List', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/CsiContactTypes/list.html')); });
-webserver.get('/CsiContactTypes/create', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/CsiContactTypes/create.html')); });
-webserver.get('/CsiContactTypes/edit', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/CsiContactTypes/edit.html')); });
-webserver.get('/CsiContactTypes/view', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/CsiContactTypes/view.html')); });
-//CsiContactTypes component PATHS
+//================================//
+//  CsiContactTypeMappings PATHS  //
+//================================//
+webserver.get('/CsiContactTypeMappings/List', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/CsiContactTypeMappings/list.html')); });
+webserver.get('/CsiContactTypeMappings/create', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/CsiContactTypeMappings/create.html')); });
+webserver.get('/CsiContactTypeMappings/edit', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/CsiContactTypeMappings/edit.html')); });
+webserver.get('/CsiContactTypeMappings/view', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/CsiContactTypeMappings/view.html')); });
+//==========================================//
+//  CsiContactTypeMappings component PATHS  //
+//==========================================//
 //list
-webserver.get('/comp-csiContactTypes-list', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/CsiContactTypes/comp-csiContactTypes-list.html')); });
-webserver.get('/comp-csiContactTypes-list/js', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/CsiContactTypes/comp-csiContactTypes-list-js-v1.js')); });
+webserver.get('/comp-csiContactTypeMappings-list', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/CsiContactTypeMappings/comp-csiContactTypeMappings-list.html')); });
+webserver.get('/comp-csiContactTypeMappings-list/js', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/CsiContactTypeMappings/comp-csiContactTypeMappings-list-js-v1.js')); });
 //create
-webserver.get('/comp-csiContactTypes-create', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/CsiContactTypes/comp-csiContactTypes-create.html')); });
-webserver.get('/comp-csiContactTypes-create/js', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/CsiContactTypes/comp-csiContactTypes-create-js-v1.js')); });
+webserver.get('/comp-csiContactTypeMappings-create', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/CsiContactTypeMappings/comp-csiContactTypeMappings-create.html')); });
+webserver.get('/comp-csiContactTypeMappings-create/js', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/CsiContactTypeMappings/comp-csiContactTypeMappings-create-js-v1.js')); });
 //edit
-webserver.get('/comp-csiContactTypes-edit', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/CsiContactTypes/comp-csiContactTypes-edit.html')); });
-webserver.get('/comp-csiContactTypes-edit/js', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/CsiContactTypes/comp-csiContactTypes-edit-js-v1.js')); });
+webserver.get('/comp-csiContactTypeMappings-edit', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/CsiContactTypeMappings/comp-csiContactTypeMappings-edit.html')); });
+webserver.get('/comp-csiContactTypeMappings-edit/js', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/CsiContactTypeMappings/comp-csiContactTypeMappings-edit-js-v1.js')); });
 //view
-webserver.get('/comp-csiContactTypes-view', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/CsiContactTypes/comp-csiContactTypes-view.html')); });
-webserver.get('/comp-csiContactTypes-view/js', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/CsiContactTypes/comp-csiContactTypes-view-js-v1.js')); });
+webserver.get('/comp-csiContactTypeMappings-view', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/CsiContactTypeMappings/comp-csiContactTypeMappings-view.html')); });
+webserver.get('/comp-csiContactTypeMappings-view/js', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/CsiContactTypeMappings/comp-csiContactTypeMappings-view-js-v1.js')); });
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
