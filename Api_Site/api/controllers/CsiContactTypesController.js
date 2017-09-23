@@ -3,12 +3,16 @@ exports.get_all_CsiContactTypes = function (req, res) {
     var dataGet = require('../dataAccess/dataGet');
     dataGet(        
         'SELECT '+
-        ' CCT."CsiContactTypeId" as CsiContactTypeId,'+
+        ' CCT."CsiContactTypeId" as CsiContactTypeId,'+        
+        ' CCT."CsiMainContactTypeId" as CsiMainContactTypeId,'+   
+        ' CMT."Name" as CsiMainContactTypeIdString,'+
         ' CCT."Name" as Name,'+
         ' CCT."Description" as Description,'+
         ' CCT."InActiveDate" as InActiveDate,'+
         ' CCT."InActive" as InActive'+   
-        ' FROM public."CsiContactTypes" AS CCT',
+        ' FROM public."CsiContactTypes" AS CCT'+
+        ' JOIN public."CsiMainContactTypes" as CMT ON CMT."CsiMainContactTypeId" = CCT."CsiMainContactTypeId" '+
+        ' ORDER BY CMT."Name" ASC , CCT."Name" ASC ',
         function (results, err) {
             if (err) {
                 res.status(400).type('application/json').json({success: false,  httpStatusCode: 400, error: { status: "Bad Request", message: results } });
@@ -26,14 +30,15 @@ exports.create_a_CsiContactType = function (req, res) {
             if (numberResults[0] != null) {
                 id = numberResults[0]["CsiContactTypeId"] + 1;
             }
+            var csiMainContactTypeId = req.body.csiMainContactTypeId;
             var name = req.body.name;
             var description = req.body.description;
             var inactiveDate = new Date(1900, 01, 01).toJSON().slice(0, 10).replace(/-/g, '/');
             var inactive = 0;
             var dataPost = require('../dataAccess/dataPost');
-            dataPost('INSERT INTO public."CsiContactTypes"("CsiContactTypeId", "Name", "Description", "InActiveDate", "InActive") ' +
+            dataPost('INSERT INTO public."CsiContactTypes"("CsiContactTypeId","CsiMainContactTypeId", "Name", "Description", "InActiveDate", "InActive") ' +
                 'VALUES' +
-                '(' + id + ',\'' + name + '\' ,\'' + description + '\' ,\'' + inactiveDate + '\' ,\'' + inactive + '\')',
+                '(' + id + ',\'' + csiMainContactTypeId + '\' ,\'' + name + '\' ,\'' + description + '\' ,\'' + inactiveDate + '\' ,\'' + inactive + '\')',
                 function (results, err) {
                     if (err) {
                         res.status(400).type('application/json').json({success: false,  httpStatusCode: 400, error: { status: "Bad Request", message: results } });
@@ -49,13 +54,16 @@ exports.read_a_CsiContactType = function (req, res) {
     var dataGet = require('../dataAccess/dataGet');
     dataGet(
         'SELECT '+
-        ' CCT."CsiContactTypeId" as CsiContactTypeId,'+
+        ' CCT."CsiContactTypeId" as CsiContactTypeId,'+        
+        ' CCT."CsiMainContactTypeId" as CsiMainContactTypeId,'+   
+        ' CMT."Name" as CsiMainContactTypeIdString,'+
         ' CCT."Name" as Name,'+
         ' CCT."Description" as Description,'+
         ' CCT."InActiveDate" as InActiveDate,'+
         ' CCT."InActive" as InActive'+   
-        ' FROM public."CsiContactTypes" AS CCT'+        
-        ' WHERE CCT."CsiContactTypeId" = ' + id,
+        ' FROM public."CsiContactTypes" AS CCT'+
+        ' JOIN public."CsiMainContactTypes" as CMT ON CMT."CsiMainContactTypeId" = CCT."CsiMainContactTypeId" '+
+        ' AND CCT."CsiContactTypeId" = ' + id,
         function (results, err) {
             if (err) {
                 res.status(400).type('application/json').json({ success: false, httpStatusCode: 400, error: { status: "Bad Request", message: results } });
@@ -67,6 +75,7 @@ exports.read_a_CsiContactType = function (req, res) {
 
 exports.update_a_CsiContactType = function (req, res) {
     var id = req.params.Id;
+    var csiMainContactTypeId = req.body.csiMainContactTypeId;
     var name = req.body.name;
     var description = req.body.description;
     var inactiveDate;
@@ -83,6 +92,7 @@ exports.update_a_CsiContactType = function (req, res) {
     var dataPut = require('../dataAccess/dataPut');
     dataPut(' UPDATE public."CsiContactTypes" ' +
         'SET ' +
+        ' "CsiMainContactTypeId"=\'' + csiMainContactTypeId + '\', ' +
         ' "Name"=\'' + name + '\', ' +
         ' "Description"=\'' + description + '\', ' +
         ' "InActiveDate"=\'' + inactiveDate + '\', ' +

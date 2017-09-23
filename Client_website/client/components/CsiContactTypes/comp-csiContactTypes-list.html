@@ -30,8 +30,9 @@
 
                     <tr>
                         <th style="font-size:12px;width: 5%;" class="hidden-xs">Id</th>
+                        <th style="font-size:12px;width: 15%;">Main contact type</th>
                         <th style="font-size:12px;width: 15%;">Name</th>
-                        <th style="font-size:12px;width: 45%;">Description</th>
+                        <th style="font-size:12px;width: 20%;">Description</th>
                         <th style="font-size:12px;width: 5%;">Active</th>
                         <th style="font-size:12px;width: 10%;">Actions</th>
                     </tr>
@@ -39,6 +40,7 @@
                 <tbody data-bind="foreach : CsiContactTypesList()">
                     <tr>
                         <td style="font-size:12px;" data-bind="text : csicontacttypeid" class="hidden-xs"></td>
+                        <td style="font-size:12px;" data-bind="text : csimaincontacttypeidstring"></td>
                         <td style="font-size:12px;" data-bind="text : name"></td>
                         <td style="font-size:12px;" data-bind="text : description"></td>
                         <td style="font-size:12px;">
