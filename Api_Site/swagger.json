@@ -29,6 +29,22 @@
 				"url": "http://localhost:4010/"
 			}
 		},	
+		
+		{"name": "CsiMainContactTypes",
+			"description": "CSI Main Contact types.",
+			"externalDocs": {
+				"description": "Base",
+				"url": "http://localhost:4010/"
+			}
+		},		
+		{"name": "CsiContactTypes",
+			"description": "CSI Contact types.",
+			"externalDocs": {
+				"description": "Base",
+				"url": "http://localhost:4010/"
+			}
+		},
+		
 		{"name": "CsiContactCategories",
 			"description": "CSI Contact categories.",
 			"externalDocs": {
@@ -36,14 +52,6 @@
 				"url": "http://localhost:4010/"
 			}
 		},
-		{"name": "CsiMainContactTypes",
-			"description": "CSI Main Contact types.",
-			"externalDocs": {
-				"description": "Base",
-				"url": "http://localhost:4010/"
-			}
-		},
-		
 		{"name": "CsiContactCategoryMappings",
 			"description": "CSI Main Contact category mappings.",
 			"externalDocs": {
@@ -51,13 +59,14 @@
 				"url": "http://localhost:4010/"
 			}
 		},			
-		{"name": "CsiContactTypes",
-			"description": "CSI Contact types.",
+				
+		{"name": "CsiContactTypeMappings",
+			"description": "Link CSI contact types with the base contact types.",
 			"externalDocs": {
 				"description": "Base",
 				"url": "http://localhost:4010/"
 			}
-		},		
+		},	
 		{"name": "AwdContactTypeMappings",
 			"description": "Link AWD regions and roles to contact types.",
 			"externalDocs": {
@@ -68,6 +77,13 @@
 
 		
 		
+		{"name": "FieldItems",
+			"description": "Field items that can be chosen from.",
+			"externalDocs": {
+				"description": "Base",
+				"url": "http://localhost:4010/"
+			}
+		},
 		{"name": "SignatureItems",
 			"description": "Signature items that can be chosen from.",
 			"externalDocs": {
@@ -1338,6 +1354,7 @@
 				}
 			}
 		},
+		
 		"FieldTypesModel": {
 			"type": "object",
 			"required": [
@@ -1359,6 +1376,7 @@
 				}
 			}
 		},
+		
 		"LanguagesModel": {
 			"type": "object",
 			"required": [
@@ -1385,6 +1403,7 @@
 				}
 			}
 		},	
+		
 		"CsiContactCategoriesModel": {
 			"type": "object",
 			"required": [
@@ -1406,6 +1425,7 @@
 				}
 			}
 		},		
+		
 		"CsiMainContactTypesModel": {
 			"type": "object",
 			"required": [
@@ -1427,6 +1447,7 @@
 				}
 			}
 		},		
+		
 		
 		"CsiContactCategoryMappingsModel": {
 			"type": "object",
@@ -1461,6 +1482,7 @@
 				}
 			}
 		},
+		
 		"CsiContactTypesModel": {
 			"type": "object",
 			"required": [
@@ -1488,6 +1510,7 @@
 				}
 			}
 		},
+		
 		"AwdContactTypeMappingsModel": {
 			"type": "object",
 			"required": [
