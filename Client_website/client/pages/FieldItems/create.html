@@ -1,88 +1,44 @@
 <html lang="en">
-        
-        <head>
-            <meta charset="utf-8">
-            <meta http-equiv="X-UA-Compatible" content="IE=edge">
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <link rel="icon" type="image/png" href="/client/content/img/favicon" sizes="36x36">
-            <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-            <title>Mail enhancement system</title>
-            <!-- Bootstrap -->
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-                crossorigin="anonymous">
-        
-            <!-- Optional theme -->
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
-                crossorigin="anonymous">
-        
-        
-            <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-            <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-            <!--[if lt IE 9]>
-                  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-                  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-                <![endif]-->
-        
-            <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-            <link rel="stylesheet" href="/client/content/css/default">
-            <script type="text/javascript" src="/client/content/js/bootstrap"></script>
-            <!--webcomponents-lite.min.js is the Polyfill for Shadow DOM and html Imports-->
-            <script type="text/javascript" src="/client/content/js/webcomponentslite"></script>
-            <script type="text/javascript" src="/client/content/js/appframework"></script>
-            <!-- Knockout -->
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
-        </head>
-        
-        <body>
-            <!-- NAV START -->
-            <nav class="navbar navbar-default navbar-fixed-top">
-                <div class="container">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-                            aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-                        <a class="navbar-brand" href="/home">Home</a>
-                    </div>
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav">
-                            <li><a href="/Signatures">Signatures <span class="sr-only">(current)</span></a></li>
-                        </ul>
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Configuration <span class="caret"></span></a>
-                                <ul class="dropdown-menu">                              
-                                        <li><a href="/ContactTypes">Contact types</a></li>
-                                        <li><a href="/FieldTypes">Field types</a></li>
-                                        <li><a href="/Languages">Languages</a></li>
-                                        <li><a href="/CsiContactCategories">CSI contact categories</a></li>
-                                        <li><a href="/CsiMainContactTypes">CSI main contact types</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="/CsiContactTypes">CSI contact types</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="/CsiContactCategoryMappings">CSI contact category mappings</a></li>
-                                        <li><a href="/AwdContactTypeMappings">AWD contact type mappings</a></li>
-                                        <li><a href="/CsiContactTypeMappings">CSI contact type mappings</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="/FieldItems">Field items</a></li>
-                                        <li><a href="/SignatureItems">Signature items</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="/Signatures">Signatures</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- /.navbar-collapse -->
-                </div>
-                <!-- /.container -->
-            </nav>
-            <!-- NAV END -->
-            <link rel="import" href="/client/content/js/polymer" />
+    
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/png" href="/client/content/img/favicon" sizes="36x36">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>Mail enhancement system</title>
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+            crossorigin="anonymous">
+    
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+            crossorigin="anonymous">
+    
+    
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+                          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+                          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+                        <![endif]-->
+    
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <link rel="stylesheet" href="/client/content/css/default">
+        <script type="text/javascript" src="/client/content/js/bootstrap"></script>
+        <!--webcomponents-lite.min.js is the Polyfill for Shadow DOM and html Imports-->
+        <script type="text/javascript" src="/client/content/js/webcomponentslite"></script>
+        <script type="text/javascript" src="/client/content/js/appframework"></script>
+        <!-- Knockout -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+    </head>
+    
+    <body>
+    
+        <link rel="import" href="/client/content/js/polymer" />
+        <link rel="import" href="/comp-menu" />
+        <comp-menu id="menuid" environment-Url="DEV"></comp-menu>
             <link rel="import" href="../comp-fieldItems-create" />
             <div class="container">
                 <div class="panel panel-default">

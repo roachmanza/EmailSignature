@@ -28,6 +28,9 @@ webserver.get('/client/content/js/polymer-micro', function (req, res) { res.send
 webserver.get('/', function (req, res) { res.sendFile(path.join(__dirname + '/client/index.html')); });
 webserver.get('/home/', function (req, res) { res.sendFile(path.join(__dirname + '/client/index.html')); });
 
+
+
+
 webserver.get('/ContactTypes', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/ContactTypes/list.html')); });
 webserver.get('/FieldTypes', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/FieldTypes/list.html')); });
 webserver.get('/Languages', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/Languages/list.html')); });
@@ -42,6 +45,19 @@ webserver.get('/FieldItems', function (req, res) { res.sendFile(path.join(__dirn
 webserver.get('/SignatureItems', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/SignatureItems/list.html')); });
 
 webserver.get('/Signatures', function (req, res) { res.sendFile(path.join(__dirname + '/client/pages/Signatures.html')); });
+
+
+
+//==============//
+//  Menu PATHS  //
+//==============//
+webserver.get('/menu', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/Menu/comp-menu.html')); });
+//========================//
+//  Menu component PATHS  //
+//========================//
+webserver.get('/comp-menu', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/Menu/comp-menu.html')); });
+webserver.get('/comp-menu/js', function (req, res) { res.sendFile(path.join(__dirname + '/client/components/Menu/comp-menu-js-v1.js')); });
+
 
 //======================//
 //  ContactTypes PATHS  //

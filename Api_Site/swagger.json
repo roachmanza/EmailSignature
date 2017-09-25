@@ -11,58 +11,58 @@
 		{"name": "ContactTypes",
 			"description": "Contact types with email address linked to contact type.",
 			"externalDocs": {
-				"description": "Repo",
-				"url": "https://github.com/roachmanza/MailEnhancement/blob/master/Api_Site/api/controllers/"
+				"description": "Base",
+				"url": "http://localhost:4010/"
 			}
 		},
 		{"name": "FieldTypes",
 			"description": "Field types.",
 			"externalDocs": {
-				"description": "Repo",
-				"url": "https://github.com/roachmanza/MailEnhancement/blob/master/Api_Site/api/controllers/"
+				"description": "Base",
+				"url": "http://localhost:4010/"
 			}
 		},
 		{"name": "Languages",
 			"description": "Languages that can be chosen from.",
 			"externalDocs": {
-				"description": "Repo",
-				"url": "https://github.com/roachmanza/MailEnhancement/blob/master/Api_Site/api/controllers/"
+				"description": "Base",
+				"url": "http://localhost:4010/"
 			}
 		},	
 		{"name": "CsiContactCategories",
 			"description": "CSI Contact categories.",
 			"externalDocs": {
-				"description": "Repo",
-				"url": "https://github.com/roachmanza/MailEnhancement/blob/master/Api_Site/api/controllers/"
+				"description": "Base",
+				"url": "http://localhost:4010/"
 			}
 		},
 		{"name": "CsiMainContactTypes",
 			"description": "CSI Main Contact types.",
 			"externalDocs": {
-				"description": "Repo",
-				"url": "https://github.com/roachmanza/MailEnhancement/blob/master/Api_Site/api/controllers/"
+				"description": "Base",
+				"url": "http://localhost:4010/"
 			}
 		},
 		
 		{"name": "CsiContactCategoryMappings",
 			"description": "CSI Main Contact category mappings.",
 			"externalDocs": {
-				"description": "Repo",
-				"url": "https://github.com/roachmanza/MailEnhancement/blob/master/Api_Site/api/controllers/"
+				"description": "Base",
+				"url": "http://localhost:4010/"
 			}
 		},			
 		{"name": "CsiContactTypes",
 			"description": "CSI Contact types.",
 			"externalDocs": {
-				"description": "Repo",
-				"url": "https://github.com/roachmanza/MailEnhancement/blob/master/Api_Site/api/controllers/"
+				"description": "Base",
+				"url": "http://localhost:4010/"
 			}
 		},		
 		{"name": "AwdContactTypeMappings",
 			"description": "Link AWD regions and roles to contact types.",
 			"externalDocs": {
-				"description": "Repo",
-				"url": "https://github.com/roachmanza/MailEnhancement/blob/master/Api_Site/api/controllers/"
+				"description": "Base",
+				"url": "http://localhost:4010/"
 			}
 		},	
 
@@ -71,8 +71,8 @@
 		{"name": "SignatureItems",
 			"description": "Signature items that can be chosen from.",
 			"externalDocs": {
-				"description": "Repo",
-				"url": "https://github.com/roachmanza/MailEnhancement/blob/master/Api_Site/api/controllers/"
+				"description": "Base",
+				"url": "http://localhost:4010/"
 			}
 		}
 		
