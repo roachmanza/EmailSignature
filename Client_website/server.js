@@ -3,7 +3,6 @@ var webserver = express();
 var port = process.env.PORT || 4011;
 var bodyParser = require('body-parser');
 var path = require('path');
-var config = require('config');
 
 
 

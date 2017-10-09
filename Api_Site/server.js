@@ -5,7 +5,7 @@ var port = process.env.PORT || 4010;
 var bodyParser = require('body-parser');
 var path = require('path');
 const swaggerUi = require('swagger-ui-express');
-
+var config = require('config');
 
 
 //CORS

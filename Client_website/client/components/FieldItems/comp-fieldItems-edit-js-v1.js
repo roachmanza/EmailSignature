@@ -79,8 +79,8 @@ function FieldItemsEditViewModel(hostThisContext) {
             return;
         };
         var jsonObject = JSON.stringify({
-            languageId : self.languages().languageid + '',
-            fieldTypeId: self.fieldtypes().fieldtypeid + '',
+            languageid : self.languages().languageid + '',
+            fieldtypeId: self.fieldtypes().fieldtypeid + '',
             name: self.name(),
             description: self.description(),
             label: self.label(),

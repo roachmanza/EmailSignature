@@ -3,7 +3,7 @@
 --||===============||--
 --|| BASE TABLES   ||--
 --||===============||--
-
+ 
 --|| NO 1.1 ||--
 CREATE TABLE public."ContactTypes"
 (

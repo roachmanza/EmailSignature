@@ -3,6 +3,7 @@ var config = require('config');
 var _httpresponcecode = require('../../constants/httpresponcecodes');
 
 module.exports = function (queryString, callback) {
+    console.log(queryString);
     var connection;
     var jsonReturnResult = "";
     if (config.has('serverSettings.postgresDbConnection')) {

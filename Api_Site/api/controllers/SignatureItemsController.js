@@ -1,6 +1,6 @@
-exports.get_all_SignatureItems = function (req, callback) {
+exports.read_all_SignatureItems = function (req, res) {
     var bll = require('../dataAccess/bll/SignatureItemsBll');
-    bll.get_all_SignatureItems(req,
+    bll.read_all_SignatureItems(req,
         function (jsonResult, haserror, code) {
             if (haserror) { 
                 res.status(code).type('application/json').json({success: false, httpStatusCode: code,error: {message: jsonResult}});

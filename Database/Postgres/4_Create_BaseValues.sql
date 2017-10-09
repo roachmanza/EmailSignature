@@ -1,35 +1,41 @@
 
-INSERT INTO public."PersonInformationAttributes"(
-	"PersonInformationAttributeId", "Name", "Description", "InActive", "InActiveDate")
-	VALUES (1, 'HomePhone', 'HomePhone', '0', '1900-01-01'),
-    (2, 'CelPhone', 'CelPhone', '0', '1900-01-01'),
-    (3, 'StreetAddess', 'StreetAddess', '0', '1900-01-01'),
-    (4, 'Other', 'Other', '0', '1900-01-01');
+INSERT INTO public."ContactTypes"(
+	"ContactTypeId", "Name", "Description","EmailAddress", "InActive", "InActiveDate")
+	VALUES (1, 'HomePhone', 'HomePhone','a@b.c', '0', '1900-01-01'),
+    (2, 'CelPhone', 'CelPhone','b@b.c', '0', '1900-01-01'),
+    (3, 'StreetAddess', 'StreetAddess','c@b.c', '0', '1900-01-01'),
+    (4, 'Other', 'Other','d@b.c', '0', '1900-01-01');
 
-INSERT INTO public."EmploymentTypes"(
-	"EmploymentTypeId", "Name", "Description", "InActive", "InActiveDate")
-	VALUES (1, 'Permanent', 'Permanent', '0', '1900-01-01'),
-    (2, 'Temp', 'Temp', '0', '1900-01-01'),
-    (3, 'Contractor', 'Contractor', '0', '1900-01-01'),
-    (4, 'Other', 'Other', '0', '1900-01-01');
+INSERT INTO public."FieldTypes"(
+	"FieldTypeId", "Name", "Description", "InActive", "InActiveDate")
+	VALUES (1, 'String', 'String', '0', '1900-01-01'),
+    (2, 'Number', 'Number', '0', '1900-01-01'),
+    (3, 'Date', 'Date', '0', '1900-01-01'),
+    (4, 'Image', 'Image', '0', '1900-01-01');
 
-INSERT INTO public."PersonTypes"(
-	"PersonTypeId", "Name", "Description", "InActive", "InActiveDate")
+INSERT INTO public."Languages"(
+	"LanguageId", "Name", "Description","Code", "InActive", "InActiveDate")
 	VALUES
-    (1, 'Individual', 'This person is a individual', '0', '1900-01-01'), 
-    (2, 'Office', 'This person is a office worker', '0', '1900-01-01'),
-    (3, 'Sales', 'This person is a sales rep', '0', '1900-01-01'),
-    (4, 'Roaming', 'This person is a roaming employee', '0', '1900-01-01'),
-    (5, 'Sandton', 'This person is a temp', '0', '1900-01-01'),
-    (6, 'CapeTown', 'This person is a contrtactor', '0', '1900-01-01'),
-    (7, 'Other', 'This person is an other type of employee', '0', '1900-01-01');
+    (1, 'Afrikaans', 'This person is a individual','AFR', '0', '1900-01-01'), 
+    (2, 'English', 'This person is a office worker','ENG' ,'0', '1900-01-01');
 
-INSERT INTO public."IdentifierTypes"(
-	"IdentifierTypeId", "Name", "Description", "InActive", "InActiveDate")
-	VALUES (1, 'DomainLogin', 'DomainLogin', '0', '1900-01-01'),
-    (2, 'EmployeeNumber', 'EmployeeNumber', '0', '1900-01-01'),
-    (3, 'IdNumber', 'IdNumber', '0', '1900-01-01'),
-    (4, 'Other', 'Other', '0', '1900-01-01');
+INSERT INTO public."CsiContactCategories"(
+	"CsiContactCategoryId", "Name", "Description", "InActive", "InActiveDate")
+	VALUES (1, 'CsiContactCategory1', 'CsiContactCategory1', '0', '1900-01-01'),
+    (2, 'CsiContactCategory2', 'CsiContactCategory2', '0', '1900-01-01'),
+    (3, 'CsiContactCategory3', 'CsiContactCategory3', '0', '1900-01-01'),
+    (4, 'CsiContactCategory4', 'CsiContactCategory4', '0', '1900-01-01');
+
+INSERT INTO public."CsiMainContactTypes"(
+	"CsiMainContactTypeId", "Name", "Description", "InActive", "InActiveDate")
+	VALUES (1, 'CsiMainContact1', 'CsiMainContact1', '0', '1900-01-01'),
+    (2, 'CsiMainContact2', 'CsiMainContact2', '0', '1900-01-01'),
+    (3, 'CsiMainContact3', 'CsiMainContact3', '0', '1900-01-01'),
+    (4, 'CsiMainContact4', 'CsiMainContact4', '0', '1900-01-01');
+
+
+
+
 
 
 INSERT INTO public."GroupTypes"(
