@@ -59,7 +59,7 @@ function SignatureItemsEditViewModel(hostThisContext) {
             return;
         };
         var jsonObject = JSON.stringify({
-            contactypeid: self.contacttypes().contacttypeid + '',
+            contacttypeid: self.contacttypes().contacttypeid + '',
             fielditemid: self.fielditems().fielditemid + '',
             sequence: self.sequence() + '',
             inactive: inactive

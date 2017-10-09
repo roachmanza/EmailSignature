@@ -82,6 +82,17 @@ exports.read_all_SignatureItems_for_contactTypeId = function (req, res) {
         });
 };
 
+exports.read_a_SignatureItem_ContactTypeList = function (req, res) {
+    var bll = require('../dataAccess/bll/SignatureItemsBll');
+ bll.read_a_SignatureItem_ContactTypeList(req,
+     function (jsonResult, haserror, code) {
+         if (haserror) { 
+             res.status(code).type('application/json').json({success: false, httpStatusCode: code,error: {message: jsonResult}});
+         } else {
+             res.status(code).type('application/json').json({success: true,httpStatusCode: code,data: jsonResult });
+         }
+     });
+};
 
 
 

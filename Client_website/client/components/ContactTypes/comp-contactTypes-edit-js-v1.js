@@ -60,7 +60,7 @@ function ContactTypesEditViewModel(hostThisContext) {
         var jsonObject = JSON.stringify({
             name: self.name(),
             description: self.description(),
-            emailAddress: self.emailaddress(),
+            email: self.emailaddress(),
             inActive: inactive
         });
         console.log(jsonObject)

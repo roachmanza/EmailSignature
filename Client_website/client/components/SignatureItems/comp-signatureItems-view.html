@@ -23,43 +23,44 @@
 
         <div data-bind="visible: !SignatureItemsLoading()">
             <div>
+                <div class="row" style="margin-bottom:3px;" data-bind="visible: inactivechecked">
+                    <div class="clearfix col-lg-12 col-md-12 p-x-0">
+                        <span class="glyphicon glyphicon-ban-circle" style="color:red"></span>
+                        <span style="color:red">This item is currenty inactive</span>
+
+                    </div>
+                </div>
 
                 <div class="row" style="margin-bottom:3px;">
                     <div class="clearfix col-lg-8 col-md-12 p-x-0">
                         <strong class="col-sm-5 col-xs-12 control-label">Contact type</strong>
-                        <span class="col-sm-7 col-xs-12"><select class="form-control" data-bind="options: availableContactTypes, optionsText: 'name', value: contacttypes, optionsCaption: 'Please select...'" disabled="disabled" ></select></span>
+                        <span class="col-sm-7 col-xs-12"><span data-bind="text : contacttypeidname" /></span> </span>
                     </div>
                 </div>
-
-
                 <div class="row" style="margin-bottom:3px;">
                     <div class="clearfix col-lg-8 col-md-12 p-x-0">
                         <strong class="col-sm-5 col-xs-12 control-label">Field item</strong>
-                        <span class="col-sm-7 col-xs-12"><select class="form-control" data-bind="options: availableFieldItems, optionsText: 'name', value: fielditems, optionsCaption: 'Please select...'"   disabled="disabled"></select></span>
+                        <span class="col-sm-7 col-xs-12"><span data-bind="text : fielditemdescription" /></span> </span>
                     </div>
                 </div>
-
                 <div class="row" style="margin-bottom:3px;">
                     <div class="clearfix col-lg-8 col-md-12 p-x-0">
-                        <strong class="col-sm-5 col-xs-12 control-label">sequence : </strong>
-                        <span class="col-sm-7 col-xs-12"><input type="text" class="form-control" data-bind="value : sequence" disabled="disabled"/> </span>
+                        <strong class="col-sm-5 col-xs-12 control-label">Sequence</strong>
+                        <span class="col-sm-7 col-xs-12"><span data-bind="text : sequence" /></span> </span>
                     </div>
                 </div>
-
-                <div class="row" style="margin-bottom:3px;" data-bind="visible: inactivechecked">
+                <hr>
+                The label is '<span data-bind="text : fielditemlabel"></span>',and the value is '<span data-bind="text : fielditemvalue"></span>' <br/>
+                Below is an example of what this will look like.<br/>
+                <hr>
+                <div class="row" style="margin-bottom:3px;">
                     <div class="clearfix col-lg-8 col-md-12 p-x-0">
-                        <strong class="col-sm-5 col-xs-12 control-label">Inactive date : </strong>
-                        <span class="col-sm-7 col-xs-12"><input type="text" class="form-control" data-bind="value : inactivedate" disabled="disabled"/> </span>
+                        <strong class="col-sm-5 col-xs-12 control-label"><span data-bind="text : fielditemlabel" /></span></strong>
+                        <span class="col-sm-7 col-xs-12"><span data-bind="text : fielditemvalue" /></span> </span>
                     </div>
                 </div>
+                <hr>
 
-                <div class="row" style="margin-bottom:3px;margin-top:2px;">
-                    <div class="clearfix col-lg-8 col-md-12 p-x-0">
-                        <strong class="col-sm-5 col-xs-12 control-label">Inactive : </strong>
-                        <span class="col-sm-7 col-xs-12"><input type="checkbox" data-bind="checked: inactivechecked" text="inactive"  disabled="disabled" /> 
-                            </span>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -91,9 +92,6 @@
                 ko.applyBindings(self.SignatureItemsModel, this);
                 var vm = self.SignatureItemsModel;
                 vm.Initialize(self.environmentUrl, self, self.SignatureItemsModel, itemId);
-                vm.GetContactTypes();
-                vm.GetFieldItems();
-                
                 vm.GetSignatureItemById();
             }
         });
