@@ -1,12 +1,16 @@
 var pg = require('pg');
+var config = require('config');
+
 module.exports = function (queryString, callback) {
-    var client = new pg.Client({
-        user: 'MailEnhancementUser',
-        host: '127.0.0.1',
-        database: 'MailEnhancement_Dev',
-        password: 'MailEnhancementUser',
-        port: 5432,
-    });
+    var connection;
+    if (config.has('serverSettings.postgresDbConnection')) {
+        connection = config.get('serverSettings.postgresDbConnection');
+    } else {
+        var errorstring = "Connection error, could not find the 'serverSettings.postgresDbConnection' file."
+        callback(errorstring, true);
+        return;
+    }
+    var client = new pg.Client(connection);
     var jsonReturnResult = "";
     client.connect(function (err) {
         if (err) {

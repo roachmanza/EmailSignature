@@ -1,0 +1,11 @@
+{
+
+  
+  "environment":"LOCAL",
+  "serverSettings": {
+    "environmentUrl": {
+      "dev": "http://devtest.mmiholdings.co.za:4010/"
+    }   
+  }
+
+}

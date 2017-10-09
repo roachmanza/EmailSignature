@@ -1,5 +1,5 @@
 
-##  ![Mail enhancement system](https://github.com/roachmanza/MailEnhancement/blob/master/Client_website_cdn/content/img/MailIcon64.png "Mail enhancement system") Mail enhancement system
+##  ![Mail enhancement system](http://sseatldev102.metmom.mmih.biz:7990/projects/SSE/repos/signature-api-and-client-nodejs/raw/Api_Site/client/content/img/MailIcon32.png?at=refs%2Fheads%2Fmaster "Mail enhancement system") Mail enhancement system
 
 ### Welcome to the mail enhancement system
 

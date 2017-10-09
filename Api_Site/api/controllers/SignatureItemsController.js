@@ -14,7 +14,7 @@ exports.get_all_SignatureItems = function (req, res) {
         ' FROM public."SignatureItems" AS SI' +
         ' JOIN public."ContactTypes" as CT ON CT."ContactTypeId" = SI."ContactTypeId" ' +
         ' JOIN public."FieldItems" as FI ON FI."FieldItemId" = SI."FieldItemId" ' +
-        ' ORDER BY CT."Name" ASC , FI."Name" ASC, SI."Sequence" ASC',
+        ' ORDER BY CT."Name" ASC , SI."Sequence" ASC, FI."Name" ASC',
         function (results, err) {
             if (err) {
                 res.status(400).type('application/json').json({ success: false, httpStatusCode: 400, error: { status: "Bad Request", message: results } });

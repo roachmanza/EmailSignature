@@ -7,7 +7,7 @@ exports.get_all_FieldItems = function (req, res) {
         ' FI."LanguageId" as LanguageId,'+   
         ' L."Name" as LanguageIdString,'+
         ' FI."FieldTypeId" as FieldTypeId,'+
-        ' FI."Name" as FieldTypeIdString,'+
+        ' FT."Name" as FieldTypeIdString,'+
         ' FI."Name" as Name,'+
         ' FI."Description" as Description,'+
         ' FI."Label" as Label,'+
@@ -67,7 +67,7 @@ exports.read_a_FieldItems = function (req, res) {
         ' FI."FieldItemId" as FieldItemId,'+        
         ' FI."LanguageId" as LanguageId,'+   
         ' L."Name" as LanguageIdString,'+
-        ' FI."FieldTypeId" as FieldTypeId,'+
+         ' FT."Name" as FieldTypeIdString,'+
         ' FI."Name" as FieldTypeIdString,'+
         ' FI."Name" as Name,'+
         ' FI."Description" as Description,'+

@@ -1,5 +1,6 @@
 var applicationTools = {
 
+
     getDomainLoginFromPage: function () {
         return document.getElementById("muser").value;
     },
@@ -13,7 +14,9 @@ var applicationTools = {
     },
     appAuth: {
         claimsHeader: function (claims) {
-            return { "MMI-Authorization-Claims": claims.join(';') };
+            return {
+                "MMI-Authorization-Claims": claims.join(';')
+            };
         },
 
         domainNameClaim: function (domainName) {
@@ -25,16 +28,25 @@ var applicationTools = {
         }
     },
     baseUrl: function (env) {
+        var uriLocal = 'http://localhost:4010';
+        var uriDev = 'http://localhost:4010';
+        var uriTest = 'http://devtest.mmiholdings.co.za:4010';
+        var uriPre = 'http://staging.mmiholdings.co.za:4010';
+        var uriProd = 'http://mmiapp.mmiholdings.co.za:4010';
+
         var webApiUrl = env;
         var urlError = false;
-
         if (env.length >= 3) {
-            if (webApiUrl.toUpperCase() === "DEV") {
-                webApiUrl = 'http://localhost:4010/MailEnhancement/';
-            } else if (webApiUrl.toUpperCase() === "STAGING") {
-                webApiUrl = 'http://localhost:4010/MailEnhancement/';
+            if (webApiUrl.toUpperCase() === "LOCAL") {
+                webApiUrl = uriLocal + '/MailEnhancement/';
+            } else if (webApiUrl.toUpperCase() === "DEV") {
+                webApiUrl = uriDev + '/MailEnhancement/';
+            } else if (webApiUrl.toUpperCase() === "TEST") {
+                webApiUrl = uriTest + '/MailEnhancement/';
+            } else if (webApiUrl.toUpperCase() === "PRE") {
+                webApiUrl = uriPre + '/MailEnhancement/';
             } else if (webApiUrl.toUpperCase() === "PROD") {
-                webApiUrl = 'http://localhost:4010/MailEnhancement/';
+                webApiUrl = uriProd + '/MailEnhancement/';
             }
             if (webApiUrl.length < 20) {
                 urlError = true;
@@ -48,7 +60,8 @@ var applicationTools = {
     },
     getqueryValue: function (parmName) {
         parmName = parmName.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-        var regex = new RegExp("[\\?&]" + parmName + "=([^&#]*)"), results = regex.exec(location.search);
+        var regex = new RegExp("[\\?&]" + parmName + "=([^&#]*)"),
+            results = regex.exec(location.search);
         return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
     }
 }
@@ -121,7 +134,7 @@ var ajaxAsync = {
                     var error = jqXhr.responseJSON.error;
                     errorcode = jqXhr.responseJSON.httpStatusCode;
                     if (error != null) {
-                        errormessage =  error.message;
+                        errormessage = error.message;
                         errorItem = error;
                     }
                 }

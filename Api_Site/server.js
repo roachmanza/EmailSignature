@@ -4,8 +4,8 @@ var webserver = express();
 var port = process.env.PORT || 4010;
 var bodyParser = require('body-parser');
 var path = require('path');
-// var swagger  = require("swagger-node-express");
 const swaggerUi = require('swagger-ui-express');
+
 
 
 //CORS
@@ -45,9 +45,6 @@ webserver.get('/client/content/img/homeimage', function (req, res) { res.sendFil
 webserver.get('/', function (req, res) { res.sendFile(path.join(__dirname + '/client/apiIndex.html')); });
 webserver.get('/home/', function (req, res) { res.sendFile(path.join(__dirname + '/client/apiIndex.html')); });
 webserver.get('/specification', function (req, res) { res.sendFile(path.join(__dirname + '/client/apiSpecification.html')); });
-
-// webserver.get('/swagger/', function (req, res) { res.sendFile(path.join(__dirname + '/client/swagger.html')); });
-// swagger.configure("http://localhost:4010/swagger", "0.1");
 
 //Listen on port number
 webserver.listen(port);

@@ -1,0 +1,18 @@
+{
+
+  // Customer module configs 
+  "serverSettings": {
+    "postgresDbConnection": {
+      "host": "localhost",
+      "database": "MailEnhancement_Dev",
+      "port": 5432,
+      "user": "MailEnhancementUser",
+      "password": "MailEnhancementUser"
+    },
+    "credit": {
+      "initialLimit": 100,
+      // Set low for development 
+      "initialDays": 1
+    }
+  }
+}
