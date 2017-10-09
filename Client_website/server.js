@@ -90,7 +90,7 @@ webserver.get('/SignatureItems', function (req, res) {
 });
 
 webserver.get('/Signatures', function (req, res) {
-    res.sendFile(path.join(__dirname + '/client/pages/Signatures.html'));
+    res.sendFile(path.join(__dirname + '/client/pages/SignatureItems/base.html'));
 });
 
 
@@ -613,6 +613,9 @@ webserver.get('/SignatureItems/edit', function (req, res) {
 webserver.get('/SignatureItems/view', function (req, res) {
     res.sendFile(path.join(__dirname + '/client/pages/SignatureItems/view.html'));
 });
+webserver.get('/SignatureItems/base', function (req, res) {
+    res.sendFile(path.join(__dirname + '/client/pages/SignatureItems/base.html'));
+});
 //SignatureItems component PATHS
 //list
 webserver.get('/comp-signatureItems-list', function (req, res) {
@@ -641,6 +644,13 @@ webserver.get('/comp-signatureItems-view', function (req, res) {
 });
 webserver.get('/comp-signatureItems-view/js', function (req, res) {
     res.sendFile(path.join(__dirname + '/client/components/SignatureItems/comp-signatureItems-view-js-v1.js'));
+});
+//base
+webserver.get('/comp-signatureItems-base', function (req, res) {
+    res.sendFile(path.join(__dirname + '/client/components/SignatureItems/comp-signatureItems-base.html'));
+});
+webserver.get('/comp-signatureItems-base/js', function (req, res) {
+    res.sendFile(path.join(__dirname + '/client/components/SignatureItems/comp-signatureItems-base-js-v1.js'));
 });
 
 
