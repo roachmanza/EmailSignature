@@ -79,13 +79,13 @@ function FieldItemsEditViewModel(hostThisContext) {
             return;
         };
         var jsonObject = JSON.stringify({
-            languageid : self.languages().languageid + '',
-            fieldtypeId: self.fieldtypes().fieldtypeid + '',
+            languageid : self.languages().languageid ,
+            fieldtypeid: self.fieldtypes().fieldtypeid ,
             name: self.name(),
             description: self.description(),
             label: self.label(),
             value: self.value(),
-            printFormat: self.printformat(),
+            printformat: self.printformat(),
             inActive: inactive
         });
         console.log(jsonObject)

@@ -52,6 +52,7 @@ exports.create_a_FieldItem = function (req, callback) {
 };
 
 exports.update_a_FieldItem = function (req, callback) {
+    console.log(req.body);
     var dataPut = require('../data/dataPut');
     var id = req.params.id;
     var languageid = req.body.languageid;

@@ -29,13 +29,13 @@ exports.create_a_SignatureItem = function (req, callback) {
             if (numberResults[0] != null) {
                 id = numberResults[0]["SignatureItemId"] + 1;
             }
-            var contactTypeId = req.body.contactTypeId;
-            var fieldItemId = req.body.fieldItemId;
+            var contactypeid = req.body.contactypeid;
+            var fielditemid = req.body.fielditemid;
             var sequence = req.body.sequence;
             var inactiveDate = new Date(1900, 01, 01).toJSON().slice(0, 10).replace(/-/g, '/');
             var inactive = 0;
             var createQueryString = tableInsert +
-                '(' + id + ',\'' + contactTypeId + '\' ,\'' + fieldItemId + '\' ,\'' + sequence + '\' ,\'' + inactiveDate + '\' ,\'' + inactive + '\')';
+                '(' + id + ',\'' + contactypeid + '\' ,\'' + fielditemid + '\' ,\'' + sequence + '\' ,\'' + inactiveDate + '\' ,\'' + inactive + '\')';
             dataPost(createQueryString, function (jsonResults, haserror, code) {
                 callback(jsonResults, haserror, code);
             });
@@ -45,8 +45,8 @@ exports.create_a_SignatureItem = function (req, callback) {
 exports.update_a_SignatureItem = function (req, callback) {
     var dataPut = require('../data/dataPut');
     var id = req.params.SignatureItemId;
-    var contactTypeId = req.body.contactTypeId;
-    var fieldItemId = req.body.fieldItemId;
+    var contactypeid = req.body.contactypeid;
+    var fielditemid = req.body.fielditemid;
     var sequence = req.body.sequence;
     var inactiveDate;
     var inactive;
@@ -59,8 +59,8 @@ exports.update_a_SignatureItem = function (req, callback) {
     };
     dataPut(' UPDATE public."SignatureItems" ' +
         'SET ' +
-        ' "ContactTypeId"=\'' + contactTypeId + '\', ' +
-        ' "FieldItemId"=\'' + fieldItemId + '\', ' +
+        ' "ContactTypeId"=\'' + contactypeid + '\', ' +
+        ' "FieldItemId"=\'' + fielditemid + '\', ' +
         ' "Sequence"=\'' + sequence + '\', ' +
         ' "InActiveDate"=\'' + inactiveDate + '\', ' +
         ' "InActive"=\'' + inactive + '\' ' +

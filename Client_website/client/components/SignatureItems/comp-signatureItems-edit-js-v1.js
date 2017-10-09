@@ -59,10 +59,10 @@ function SignatureItemsEditViewModel(hostThisContext) {
             return;
         };
         var jsonObject = JSON.stringify({
-            contactTypeId: self.contacttypes().contacttypeid + '',
-            fieldItemId: self.fielditems().fielditemid + '',
+            contactypeid: self.contacttypes().contacttypeid + '',
+            fielditemid: self.fielditems().fielditemid + '',
             sequence: self.sequence() + '',
-            inActive: inactive
+            inactive: inactive
         });
         console.log(jsonObject)
         var url = "";
@@ -110,6 +110,8 @@ function SignatureItemsEditViewModel(hostThisContext) {
                 //dropdown values
                 self.contacttypes(self.getContactTypesItem(data[0].contacttypeid));
                 self.fielditems(self.getFieldItemsItem(data[0].fielditemid));
+                self.inactivechecked(self.getInActive(data[0].inactive));
+                self.inactivedate(data[0].inactivedate);
             }
         } else {
             if (result.errorMessage === "error") {
