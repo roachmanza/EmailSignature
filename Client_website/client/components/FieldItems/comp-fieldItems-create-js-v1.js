@@ -86,14 +86,14 @@ function FieldItemsCreateViewModel(hostThisContext) {
             return;
         };
         var jsonObject = JSON.stringify({
-            languageId : self.languages().languageid + '',
-            fieldTypeId: self.fieldtypes().fieldtypeid + '',
+            languageid : self.languages().languageid + '',
+            fieldtypeid: self.fieldtypes().fieldtypeid + '',
             name: self.name(),
             description: self.description(),
             label: self.label(),
             value: self.value(),
-            printFormat: self.printformat(),
-            inActive: inactive
+            printformat: self.printformat(),
+            inactive: inactive
         });
         console.log(jsonObject)
         var url = "";
