@@ -69,9 +69,9 @@ function AwdContactTypeMappingsCreateViewModel(hostThisContext) {
             return;
         };
         var jsonObject = JSON.stringify({
-            contactTypeId: self.contacttypes().contacttypeid + '',
-            awdRegion: self.awdregion(),
-            awdContactRole: self.awdcontactrole(),
+            contacttypeid: self.contacttypes().contacttypeid + '',
+            awdregion: self.awdregion(),
+            awdcontactrole: self.awdcontactrole(),
             name: self.name(),
             description: self.description(),
             inActive: inactive
