@@ -1,9 +1,9 @@
 
 INSERT INTO public."ContactTypes"(
 	"ContactTypeId", "Name", "Description","EmailAddress", "InActive", "InActiveDate")
-	VALUES (1, 'HomePhone', 'HomePhone','a@b.c', '0', '1900-01-01'),
-    (2, 'CelPhone', 'CelPhone','b@b.c', '0', '1900-01-01'),
-    (3, 'StreetAddess', 'StreetAddess','c@b.c', '0', '1900-01-01'),
+	VALUES (1, 'Investo', 'Investo','a@b.c', '0', '1900-01-01'),
+    (2, 'Myriad', 'Myriad','b@b.c', '0', '1900-01-01'),
+    (3, 'Preferred clients', 'Preferred clients','c@b.c', '0', '1900-01-01'),
     (4, 'Other', 'Other','d@b.c', '0', '1900-01-01');
 
 INSERT INTO public."FieldTypes"(
