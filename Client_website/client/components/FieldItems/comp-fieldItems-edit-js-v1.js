@@ -86,7 +86,7 @@ function FieldItemsEditViewModel(hostThisContext) {
             label: self.label(),
             value: self.value(),
             printformat: self.printformat(),
-            inActive: inactive
+            inactive: inactive
         });
         console.log(jsonObject)
         var url = "";

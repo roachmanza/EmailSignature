@@ -60,10 +60,10 @@ function SignatureItemsCreateViewModel(hostThisContext) {
             return;
         };
         var jsonObject = JSON.stringify({
-            contactTypeId: self.contacttypes().contacttypeid + '',
-            fieldItemId: self.fielditems().fielditemid + '',
+            contacttypeid: self.contacttypes().contacttypeid + '',
+            fielditemid: self.fielditems().fielditemid + '',
             sequence: self.sequence() + '',
-            inActive: inactive
+            inactive: inactive
         });
         console.log(jsonObject)
         var url = "";

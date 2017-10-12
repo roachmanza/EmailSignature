@@ -62,7 +62,7 @@ function LanguagesCreateViewModel(hostThisContext) {
             name: self.name(),
             description: self.description(),
             code: self.code(),
-            inActive: inactive
+            inactive: inactive
         });
         console.log(jsonObject)
         var url = "";
