@@ -61,7 +61,7 @@ function ContactTypesEditViewModel(hostThisContext) {
             name: self.name(),
             description: self.description(),
             email: self.emailaddress(),
-            inActive: inactive
+            inactive: inactive
         });
         console.log(jsonObject)
         var url = "";
