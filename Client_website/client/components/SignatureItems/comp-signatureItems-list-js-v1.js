@@ -71,6 +71,8 @@ function SignatureItemsListViewModel(hostThisContext) {
             
         }
         self.SignatureItemsLoading(false);
+        $('#SignatureItemsTable').DataTable();
+
     };
 
     self.getInActive = function (inactiveValue) {
