@@ -15,27 +15,48 @@ var tableInsert = 'INSERT INTO public."ContactTypes"' +
 
 var tableDelete = 'DELETE FROM public."ContactTypes" where "ContactTypeId" = ';
 
-
-
 exports.create_a_ContactType = function (req, callback) {
     var dataGet = require('../data/dataGet');
     var dataPost = require('../data/dataPost');
-    dataGet(tableCount,
+    var name = req.body.name;
+    var description = req.body.description;
+    var email = req.body.email;
+    var inactiveDate = new Date(1900, 01, 01).toJSON().slice(0, 10).replace(/-/g, '/');
+    var inactive = 0;
+    dataGet('SELECT "EmailAddress" FROM public."ContactTypes" where "EmailAddress" = \'' + email+ '\'',
         function (numberResults) {
-            var id = 1;
-            if (numberResults[0] != null) {
-                id = numberResults[0]["ContactTypeId"] + 1;
+            console.log(numberResults);
+            if(numberResults.length > 0){
+                //Some values were found for the email address
+                callback(JSON.parse(JSON.stringify(numberResults)), true, 403);
+                return;
+            }else{
+                //
+
             }
-            var name = req.body.name;
-            var description = req.body.description;
-            var email = req.body.email;
-            var inactiveDate = new Date(1900, 01, 01).toJSON().slice(0, 10).replace(/-/g, '/');
-            var inactive = 0;
-            var createQueryString = tableInsert +
-                '(' + id + ',\'' + name + '\' ,\'' + description + '\' ,\'' + email + '\' ,\'' + inactiveDate + '\' ,\'' + inactive + '\')';
-            dataPost(createQueryString, function (jsonResults, haserror, code) {
-                callback(jsonResults, haserror, code);
-            });
+
+            if (numberResults === 'No records found') {
+                dataGet(tableCount,
+                    function (numberResults) {
+                        var id = 1;
+                        if (numberResults[0] != null) {
+                            id = numberResults[0]["ContactTypeId"] + 1;
+                        }
+
+                        var createQueryString = tableInsert +
+                            '(' + id + ',\'' + name + '\' ,\'' + description + '\' ,\'' + email + '\' ,\'' + inactiveDate + '\' ,\'' + inactive + '\')';
+                        dataPost(createQueryString, function (jsonResults, haserror, code) {
+                            callback(jsonResults, haserror, code);
+                        });
+                    });
+            } else if(numberResults === 'Connection error, could not find the \'serverSettings.postgresDbConnection\' file.') {
+                
+                callback(JSON.parse(JSON.stringify(numberResults)), true, 403);
+                return;
+            }else{
+                 callback(JSON.parse(JSON.stringify("The email address is already in use.")), true, 403);
+                return;
+            }
         });
 };
 
@@ -106,8 +127,7 @@ exports.read_a_ContactType = function (req, callback) {
 exports.read_a_ContactType_for_EmailAddress = function (req, callback) {
     var dataGet = require('../data/dataGet');
     var emailaddress = req.params.id;
-    dataGet(tableSelect + ' WHERE CT."EmailAddress" = \'' + emailaddress+'\'', function (jsonResults, haserror, code) {
+    dataGet(tableSelect + ' WHERE CT."EmailAddress" = \'' + emailaddress + '\'', function (jsonResults, haserror, code) {
         callback(jsonResults, haserror, code);
     });
 };
-

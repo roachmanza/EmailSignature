@@ -29,7 +29,7 @@ var applicationTools = {
     },
     baseUrl: function (env) {
         var uriLocal = 'http://localhost:4010';
-        var uriDev = 'http://devtest.mmiholdings.co.za:4010';
+        var uriDev = 'http://localhost:4010';
         var uriTest = 'http://devtest.mmiholdings.co.za:4010';
         var uriPre = 'http://staging.mmiholdings.co.za:4010';
         var uriProd = 'http://mmiapp.mmiholdings.co.za:4010';
