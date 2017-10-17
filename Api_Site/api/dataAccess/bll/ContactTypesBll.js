@@ -23,45 +23,46 @@ exports.create_a_ContactType = function (req, callback) {
     var email = req.body.email;
     var inactiveDate = new Date(1900, 01, 01).toJSON().slice(0, 10).replace(/-/g, '/');
     var inactive = 0;
-    dataGet('SELECT "EmailAddress" FROM public."ContactTypes" where "EmailAddress" = \'' + email+ '\'',
-        function (numberResults) {
-            console.log(numberResults);
-            if(numberResults.length > 0){
-                //Some values were found for the email address
-                callback(JSON.parse(JSON.stringify(numberResults)), true, 403);
-                return;
-            }else{
-                //
+    dataGet('SELECT "EmailAddress" FROM public."ContactTypes" where "EmailAddress" = \'' + email + '\'',
+        function (findResults, haserror, code) {
+            if (haserror) {
+                if (findResults === 'No records found') {
+                    dataGet(tableCount,
+                        function (numberResults, haserror, code) {
+                            if (haserror) {
+                                callback(JSON.parse(JSON.stringify(numberResults)), haserror, code);
+                                return;
+                            } else {
+                                var id = 1;
+                                if (numberResults[0] != null) {
+                                    id = numberResults[0]["ContactTypeId"] + 1;
+                                }
 
-            }
-
-            if (numberResults === 'No records found') {
-                dataGet(tableCount,
-                    function (numberResults) {
-                        var id = 1;
-                        if (numberResults[0] != null) {
-                            id = numberResults[0]["ContactTypeId"] + 1;
-                        }
-
-                        var createQueryString = tableInsert +
-                            '(' + id + ',\'' + name + '\' ,\'' + description + '\' ,\'' + email + '\' ,\'' + inactiveDate + '\' ,\'' + inactive + '\')';
-                        dataPost(createQueryString, function (jsonResults, haserror, code) {
-                            callback(jsonResults, haserror, code);
+                                var createQueryString = tableInsert +
+                                    '(' + id + ',\'' + name + '\' ,\'' + description + '\' ,\'' + email + '\' ,\'' + inactiveDate + '\' ,\'' + inactive + '\')';
+                                dataPost(createQueryString, function (jsonResults, haserror, code) {
+                                    callback(jsonResults, haserror, code);
+                                });
+                            }
                         });
-                    });
-            } else if(numberResults === 'Connection error, could not find the \'serverSettings.postgresDbConnection\' file.') {
-                
-                callback(JSON.parse(JSON.stringify(numberResults)), true, 403);
-                return;
-            }else{
-                 callback(JSON.parse(JSON.stringify("The email address is already in use.")), true, 403);
+
+                } else {
+                    //some other error occured send it through to tihe top 
+                    callback(JSON.parse(JSON.stringify(findResults)), haserror, code);
+                    return;
+                }
+            } else {
+                //there is no error , in other words it found a record.
+                callback(JSON.parse(JSON.stringify("The email address is already in use.")), true, 403);
                 return;
             }
         });
 };
 
 exports.update_a_ContactType = function (req, callback) {
+    var dataGet = require('../data/dataGet');
     var dataPut = require('../data/dataPut');
+    var _httpresponcecode = require('../../constants/httpresponcecodes');
     var id = req.params.id;
     var name = req.body.name;
     var description = req.body.description;
@@ -75,17 +76,58 @@ exports.update_a_ContactType = function (req, callback) {
         inactive = 0;
         inactiveDate = new Date(1900, 01, 01).toJSON().slice(0, 10).replace(/-/g, '/');
     };
-    dataPut(' UPDATE public."ContactTypes" ' +
-        'SET ' +
-        ' "Name"=\'' + name + '\', ' +
-        ' "Description"=\'' + description + '\', ' +
-        ' "EmailAddress"=\'' + email + '\', ' +
-        ' "InActiveDate"=\'' + inactiveDate + '\', ' +
-        ' "InActive"=\'' + inactive + '\' ' +
-        'where "ContactTypeId" = ' + id,
-        function (jsonResults, haserror, code) {
-            callback(jsonResults, haserror, code);
-        });
+    //check that the record that is edited does not match an email address of any of the other records
+    dataGet('SELECT "ContactTypeId", "EmailAddress"  FROM public."ContactTypes" where "EmailAddress" = \'' + email + '\'',
+    function (findResults, haserror, code) {
+        if(haserror){
+            //no records were found with this email address - continue
+            if (findResults === 'No records found') {
+                dataPut(' UPDATE public."ContactTypes" ' +
+                'SET ' +
+                ' "Name"=\'' + name + '\', ' +
+                ' "Description"=\'' + description + '\', ' +
+                ' "EmailAddress"=\'' + email + '\', ' +
+                ' "InActiveDate"=\'' + inactiveDate + '\', ' +
+                ' "InActive"=\'' + inactive + '\' ' +
+                'where "ContactTypeId" = ' + id,
+                function (jsonResults, haserror, code) {
+                    callback(jsonResults, haserror, code);
+                });
+            }else{
+                //some other error occured , pass it through to the top
+                callback(JSON.parse(JSON.stringify(findResults)), haserror, code);
+                return;
+            }
+        }else{
+            //a record was found with this email address check if the ID is the same
+            testid = findResults[0]["ContactTypeId"];
+            if(testid){
+                if(testid===id){
+                    //this is the same record update it
+                    dataPut(' UPDATE public."ContactTypes" ' +
+                    'SET ' +
+                    ' "Name"=\'' + name + '\', ' +
+                    ' "Description"=\'' + description + '\', ' +
+                    ' "EmailAddress"=\'' + email + '\', ' +
+                    ' "InActiveDate"=\'' + inactiveDate + '\', ' +
+                    ' "InActive"=\'' + inactive + '\' ' +
+                    'where "ContactTypeId" = ' + id,
+                    function (jsonResults, haserror, code) {
+                        callback(jsonResults, haserror, code);
+                    });
+                }else{
+                    //other number found - send through an error
+                    callback(JSON.parse(JSON.stringify("The email address is already in use.")), true, _httpresponcecode.Forbidden);
+                }
+            }
+        }
+
+    });
+
+
+
+
+ 
 };
 
 exports.delete_a_ContactType = function (req, callback) {

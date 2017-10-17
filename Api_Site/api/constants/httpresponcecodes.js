@@ -4,3 +4,4 @@ exports.Sql_error = 400;
 exports.Ok = 200;
 exports.Created = 201;
 exports.Deleted = 204;
+exports.Forbidden = 403;

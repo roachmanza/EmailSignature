@@ -61,7 +61,7 @@ function ContactTypesCreateViewModel(hostThisContext) {
         var jsonObject = JSON.stringify({
             name: self.name(),
             description: self.description(),
-            emailaddress: self.emailaddress(),
+            email: self.emailaddress(),
             inactive: inactive
         });
         console.log(jsonObject)
