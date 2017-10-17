@@ -137,16 +137,16 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\"name\":\"test1\",\n\"description\":\"1desc\",\n\"emailAddress\":\"1desc@e\"\n}"
+							"raw": "{\n\"name\":\"test1\",\n\"description\":\"1desc\",\n\"email\":\"1desc@e\"\n}"
 						},
 						"description": ""
 					},
 					"response": []
 				},
 				{
-					"name": "ContactTypes/2",
+					"name": "ContactTypes/5",
 					"request": {
-						"url": "http://localhost:4010/MailEnhancement/api/v1/ContactTypes/2",
+						"url": "http://localhost:4010/MailEnhancement/api/v1/ContactTypes/5",
 						"method": "PUT",
 						"header": [
 							{
@@ -157,16 +157,16 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\"name\":\"test1\",\n\"description\":\"1desc\",\n\"emailAddress\":\"a@b.c\",\n\"inActive\":\"0\"\n}"
+							"raw": "{\n\"name\":\"test1\",\n\"description\":\"1desc\",\n\"email\":\"a@b.c\",\n\"inactive\":\"0\"\n}"
 						},
 						"description": ""
 					},
 					"response": []
 				},
 				{
-					"name": "ContactTypes/3",
+					"name": "ContactTypes/5",
 					"request": {
-						"url": "http://localhost:4010/MailEnhancement/api/v1/ContactTypes/3",
+						"url": "http://localhost:4010/MailEnhancement/api/v1/ContactTypes/5",
 						"method": "DELETE",
 						"header": [],
 						"body": {},
@@ -629,16 +629,16 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"languageId\":\"1\",\n\t\"fieldTypeId\":\"1\",\n\t\"name\":\"name\",\n\t\"description\":\"description\",\n\t\"label\":\"label\",\n\t\"value\":\"value\",\n\t\"printFormat\":\"printFormat\"\n}"
+							"raw": "{\n\t\"languageid\":\"1\",\n\t\"fieldtypeid\":\"1\",\n\t\"name\":\"namsssssssse\",\n\t\"description\":\"descrisssssssssption\",\n\t\"label\":\"lasssssssbel\",\n\t\"value\":\"valssssssssssue\",\n\t\"printformat\":\"prssssssintFormat\"\n}"
 						},
 						"description": ""
 					},
 					"response": []
 				},
 				{
-					"name": "FieldItems/2",
+					"name": "FieldItems/3",
 					"request": {
-						"url": "http://localhost:4010//MailEnhancement/api/v1/FieldItems/2",
+						"url": "http://localhost:4010//MailEnhancement/api/v1/FieldItems/3",
 						"method": "PUT",
 						"header": [
 							{
@@ -649,7 +649,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"languageId\":\"1\",\n\t\"fieldTypeId\":\"1\",\n\t\"name\":\"na222me\",\n\t\"description\":\"descr222iption\",\n\t\"label\":\"labe222l\",\n\t\"value\":\"val222ue\",\n\t\"printFormat\":\"pri22ntFormat\"\n}"
+							"raw": "{\n\t\"languageid\":\"1\",\n\t\"fieldtypeid\":\"1\",\n\t\"name\":\"na222me\",\n\t\"description\":\"descr222iption\",\n\t\"label\":\"labe222l\",\n\t\"value\":\"val222ue\",\n\t\"printformat\":\"pri22ntFormat\"\n}"
 						},
 						"description": ""
 					},
@@ -717,16 +717,16 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"name\":\"test1\",\"description\":\"1desc\"}"
+							"raw": "{\"name\":\"test1\",\n\"description\":\"1desc\"}"
 						},
 						"description": ""
 					},
 					"response": []
 				},
 				{
-					"name": "FieldTypes/1",
+					"name": "FieldTypes/5",
 					"request": {
-						"url": "http://localhost:4010/MailEnhancement/api/v1/FieldTypes/1",
+						"url": "http://localhost:4010/MailEnhancement/api/v1/FieldTypes/5",
 						"method": "PUT",
 						"header": [
 							{
@@ -737,16 +737,16 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\"name\":\"String11\",\n\"description\":\"A text value you would like to display\",\n\"inActive\":\"0\"\n}"
+							"raw": "{\n\"name\":\"String11\",\n\"description\":\"A text value you would like to display\",\n\"inactive\":\"0\"\n}"
 						},
 						"description": ""
 					},
 					"response": []
 				},
 				{
-					"name": "FieldTypes/2",
+					"name": "FieldTypes/5",
 					"request": {
-						"url": "http://localhost:4010/MailEnhancement/api/v1/FieldTypes/2",
+						"url": "http://localhost:4010/MailEnhancement/api/v1/FieldTypes/5",
 						"method": "DELETE",
 						"header": [],
 						"body": {},
@@ -796,16 +796,16 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\"name\":\"English\",\n\"description\":\"English langage\",\n\"code\":\"EN\"\n}"
+							"raw": "{\n\"name\":\"Dutch\",\n\"description\":\"Dutch langage\",\n\"code\":\"NE\"\n}"
 						},
 						"description": ""
 					},
 					"response": []
 				},
 				{
-					"name": "Languages/1",
+					"name": "Languages/3",
 					"request": {
-						"url": "http://localhost:4010/MailEnhancement/api/v1/Languages/1",
+						"url": "http://localhost:4010/MailEnhancement/api/v1/Languages/3",
 						"method": "PUT",
 						"header": [
 							{
@@ -816,14 +816,14 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\"name\":\"English\",\n\"description\":\"English langage dddd\",\n\"code\":\"EN\",\n\"inActive\":\"1\"\n}"
+							"raw": "{\n\"name\":\"English\",\n\"description\":\"English langage dddd\",\n\"code\":\"EN\",\n\"inactive\":\"1\"\n}"
 						},
 						"description": ""
 					},
 					"response": []
 				},
 				{
-					"name": "Languages/2",
+					"name": "Languages/3",
 					"request": {
 						"url": "http://localhost:4010/MailEnhancement/api/v1/Languages/2",
 						"method": "DELETE",
@@ -873,9 +873,20 @@
 					"response": []
 				},
 				{
-					"name": "SignatureItems/EmailAddress/q@b.c",
+					"name": "SignatureItems/EmailAddress/a@b.c",
 					"request": {
-						"url": "http://localhost:4010/MailEnhancement/api/v1/SignatureItems/EmailAddress/zz",
+						"url": "http://localhost:4010/MailEnhancement/api/v1/SignatureItems/EmailAddress/a@b.c",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "SignatureItemsContactTypeList",
+					"request": {
+						"url": "http://localhost:4010/MailEnhancement/api/v1/SignatureItemsContactTypeList",
 						"method": "GET",
 						"header": [],
 						"body": {},
@@ -897,7 +908,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\"contactTypeId\":\"1\",\n\"fieldItemId\":\"1\",\n\"sequence\":\"1\"\n}"
+							"raw": "{\n\"contacttypeid\":\"1\",\n\"fielditemid\":\"1\",\n\"sequence\":\"1\"\n}"
 						},
 						"description": ""
 					},
