@@ -1,15 +1,14 @@
 <dom-module id="comp-contactTypes-edit">
     <style>
-         :host {
+        :host {
             display: block;
         }
     </style>
 
     <template>
         <content></content>
-        <button class="btn btn-default btn-xs" data-bind="click: $root.OpenContactTypesList">List</button>
-        <button class="btn btn-default btn-xs" data-bind="click: $root.OpenContactTypes">View</button>
-        <button class="btn btn-default btn-xs" data-bind="click: $root.SaveContactTypes">Save</button>
+        <button class="btn btn-default" data-bind="click: $root.OpenContactTypesList">List</button>
+        <button class="btn btn-default" data-bind="click: $root.OpenContactTypes">View</button>
 
 
 
@@ -25,40 +24,52 @@
 
                 <div class="row" style="margin-bottom:3px;">
                     <div class="clearfix col-lg-8 col-md-12 p-x-0">
-                        <strong class="col-sm-5 col-xs-12 control-label">Name : </strong>
-                        <span class="col-sm-7 col-xs-12"><input type="text" class="form-control" data-bind="value : name" /> </span>
+                        <strong class="col-sm-5 col-xs-12 control-label">Name</strong>
+                        <span class="col-sm-7 col-xs-12">
+                            <input type="text" class="form-control" data-bind="value : name" /> </span>
                     </div>
                 </div>
 
                 <div class="row" style="margin-bottom:3px;">
                     <div class="clearfix col-lg-8 col-md-12 p-x-0">
-                        <strong class="col-sm-5 col-xs-12 control-label">Description : </strong>
-                        <span class="col-sm-7 col-xs-12"><input type="text" class="form-control" data-bind="value : description" /> </span>
+                        <strong class="col-sm-5 col-xs-12 control-label">Description</strong>
+                        <span class="col-sm-7 col-xs-12">
+                            <input type="text" class="form-control" data-bind="value : description" /> </span>
                     </div>
                 </div>
 
                 <div class="row" style="margin-bottom:3px;">
                     <div class="clearfix col-lg-8 col-md-12 p-x-0">
-                        <strong class="col-sm-5 col-xs-12 control-label">emailaddress : </strong>
-                        <span class="col-sm-7 col-xs-12"><input type="text" class="form-control" data-bind="value : emailaddress" /> </span>
+                        <strong class="col-sm-5 col-xs-12 control-label">Email address</strong>
+                        <span class="col-sm-7 col-xs-12">
+                            <input type="text" class="form-control" data-bind="value : emailaddress" /> </span>
                     </div>
                 </div>
 
                 <div class="row" style="margin-bottom:3px;" data-bind="visible: inactivechecked">
+                    <!-- <div class="clearfix col-lg-8 col-md-12 p-x-0">
+                        <strong class="col-sm-5 col-xs-12 control-label">Inactive date</strong>
+                        <span class="col-sm-7 col-xs-12">
+                            <input type="text" class="form-control" data-bind="value : inactivedate" /> </span>
+                    </div> -->
                     <div class="clearfix col-lg-8 col-md-12 p-x-0">
-                        <strong class="col-sm-5 col-xs-12 control-label">Inactive date : </strong>
-                        <span class="col-sm-7 col-xs-12"><input type="text" class="form-control" data-bind="value : inactivedate" /> </span>
+                        <strong class="col-sm-12 col-xs-12 control-label" style="color:red">This record is in an inactive state, and will not be available on the dropdown lists for signature selection.</strong>
+                        <!-- <span class="col-sm-7 col-xs-12">
+                            <input type="text" class="form-control" data-bind="value : inactivedate" /> </span> -->
                     </div>
                 </div>
 
                 <div class="row" style="margin-bottom:3px;margin-top:2px;">
                     <div class="clearfix col-lg-8 col-md-12 p-x-0">
-                        <strong class="col-sm-5 col-xs-12 control-label">Inactive : </strong>
-                        <span class="col-sm-7 col-xs-12"><input type="checkbox" data-bind="checked: inactivechecked" text="inactive"  /> 
-                                </span>
+                        <strong class="col-sm-5 col-xs-12 control-label">Tick to set to inactive</strong>
+                        <span class="col-sm-7 col-xs-12">
+                            <input type="checkbox" data-bind="checked: inactivechecked" text="inactive" />
+                        </span>
                     </div>
                 </div>
             </div>
+            <hr>
+            <button class="btn btn-default" data-bind="click: $root.SaveContactTypes">Save</button>
         </div>
         <hr>
         <div data-bind="visible : ContactTypesHasError()">

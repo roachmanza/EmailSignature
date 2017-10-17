@@ -103,7 +103,8 @@ exports.update_a_ContactType = function (req, callback) {
             //a record was found with this email address check if the ID is the same
             testid = findResults[0]["ContactTypeId"];
             if(testid){
-                if(testid===id){
+                console.log(testid + " "+id );
+                if(testid==id){
                     //this is the same record update it
                     dataPut(' UPDATE public."ContactTypes" ' +
                     'SET ' +

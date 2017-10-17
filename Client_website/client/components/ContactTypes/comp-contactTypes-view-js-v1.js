@@ -50,7 +50,7 @@ function ContactTypesViewViewModel(hostThisContext) {
     self.description = ko.observable("");
     self.emailaddress = ko.observable("");
     self.inactive = ko.observable("");
-    self.inactivechecked = ko.observable("");
+    self.inactivechecked = ko.observable(false);
     self.inactivedate = ko.observable("");
     self._populateContactTypesItem = function (result) {
         if (result.success) {

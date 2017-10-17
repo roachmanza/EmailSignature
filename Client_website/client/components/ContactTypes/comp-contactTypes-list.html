@@ -1,13 +1,13 @@
 <dom-module id="comp-contactTypes-list">
     <style>
-         :host {
+        :host {
             display: block;
         }
     </style>
 
     <template>
         <content></content>
-        <button class="btn btn-default btn-xs" data-bind="click: $root.CreateContactTypes">Add a new contact type</button>
+        <button class="btn btn-default" data-bind="click: $root.CreateContactTypes">Add a new contact type</button>
 
         <div class="loader-wrapper p-a-md " data-bind="visible: ContactTypesLoading()">
             <i class="fa fa-repeat fa-spin fa-1x"></i>
@@ -24,15 +24,13 @@
             <strong>INFO: </strong>There are currently no items in the list.
         </div>
 
-        <div class="table-responsive" data-bind="visible : ContactTypesList().length > 0 && !ContactTypesLoading()">
+        <div class="table table-responsive" data-bind="visible : ContactTypesList().length > 0 && !ContactTypesLoading()">
             <table class="table  table-striped">
                 <thead>
 
                     <tr>
                         <th style="font-size:12px;width: 5%;" class="hidden-xs">Id</th>
-                        <th style="font-size:12px;width: 15%;">Name</th>
-                        <th style="font-size:12px;width: 25%;">Description</th>
-                        <th style="font-size:12px;width: 20%;">Email</th>
+                        <th style="font-size:12px;width: 60%;">Name</th>
                         <th style="font-size:12px;width: 5%;">Active</th>
                         <th style="font-size:12px;width: 10%;">Actions</th>
                     </tr>
@@ -41,8 +39,6 @@
                     <tr>
                         <td style="font-size:12px;" data-bind="text : contacttypeid" class="hidden-xs"></td>
                         <td style="font-size:12px;" data-bind="text : name"></td>
-                        <td style="font-size:12px;" data-bind="text : description"></td>
-                        <td style="font-size:12px;" data-bind="text : emailaddress"></td>
                         <td style="font-size:12px;">
                             <span class="glyphicon glyphicon-ok-circle" style="color:green" data-bind="visible : !inactivechecked"></span>
                             <span class="glyphicon glyphicon-ban-circle" style="color:red" data-bind="visible : inactivechecked"></span>
