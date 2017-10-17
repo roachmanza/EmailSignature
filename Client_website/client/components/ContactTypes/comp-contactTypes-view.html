@@ -8,7 +8,7 @@
     <template>
         <content></content>
         <button class="btn btn-default " data-bind="click: $root.OpenContactTypesList">List</button>
-        <button class="btn btn-default " data-bind="click: $root.EditContactTypes">Edit</button>
+        
 
         <div data-bind="visible : ContactTypesHasError()">
             <div data-bind="text: ContactTypesError()"></div>
@@ -53,7 +53,9 @@
                         <span class="col-sm-7 col-xs-12" data-bind="text : emailaddress"> </span>
                     </div>
                 </div>
-            </div>
+            </div>  
+            <hr>
+            <button class="btn btn-default " data-bind="click: $root.EditContactTypes">Edit</button>
         </div>
 
     </template>

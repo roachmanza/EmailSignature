@@ -8,7 +8,6 @@
     <template>
         <content></content>
         <button class="btn btn-default" data-bind="click: $root.OpenContactTypesList">List</button>
-        <button class="btn btn-default" data-bind="click: $root.OpenContactTypes">View</button>
 
 
 
@@ -53,7 +52,7 @@
                             <input type="text" class="form-control" data-bind="value : inactivedate" /> </span>
                     </div> -->
                     <div class="clearfix col-lg-8 col-md-12 p-x-0">
-                        <strong class="col-sm-12 col-xs-12 control-label" style="color:red">This record is in an inactive state, and will not be available on the dropdown lists for signature selection.</strong>
+                        <strong class="col-sm-12 col-xs-12 control-label" style="color:red">This record is in an inactive state, and will not be available on the dropdown lists.</strong>
                         <!-- <span class="col-sm-7 col-xs-12">
                             <input type="text" class="form-control" data-bind="value : inactivedate" /> </span> -->
                     </div>
@@ -68,13 +67,19 @@
                     </div>
                 </div>
             </div>
+
+            <div data-bind="visible : ContactTypesHasError()">
+                <hr>
+                <div style="color:red" data-bind="text: ContactTypesError()"></div>
+            </div>
+
             <hr>
+
+            <button class="btn btn-default" data-bind="click: $root.OpenContactTypes">View</button>
             <button class="btn btn-default" data-bind="click: $root.SaveContactTypes">Save</button>
         </div>
         <hr>
-        <div data-bind="visible : ContactTypesHasError()">
-            <div data-bind="text: ContactTypesError()"></div>
-        </div>
+
 
     </template>
 
