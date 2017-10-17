@@ -18,7 +18,7 @@ function SignatureItemsEditViewModel(hostThisContext) {
         getAllContactTypes: "api/v1/ContactTypes",
         getAllFieldItems: "api/v1/FieldItems",
         getAllSignatureItemsById: "api/v1/SignatureItems",
-        updateSignatureItemsById : "api/v1/SignatureItems"
+        updateSignatureItemsById: "api/v1/SignatureItems"
     }
     //Initialize and get the nominations
     self.Initialize = function (env, parentContext, model, itemId) {
@@ -26,6 +26,7 @@ function SignatureItemsEditViewModel(hostThisContext) {
         parent = parentContext;
         environment = env;
         self.ApiBaseUri(applicationTools.baseUrl(environment));
+        self.PopulateForm();
     };
 
     self.OpenSignatureItemsList = function () {
@@ -79,7 +80,9 @@ function SignatureItemsEditViewModel(hostThisContext) {
         }
     };
 
-
+    self.PopulateForm = function () {
+        self.GetContactTypes();
+    };
 
     self.GetSignatureItemById = function () {
         self.SignatureItemsLoading(true);
@@ -150,6 +153,7 @@ function SignatureItemsEditViewModel(hostThisContext) {
                 dataItem.testvalue = data[i].Name + " " + data[i].Name
                 self.availableContactTypes.push(dataItem);
             }
+            self.GetFieldItems();
         }
     };
     self.getContactTypesItem = function (id) {
@@ -179,6 +183,7 @@ function SignatureItemsEditViewModel(hostThisContext) {
                 var dataItem = data[i];
                 self.availableFieldItems.push(dataItem);
             }
+            self.GetSignatureItemById();
         }
     };
     self.getFieldItemsItem = function (id) {

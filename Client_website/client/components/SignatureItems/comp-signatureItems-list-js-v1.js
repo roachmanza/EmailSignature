@@ -40,7 +40,10 @@ function SignatureItemsListViewModel(hostThisContext) {
         window.location.replace("/SignatureItems/create");
     }
     
-
+    
+    self.DoSomething = function () {
+        alert("done");
+    }
     self.GetSignatureItems = function () {
         self.SignatureItemsLoading(true);
         self.SignatureItemsList.removeAll();
@@ -71,7 +74,7 @@ function SignatureItemsListViewModel(hostThisContext) {
             
         }
         self.SignatureItemsLoading(false);
-        $('#SignatureItemsTable').DataTable();
+        // $('#SignatureItemsTable').DataTable();
 
     };
 

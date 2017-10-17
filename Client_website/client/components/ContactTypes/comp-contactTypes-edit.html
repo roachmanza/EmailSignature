@@ -46,15 +46,8 @@
                 </div>
 
                 <div class="row" style="margin-bottom:3px;" data-bind="visible: inactivechecked">
-                    <!-- <div class="clearfix col-lg-8 col-md-12 p-x-0">
-                        <strong class="col-sm-5 col-xs-12 control-label">Inactive date</strong>
-                        <span class="col-sm-7 col-xs-12">
-                            <input type="text" class="form-control" data-bind="value : inactivedate" /> </span>
-                    </div> -->
                     <div class="clearfix col-lg-8 col-md-12 p-x-0">
                         <strong class="col-sm-12 col-xs-12 control-label" style="color:red">This record is in an inactive state, and will not be available on the dropdown lists.</strong>
-                        <!-- <span class="col-sm-7 col-xs-12">
-                            <input type="text" class="form-control" data-bind="value : inactivedate" /> </span> -->
                     </div>
                 </div>
 
@@ -66,6 +59,7 @@
                         </span>
                     </div>
                 </div>
+                
             </div>
 
             <div data-bind="visible : ContactTypesHasError()">
@@ -78,10 +72,7 @@
             <button class="btn btn-default" data-bind="click: $root.OpenContactTypes">View</button>
             <button class="btn btn-default" data-bind="click: $root.SaveContactTypes">Save</button>
         </div>
-        <hr>
-
-
-    </template>
+     </template>
 
     <!-- Uncomment the link below if this page will be used outside the application.
     This is the path of the js file relative to this html file.

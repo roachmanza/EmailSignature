@@ -50,14 +50,14 @@ function FieldItemsCreateViewModel(hostThisContext) {
         if (self.inactivechecked() === true) {
             inactive = "1"
         };
+        if (!self.fieldtypes()) {
+            self.FieldItemsHasError(true);
+            self.FieldItemsError("Please supply a field type");
+            return;
+        };
         if (!self.languages()) {
             self.FieldItemsHasError(true);
             self.FieldItemsError("Please supply a language");
-            return;
-        };
-        if (!self.fieldtypes()) {
-            self.FieldItemsHasError(true);
-            self.FieldItemsError("Please supply a fieldtype");
             return;
         };
         if (!self.name()) {

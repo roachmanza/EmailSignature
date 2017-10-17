@@ -1,15 +1,13 @@
 <dom-module id="comp-signatureItems-view">
     <style>
-         :host {
+        :host {
             display: block;
         }
     </style>
 
     <template>
         <content></content>
-        <button class="btn btn-default btn-xs" data-bind="click: $root.OpenSignatureItemsList">List</button>
-        <button class="btn btn-default btn-xs" data-bind="click: $root.EditSignatureItems">Edit</button>
-
+        <button class="btn btn-default " data-bind="click: $root.OpenSignatureItemsList">List</button>
         <div data-bind="visible : SignatureItemsHasError()">
             <div data-bind="text: SignatureItemsError()"></div>
         </div>
@@ -24,44 +22,63 @@
         <div data-bind="visible: !SignatureItemsLoading()">
             <div>
                 <div class="row" style="margin-bottom:3px;" data-bind="visible: inactivechecked">
-                    <div class="clearfix col-lg-12 col-md-12 p-x-0">
-                        <span class="glyphicon glyphicon-ban-circle" style="color:red"></span>
-                        <span style="color:red">This item is currenty inactive</span>
-
+                    <div class="clearfix col-lg-8 col-md-12 p-x-0">
+                        <span class="col-sm-12 col-xs-12">
+                            <span class="glyphicon glyphicon-ban-circle" style="color:red"></span>&nbsp;
+                            <span style="color:red">Inactive on </span>
+                            <span style="color:red" data-bind="text : inactivedate, visible: inactivechecked"></span>
+                        </span>
                     </div>
                 </div>
+
 
                 <div class="row" style="margin-bottom:3px;">
                     <div class="clearfix col-lg-8 col-md-12 p-x-0">
                         <strong class="col-sm-5 col-xs-12 control-label">Contact type</strong>
-                        <span class="col-sm-7 col-xs-12"><span data-bind="text : contacttypeidname" /></span> </span>
+                        <span class="col-sm-7 col-xs-12">
+                            <span data-bind="text : contacttypeidname" /></span>
+                        </span>
                     </div>
                 </div>
                 <div class="row" style="margin-bottom:3px;">
                     <div class="clearfix col-lg-8 col-md-12 p-x-0">
                         <strong class="col-sm-5 col-xs-12 control-label">Field item</strong>
-                        <span class="col-sm-7 col-xs-12"><span data-bind="text : fielditemdescription" /></span> </span>
+                        <span class="col-sm-7 col-xs-12">
+                            <span data-bind="text : fielditemdescription" /></span>
+                        </span>
                     </div>
                 </div>
                 <div class="row" style="margin-bottom:3px;">
                     <div class="clearfix col-lg-8 col-md-12 p-x-0">
                         <strong class="col-sm-5 col-xs-12 control-label">Sequence</strong>
-                        <span class="col-sm-7 col-xs-12"><span data-bind="text : sequence" /></span> </span>
+                        <span class="col-sm-7 col-xs-12">
+                            <span data-bind="text : sequence" /></span>
+                        </span>
                     </div>
                 </div>
-                <hr>
-                The label is '<span data-bind="text : fielditemlabel"></span>',and the value is '<span data-bind="text : fielditemvalue"></span>' <br/>
-                Below is an example of what this will look like.<br/>
+                <hr> The label is '
+                <span data-bind="text : fielditemlabel"></span>',and the value is '
+                <span data-bind="text : fielditemvalue"></span>'
+                <br/> Below is an example of what this will look like.
+                <br/>
                 <hr>
                 <div class="row" style="margin-bottom:3px;">
-                    <div class="clearfix col-lg-8 col-md-12 p-x-0">
-                        <strong class="col-sm-5 col-xs-12 control-label"><span data-bind="text : fielditemlabel" /></span></strong>
-                        <span class="col-sm-7 col-xs-12"><span data-bind="text : fielditemvalue" /></span> </span>
+                    <div class="clearfix col-lg-12 col-md-12 p-x-0">
+                        <strong class="col-sm-5 col-xs-12 control-label">
+                            <span data-bind="text : fielditemlabel" /></span>
+                        </strong>
+                        <span class="col-sm-7 col-xs-12">
+                            <span data-bind="text : fielditemvalue" /></span>
+                        </span>
                     </div>
                 </div>
                 <hr>
 
             </div>
+            
+        <button class="btn btn-default" data-bind="click: $root.EditSignatureItems">Edit</button>
+
+        
         </div>
 
     </template>

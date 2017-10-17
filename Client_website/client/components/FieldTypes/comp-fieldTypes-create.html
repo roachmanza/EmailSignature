@@ -1,14 +1,14 @@
 <dom-module id="comp-fieldTypes-create">
     <style>
-         :host {
+        :host {
             display: block;
         }
     </style>
 
     <template>
         <content></content>
-        <button class="btn btn-default btn-xs" data-bind="click: $root.OpenFieldTypesList">Back</button>
-        <button class="btn btn-default btn-xs" data-bind="click: $root.SaveFieldTypes">Save</button>
+        <button class="btn btn-default" data-bind="click: $root.OpenFieldTypesList">List</button>
+
         <hr>
 
         <div class="loader-wrapper p-a-md " data-bind="visible: FieldTypesLoading()">
@@ -21,31 +21,32 @@
 
                 <div class="row" style="margin-bottom:3px;">
                     <div class="clearfix col-lg-8 col-md-12 p-x-0">
-                        <strong class="col-sm-5 col-xs-12 control-label">Name : </strong>
-                        <span class="col-sm-7 col-xs-12"><input type="text" class="form-control" data-bind="value : name" /> </span>
+                        <strong class="col-sm-5 col-xs-12 control-label">Name</strong>
+                        <span class="col-sm-7 col-xs-12">
+                            <input type="text" class="form-control" data-bind="value : name" /> </span>
                     </div>
                 </div>
 
                 <div class="row" style="margin-bottom:3px;">
                     <div class="clearfix col-lg-8 col-md-12 p-x-0">
-                        <strong class="col-sm-5 col-xs-12 control-label">Description : </strong>
-                        <span class="col-sm-7 col-xs-12"><input type="text" class="form-control" data-bind="value : description" /> </span>
+                        <strong class="col-sm-5 col-xs-12 control-label">Description</strong>
+                        <span class="col-sm-7 col-xs-12">
+                            <input type="text" class="form-control" data-bind="value : description" /> </span>
                     </div>
                 </div>
 
-                <div class="row" style="margin-bottom:3px;margin-top:2px;">
-                    <div class="clearfix col-lg-8 col-md-12 p-x-0">
-                        <strong class="col-sm-5 col-xs-12 control-label">Inactive : </strong>
-                        <span class="col-sm-7 col-xs-12"><input type="checkbox" data-bind="checked: inactivechecked" text="inactive"  /> 
-                                            </span>
-                    </div>
-                </div>
             </div>
+
+            <div data-bind="visible : FieldTypesHasError()">
+                <hr>
+                <div style="color:red" data-bind="text: FieldTypesError()"></div>
+            </div>
+            <hr>
+            <button class="btn btn-default " data-bind="click: $root.OpenFieldTypesList">Back</button>
+            <button class="btn btn-default " data-bind="click: $root.SaveFieldTypes">Save</button>
         </div>
-        <hr>
-        <div data-bind="visible : FieldTypesHasError()">
-            <div data-bind="text: FieldTypesError()"></div>
-        </div>
+        
+
 
     </template>
 

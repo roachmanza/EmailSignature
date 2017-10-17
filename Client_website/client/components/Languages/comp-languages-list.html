@@ -7,7 +7,7 @@
 
     <template>
         <content></content>
-        <button class="btn btn-default btn-xs" data-bind="click: $root.CreateLanguages">Add a new language</button>
+        <button class="btn btn-default" data-bind="click: $root.CreateLanguages">Add a new language</button>
 
         <div class="loader-wrapper p-a-md " data-bind="visible: LanguagesLoading()">
             <i class="fa fa-repeat fa-spin fa-1x"></i>
@@ -30,9 +30,7 @@
 
                     <tr>
                         <th style="font-size:12px;width: 5%;" class="hidden-xs">Id</th>
-                        <th style="font-size:12px;width: 15%;">Name</th>
-                        <th style="font-size:12px;width: 25%;">Description</th>
-                        <th style="font-size:12px;width: 20%;">Code</th>
+                        <th style="font-size:12px;width: 60%;">Name</th>
                         <th style="font-size:12px;width: 5%;">Active</th>
                         <th style="font-size:12px;width: 10%;">Actions</th>
                     </tr>
@@ -41,8 +39,6 @@
                     <tr>
                         <td style="font-size:12px;" data-bind="text : languageid" class="hidden-xs"></td>
                         <td style="font-size:12px;" data-bind="text : name"></td>
-                        <td style="font-size:12px;" data-bind="text : description"></td>
-                        <td style="font-size:12px;" data-bind="text : code"></td>
                         <td style="font-size:12px;">
                             <span class="glyphicon glyphicon-ok-circle" style="color:green" data-bind="visible : !inactivechecked"></span>
                             <span class="glyphicon glyphicon-ban-circle" style="color:red" data-bind="visible : inactivechecked"></span>

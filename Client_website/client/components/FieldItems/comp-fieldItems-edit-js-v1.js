@@ -26,6 +26,7 @@ function FieldItemsEditViewModel(hostThisContext) {
         parent = parentContext;
         environment = env;
         self.ApiBaseUri(applicationTools.baseUrl(environment));
+        self.PopulateForm();
     };
 
     self.OpenFieldItemsList = function () {
@@ -103,7 +104,9 @@ function FieldItemsEditViewModel(hostThisContext) {
         }
     };
 
-    
+    self.PopulateForm = function(){
+        self.GetLanguages();
+    };
     self.GetFieldItemsById = function () {
         self.FieldItemsLoading(true);
         self.FieldItemsList.removeAll();
@@ -185,6 +188,7 @@ function FieldItemsEditViewModel(hostThisContext) {
                 var dataItem = data[i];
                 self.availableLanguages.push(dataItem);
             }
+            self.GetFieldTypes();
         }
     };
     self.getLanguagesItem = function (id) {
@@ -213,6 +217,7 @@ function FieldItemsEditViewModel(hostThisContext) {
                 var dataItem = data[i];
                 self.availableFieldTypes.push(dataItem);
             }
+            self.GetFieldItemsById();
         }
     };
     self.getFieldTypesItem = function (id) {

@@ -1,14 +1,13 @@
 <dom-module id="comp-fieldTypes-view">
     <style>
-         :host {
+        :host {
             display: block;
         }
     </style>
 
     <template>
         <content></content>
-        <button class="btn btn-default btn-xs" data-bind="click: $root.OpenFieldTypesList">List</button>
-        <button class="btn btn-default btn-xs" data-bind="click: $root.EditFieldTypes">Edit</button>
+        <button class="btn btn-default " data-bind="click: $root.OpenFieldTypesList">List</button>
 
         <div data-bind="visible : FieldTypesHasError()">
             <div data-bind="text: FieldTypesError()"></div>
@@ -23,36 +22,35 @@
 
         <div data-bind="visible: !FieldTypesLoading()">
             <div>
-
-                <div class="row" style="margin-bottom:3px;">
-                    <div class="clearfix col-lg-8 col-md-12 p-x-0">
-                        <strong class="col-sm-5 col-xs-12 control-label">Name : </strong>
-                        <span class="col-sm-7 col-xs-12"><input type="text" class="form-control" data-bind="value : name" disabled="disabled"/> </span>
-                    </div>
-                </div>
-
-                <div class="row" style="margin-bottom:3px;">
-                    <div class="clearfix col-lg-8 col-md-12 p-x-0">
-                        <strong class="col-sm-5 col-xs-12 control-label">Description : </strong>
-                        <span class="col-sm-7 col-xs-12"><input type="text" class="form-control" data-bind="value : description" disabled="disabled"/> </span>
-                    </div>
-                </div>
-
                 <div class="row" style="margin-bottom:3px;" data-bind="visible: inactivechecked">
                     <div class="clearfix col-lg-8 col-md-12 p-x-0">
-                        <strong class="col-sm-5 col-xs-12 control-label">Inactive date : </strong>
-                        <span class="col-sm-7 col-xs-12"><input type="text" class="form-control" data-bind="value : inactivedate" disabled="disabled"/> </span>
+                        <span class="col-sm-12 col-xs-12">
+                            <span class="glyphicon glyphicon-ban-circle" style="color:red"></span>&nbsp;
+                            <span style="color:red">Inactive on </span>
+                            <span style="color:red" data-bind="text : inactivedate, visible: inactivechecked"></span>
+                        </span>
                     </div>
                 </div>
 
-                <div class="row" style="margin-bottom:3px;margin-top:2px;">
+                <div class="row" style="margin-bottom:3px;">
                     <div class="clearfix col-lg-8 col-md-12 p-x-0">
-                        <strong class="col-sm-5 col-xs-12 control-label">Inactive : </strong>
-                        <span class="col-sm-7 col-xs-12"><input type="checkbox" data-bind="checked: inactivechecked" text="inactive"  disabled="disabled" /> 
-                            </span>
+                        <strong class="col-sm-5 col-xs-12 control-label">Name</strong>
+                        <span class="col-sm-7 col-xs-12">
+                                <span class="col-sm-7 col-xs-12" data-bind="text : name"> </span>
                     </div>
                 </div>
+
+                <div class="row" style="margin-bottom:3px;">
+                    <div class="clearfix col-lg-8 col-md-12 p-x-0">
+                        <strong class="col-sm-5 col-xs-12 control-label">Description</strong>
+                        <span class="col-sm-7 col-xs-12">
+                                <span class="col-sm-7 col-xs-12" data-bind="text : description"> </span>
+                    </div>
+                </div>
+
             </div>
+            <hr>
+            <button class="btn btn-default " data-bind="click: $root.EditFieldTypes">Edit</button>
         </div>
 
     </template>

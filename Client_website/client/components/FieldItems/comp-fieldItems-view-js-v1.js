@@ -50,9 +50,9 @@ function FieldItemsViewViewModel(hostThisContext) {
 
     self.fielditemid = ko.observable("");
     self.languageid = ko.observable("");
-    self.languageidstring = ko.observable("");
+    self.languageidname = ko.observable("");
     self.fieldtypeid = ko.observable("");
-    self.fieldtypeidstring = ko.observable("");
+    self.fieldtypeidname = ko.observable("");
     self.name = ko.observable("");
     self.description = ko.observable("");
     self.label = ko.observable("");
@@ -67,9 +67,9 @@ function FieldItemsViewViewModel(hostThisContext) {
                 var data = result.data.data;
                 self.fielditemid(data[0].fielditemid);
                 self.languageid(data[0].languageid);
-                self.languageidstring(data[0].languageidstring);
+                self.languageidname(data[0].languageidname);
                 self.fieldtypeid(data[0].fieldtypeid);
-                self.fieldtypeidstring(data[0].fieldtypeidstring);
+                self.fieldtypeidname(data[0].fieldtypeidname);
                 self.name(data[0].name);
                 self.description(data[0].description);
                 self.label(data[0].label);

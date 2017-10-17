@@ -1,6 +1,6 @@
 <dom-module id="comp-signatureItems-base">
     <style>
-         :host {
+        :host {
             display: block;
         }
     </style>
@@ -18,54 +18,31 @@
             <div class="row" style="margin-bottom:3px;">
                 <div class="clearfix col-lg-8 col-md-12 p-x-0">
                     <strong class="col-sm-5 col-xs-12 control-label">Contact type</strong>
-                    <span class="col-sm-4 col-xs-12"><select class="form-control" data-bind="options: availableContactTypes, optionsText: 'name', value: contacttypes, optionsCaption: 'Please select...'"  ></select></span>
-                    <span class="col-sm-3 col-xs-12">
-                        <button class="btn btn-default btn-xs" data-bind="click: $root.ViewSignature">View signature</button>
+                    <span class="col-sm-4 col-xs-12">
+                        <select class="form-control" data-bind="options: availableContactTypes, optionsText: 'name', value: contacttypes, optionsCaption: 'Please select...', event:{ change: $root.ViewSignature}"></select>
                     </span>
+
                 </div>
             </div>
         </div>
 
-        <div class="table-responsive" data-bind="visible : signaturesList().length > 0 && !SignatureItemsLoading()">
-
-            <div class="well">
-
-                <div data-bind="foreach : signaturesList()">
-
-                    <div class="row" style="margin-bottom:3px;">
-                        <div class="clearfix col-lg-8 col-md-12 p-x-0">
-                            <strong class="col-sm-5 col-xs-12 control-label">
-                                <span data-bind="text : fielditemlabel"></span>
-                            </strong>
-                            <span class="col-sm-7 col-xs-12"><span data-bind="text : fielditemvalue" /></span> </span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-
-            <table class="table  table-striped">
-                <thead>
-
-                    <tr>
-                        <th style="font-size:12px;width: 50%;">Label</th>
-                        <th style="font-size:12px;width: 50%;">Value</th>
-                    </tr>
-                </thead>
-                <tbody data-bind="foreach : signaturesList()">
-                    <tr>
-                        <td style="font-size:12px;" data-bind="text : fielditemlabel" class="hidden-xs"></td>
-                        <td style="font-size:12px;" data-bind="text : fielditemvalue"></td>
-                        <!-- signaturesList
-                        <td>d</td>
-                        <td>d</td> -->
-                    </tr>
-                </tbody>
-
-            </table>
-        </div>
         <hr>
+
+        <div data-bind="foreach : signaturesList()">
+
+            <div class="row">
+
+                <strong class="col-xs-12 col-sm-12 col-lg-6 control-label">
+                    <span data-bind="text : fielditemlabel"></span>
+                </strong>
+                <span class="col-xs-12 col-sm-12 col-lg-6">
+                    <span data-bind="text : fielditemvalue"></span>
+                </span>
+            </div>
+        </div>
+
+        <hr>
+
         <div data-bind="visible : signaturesList().length < 1 && !SignatureItemsLoading()" class="alert alert-info m-t alert-dismissible"
             role="alert" role="alert">
             <div class="fa fa-info-circle fa-lg alert-icon"></div>
