@@ -26,6 +26,7 @@ exports.create_a_ContactType = function (req, callback) {
     dataGet('SELECT "EmailAddress" FROM public."ContactTypes" where "EmailAddress" = \'' + email + '\'',
         function (findResults, haserror, code) {
             if (haserror) {
+                //no records found occured
                 if (findResults === 'No records found') {
                     dataGet(tableCount,
                         function (numberResults, haserror, code) {
