@@ -16,6 +16,10 @@ webserver.use(bodyParser.json());
 webserver.get('/client/content/css/default', function (req, res) {
     res.sendFile(path.join(__dirname + '/client/content/css/client.css'));
 });
+webserver.get('/client/content/css/bootstrap', function (req, res) {
+    res.sendFile(path.join(__dirname + '/client/content/css/bootstrap.css'));
+});
+
 webserver.get('/client/content/img/favicon', function (req, res) {
     res.sendFile(path.join(__dirname + '/client/content/img/MailIcon24.png'));
 });
@@ -30,6 +34,14 @@ webserver.get('/client/content/js/default', function (req, res) {
 webserver.get('/client/content/js/bootstrap', function (req, res) {
     res.sendFile(path.join(__dirname + '/client/content/js/bootstrap.min.js'));
 });
+webserver.get('/client/content/js/jquery', function (req, res) {
+    res.sendFile(path.join(__dirname + '/client/content/js/jquery.js'));
+});
+webserver.get('/client/content/js/knockout', function (req, res) {
+    res.sendFile(path.join(__dirname + '/client/content/js/knockout.js'));
+});
+
+
 webserver.get('/client/content/js/webcomponentslite', function (req, res) {
     res.sendFile(path.join(__dirname + '/client/content/js/webcomponents-lite.js'));
 });
