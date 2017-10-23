@@ -9,39 +9,19 @@
 	"basePath": "/MailEnhancement/api/v1/",
 	"tags": [
 		{"name": "ContactTypes",
-			"description": "Contact types with email address linked to contact type. Email must be unique",
-			"externalDocs": {
-				"description": "Base",
-				"url": "http://devtest.mmiholdings.co.za:4010/"
-			}
+			"description": "Contact types with email address linked to contact type. Email must be unique"
 		},
 		{"name": "FieldTypes",
-			"description": "Create a new field type for example operating hours, text, email , contact number, etc.",
-			"externalDocs": {
-				"description": "Base",
-				"url": "http://devtest.mmiholdings.co.za:4010/"
-			}
+			"description": "Create a new field type for example operating hours, text, email , contact number, etc."
 		},
 		{"name": "Languages",
-			"description": "Available languages. The language can be used in combination with the email to get signature items of that contact type and language combination.",
-			"externalDocs": {
-				"description": "Base",
-				"url": "http://devtest.mmiholdings.co.za:4010/"
-			}
+			"description": "Available languages. The language can be used in combination with the email to get signature items of that contact type and language combination."
 		},		
 		{"name": "FieldItems",
-			"description": "Re-usable items to build up a signature. The item language will be used as a parameter, so you can have multiple items of the same field type, with different languages.",
-			"externalDocs": {
-				"description": "Base",
-				"url": "http://devtest.mmiholdings.co.za:4010/"
-			}
+			"description": "Re-usable items to build up a signature. The item language will be used as a parameter, so you can have multiple items of the same field type, with different languages."
 		},
 		{"name": "SignatureItems",
-			"description": "Signature items is a combination of a contact type and a field item, to create a signature item, a signature consists of multiple signature items. Various methods are available to get return lists as needed.",
-			"externalDocs": {
-				"description": "Base",
-				"url": "http://devtest.mmiholdings.co.za:4010/"
-			}
+			"description": "Signature items is a combination of a contact type and a field item, to create a signature item, a signature consists of multiple signature items. Various methods are available to get return lists as needed."
 		}
 		
 	],
@@ -794,6 +774,13 @@
 					"description": "EmailAddress of signature items that needs to be fetched",
 					"required": true,
 					"type": "string"
+					},
+					{
+					"name": "languagecode",
+					"in": "query",
+					"description": "languagecode of signature items that needs to be fetched",
+					"required": false,
+					"type": "string"
 					}
 				],
 				"responses": {
@@ -837,6 +824,31 @@
 					"type": "string"
 					}
 				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					}
+				}
+			}
+		
+		},
+		
+		"/SignatureItemsContactTypeList": {
+		
+			"get": {
+				"tags": [
+					"SignatureItems"
+				],
+				"description": "Get the full signature item back for the email address and language supplied, with all the extra data for use in front end applications for styling etc.",
 				"responses": {
 					"200": {
 						"description": "OK"
@@ -919,6 +931,9 @@
 					},
 					"400": {
 						"description": "Bad Request"
+					},
+					"503": {
+						"description": "Service Unavailable"
 					}
 				}
 			},
@@ -944,6 +959,9 @@
 					},
 					"400": {
 						"description": "Bad Request"
+					},
+					"503": {
+						"description": "Service Unavailable"
 					}
 				}
 			}
@@ -1106,7 +1124,13 @@
 					"type": "integer",
 					"format": "int32",
 					"example": 1
+				},
+				"inactive": {
+					"type": "string",
+					"example": "0"
 				}
+				
+				
 			}
 		}
 	
