@@ -70,7 +70,9 @@
                 <div class="row" style="margin-bottom:3px;">
                     <div class="clearfix col-lg-8 col-md-12 p-x-0">
                         <strong class="col-sm-5 col-xs-12 control-label">Value</strong>
-                        <span class="col-sm-7 col-xs-12" data-bind="text : value"> </span>
+                        <span class="col-sm-7 col-xs-12" data-bind="text : value,  visible: fieldtypeidname() != 'Image'"></span>
+                        <img data-bind="attr:{src: value}, visible: fieldtypeidname() == 'Image'" />
+
                     </div>
                 </div>
                 <div class="row" style="margin-bottom:3px;">
