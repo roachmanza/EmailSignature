@@ -12,6 +12,7 @@ module.exports = function (queryString, callback) {
     var connection = "postgres://" + username + ":" + password + "@" + host + ":" + port + "/" + database;
     var client = new pg.Client(connection);
     client.connect(function (err) {
+        console.log(queryString);
         if (err) {
             jsonReturnResult = JSON.parse(JSON.stringify(err.message));;
             client.end();

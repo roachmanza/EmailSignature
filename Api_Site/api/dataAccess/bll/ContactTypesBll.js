@@ -125,11 +125,6 @@ exports.update_a_ContactType = function (req, callback) {
         }
 
     });
-
-
-
-
- 
 };
 
 exports.delete_a_ContactType = function (req, callback) {

@@ -1,18 +1,18 @@
+var httpsetup = require('./config/httpsetup');
 var express = require('express');
 var cors = require('cors');
 var webserver = express();
-var port = process.env.PORT || 4010;
+var port = process.env.PORT || httpsetup.http_port;
 var bodyParser = require('body-parser');
 var path = require('path');
 const swaggerUi = require('swagger-ui-express');
-var config = require('config');
 
 
 //CORS
 var allowCrossDomain = function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-  res.header('Access-Control-Allow-Headers', 'Content-Type,MMI-Authorization-Claims');
+  res.header('Access-Control-Allow-Origin', httpsetup.cors_allow_origin );
+  res.header('Access-Control-Allow-Methods', httpsetup.cors_allow_methods );
+  res.header('Access-Control-Allow-Headers', httpsetup.cors_allow_headers );
   // intercept OPTIONS method
   if ('OPTIONS' == req.method) {
     res.sendStatus(200);

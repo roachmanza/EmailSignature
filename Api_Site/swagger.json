@@ -5,39 +5,39 @@
 		"version": "1.0.0",
 		"title": "Mail enhancement API documentation"
 	},
-	"host": "devtest.mmiholdings.co.za:4010",
+	"host": "localhost:4010",
 	"basePath": "/MailEnhancement/api/v1/",
 	"tags": [
 		{"name": "ContactTypes",
-			"description": "Contact types with email address linked to contact type.",
+			"description": "Contact types with email address linked to contact type. Email must be unique",
 			"externalDocs": {
 				"description": "Base",
 				"url": "http://devtest.mmiholdings.co.za:4010/"
 			}
 		},
 		{"name": "FieldTypes",
-			"description": "Field types.",
+			"description": "Create a new field type for example operating hours, text, email , contact number, etc.",
 			"externalDocs": {
 				"description": "Base",
 				"url": "http://devtest.mmiholdings.co.za:4010/"
 			}
 		},
 		{"name": "Languages",
-			"description": "Languages that can be chosen from.",
+			"description": "Available languages. The language can be used in combination with the email to get signature items of that contact type and language combination.",
 			"externalDocs": {
 				"description": "Base",
 				"url": "http://devtest.mmiholdings.co.za:4010/"
 			}
 		},		
 		{"name": "FieldItems",
-			"description": "Field items that can be chosen from.",
+			"description": "Re-usable items to build up a signature. The item language will be used as a parameter, so you can have multiple items of the same field type, with different languages.",
 			"externalDocs": {
 				"description": "Base",
 				"url": "http://devtest.mmiholdings.co.za:4010/"
 			}
 		},
 		{"name": "SignatureItems",
-			"description": "Signature items that can be chosen from.",
+			"description": "Signature items is a combination of a contact type and a field item, to create a signature item, a signature consists of multiple signature items. Various methods are available to get return lists as needed.",
 			"externalDocs": {
 				"description": "Base",
 				"url": "http://devtest.mmiholdings.co.za:4010/"
@@ -50,28 +50,7 @@
 	],
 	"paths": {
 		"/ContactTypes": {
-			"get": {
-				"tags": [
-					"ContactTypes"
-				],
-				"description": "Get all the contact types from the database.",
-				"parameters": [],
-				"responses": {
-					"200": {
-						"description": "OK"
-					},
-					"400": {
-						"description": "Bad Request"
-					},
-					"404": {
-						"description": "Not Found"
-					},
-					"503": {
-						"description": "Service Unavailable"
-					}
-				}
-			},
-
+		
 			"post": {
 				"tags": [
 					"ContactTypes"
@@ -95,11 +74,37 @@
 					"400": {
 						"description": "Bad Request"
 					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					}
+				}
+			},
+			
+			"get": {
+				"tags": [
+					"ContactTypes"
+				],
+				"description": "Get all the contact types from the database.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"404": {
+						"description": "Not Found"
+					},
 					"503": {
 						"description": "Service Unavailable"
 					}
 				}
 			}
+
 
 		},
 		"/ContactTypes/EmailAddress/{EmailAddress}": {
@@ -228,29 +233,14 @@
 				}
 			}
 		},
-		
+				
 		"/FieldTypes": {
-			"get": {
-				"tags": [
-					"FieldTypes"
-				],
-				"description": "Get all the field types from the database.",
-				"parameters": [],
-				"responses": {
-					"200": {
-						"description": "OK"
-					},
-					"400": {
-						"description": "Bad Request"
-					}
-				}
-			},
-
+		
 			"post": {
 				"tags": [
 					"FieldTypes"
 				],
-				"description": "Create a new field type on the database.",
+				"description": "Create a new field type for example operating hours, text, email , contact number, etc.",
 				"parameters": [
 					{
 						"in": "body",
@@ -268,6 +258,31 @@
 					},
 					"400": {
 						"description": "Bad Request"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					}
+				}
+			},
+
+			"get": {
+				"tags": [
+					"FieldTypes"
+				],
+				"description": "Get all the field types from the database.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"503": {
+						"description": "Service Unavailable"
 					}
 				}
 			}
@@ -295,6 +310,12 @@
 					},
 					"400": {
 						"description": "Bad Request"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"503": {
+						"description": "Service Unavailable"
 					}
 				}
 			},
@@ -328,6 +349,9 @@
 					},
 					"400": {
 						"description": "Bad Request"
+					},
+					"503": {
+						"description": "Service Unavailable"
 					}
 				}
 			},
@@ -352,28 +376,16 @@
 					},
 					"400": {
 						"description": "Bad Request"
+					},
+					"503": {
+						"description": "Service Unavailable"
 					}
 				}
 			}
 		},
 		
 		"/Languages": {
-			"get": {
-				"tags": [
-					"Languages"
-				],
-				"description": "Get all the languages from the database.",
-				"parameters": [],
-				"responses": {
-					"200": {
-						"description": "OK"
-					},
-					"400": {
-						"description": "Bad Request"
-					}
-				}
-			},
-
+		
 			"post": {
 				"tags": [
 					"Languages"
@@ -396,9 +408,35 @@
 					},
 					"400": {
 						"description": "Bad Request"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					}
+				}
+			},
+			
+			"get": {
+				"tags": [
+					"Languages"
+				],
+				"description": "Get all the languages from the database.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"503": {
+						"description": "Service Unavailable"
 					}
 				}
 			}
+
 
 		},
 		"/Languages/{Id}": {
@@ -423,6 +461,12 @@
 					},
 					"400": {
 						"description": "Bad Request"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"503": {
+						"description": "Service Unavailable"
 					}
 				}
 			},
@@ -456,7 +500,11 @@
 					},
 					"400": {
 						"description": "Bad Request"
+					},
+					"503": {
+						"description": "Service Unavailable"
 					}
+				
 				}
 			},
 			"delete": {
@@ -480,18 +528,52 @@
 					},
 					"400": {
 						"description": "Bad Request"
+					},
+					"503": {
+						"description": "Service Unavailable"
 					}
+				
 				}
 			}
 		},
 		
 		
-		"/SignatureItems": {
+		"/FieldItems": {
+		
+			"post": {
+				"tags": [
+					"FieldItems"
+				],
+				"description": "Create a new  field item  on the database.",
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"description": " field item  that needs to be added to the system",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/FieldItemsModel"
+						}
+					}
+				],
+				"responses": {
+					"201": {
+						"description": "Created"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					}
+				}
+			},
+			
 			"get": {
 				"tags": [
-					"SignatureItems"
+					"FieldItems"
 				],
-				"description": "Get all the signature items from the database.",
+				"description": "Get all the  field item  from the database.",
 				"parameters": [],
 				"responses": {
 					"200": {
@@ -499,10 +581,121 @@
 					},
 					"400": {
 						"description": "Bad Request"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					}
+				}
+			}
+
+
+		},
+		"/FieldItems/{Id}": {
+			"get": {
+				"tags": [
+					"FieldItems"
+				],
+				"description": "Get the  field item  from the database by the id.",
+				"parameters": [
+					{
+					"name": "Id",
+					"in": "path",
+					"description": "Id of  field item  that needs to be fetched",
+					"required": true,
+					"type": "integer",
+					"format": "int32"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"503": {
+						"description": "Service Unavailable"
 					}
 				}
 			},
-
+			
+			"put":{
+				"tags": [
+					"FieldItems"
+				],
+				"description": "Update a  field item  record on the database.",
+				"parameters": [
+					{
+					"name": "Id",
+					"in": "path",
+					"description": "Id of  field item  that needs to be edited",
+					"required": true,
+					"type": "integer",
+					"format": "int32"
+					},
+					{
+						"in": "body",
+						"name": "body",
+						"description": " field item  that needs to be edited",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/FieldItemsModel"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					}
+				
+				}
+			},
+			
+			"delete": {
+				"tags": [
+					"FieldItems"
+				],
+				"description": "Delete a field item record from the database.",
+				"parameters": [
+					{
+					"name": "Id",
+					"in": "path",
+					"description": "Id of  field item  that needs to be removed",
+					"required": true,
+					"type": "integer",
+					"format": "int32"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					}
+				
+				}
+			}
+		},
+		
+				
+		"/SignatureItems": {
+	
 			"post": {
 				"tags": [
 					"SignatureItems"
@@ -525,12 +718,146 @@
 					},
 					"400": {
 						"description": "Bad Request"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					}
+				}
+			},
+		
+			"get": {
+				"tags": [
+					"SignatureItems"
+				],
+				"description": "Get all the signature items from the database. This is the base values , as they are mapped from contact type to field item. The contact name and field item name is returned.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"503": {
+						"description": "Service Unavailable"
 					}
 				}
 			}
 
 		},
+
+		"/SignatureItems/ContactTypes/{Id}": {
+			
+			"get": {
+				"tags": [
+					"SignatureItems"
+				],
+				"description": "Get the full signature item back for the contact type id supplied, with all the extra data for use in front end applications for styling etc.",
+				"parameters": [
+					{
+					"name": "Id",
+					"in": "path",
+					"description": "Id of signature item's contact types that needs to be fetched",
+					"required": true,
+					"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					}
+				}
+			}
+			
+		},
+		
+		"/SignatureItems/EmailAddress/{EmailAddress}": {
+		
+			"get": {
+				"tags": [
+					"SignatureItems"
+				],
+				"description": "Get the full signature item back for the email address supplied, with all the extra data for use in front end applications for styling etc. Brings back all the data, in all languages.",
+				"parameters": [
+					{
+					"name": "EmailAddress",
+					"in": "path",
+					"description": "EmailAddress of signature items that needs to be fetched",
+					"required": true,
+					"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					}
+				}
+			}
+		
+		},	
+		
+		"/SignatureItems/EmailAddress/{EmailAddress}/LanguageCode/{LanguageCode}": {
+		
+			"get": {
+				"tags": [
+					"SignatureItems"
+				],
+				"description": "Get the full signature item back for the email address and language supplied, with all the extra data for use in front end applications for styling etc.",
+				"parameters": [
+					{
+					"name": "EmailAddress",
+					"in": "path",
+					"description": "EmailAddress of signature items that needs to be fetched",
+					"required": true,
+					"type": "string"
+					},
+					{
+					"name": "LanguageCode",
+					"in": "path",
+					"description": "LanguageCode of signature items that needs to be fetched",
+					"required": true,
+					"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"503": {
+						"description": "Service Unavailable"
+					}
+				}
+			}
+		
+		},
+		
+		
 		"/SignatureItems/{Id}": {
+			
 			"get": {
 				"tags": [
 					"SignatureItems"
@@ -552,9 +879,16 @@
 					},
 					"400": {
 						"description": "Bad Request"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"503": {
+						"description": "Service Unavailable"
 					}
 				}
 			},
+			
 			"put":{
 				"tags": [
 					"SignatureItems"
@@ -588,6 +922,7 @@
 					}
 				}
 			},
+			
 			"delete": {
 				"tags": [
 					"SignatureItems"
@@ -612,58 +947,8 @@
 					}
 				}
 			}
-		},
-		"/SignatureItems/EmailAddress/{EmailAddress}": {
-			"get": {
-				"tags": [
-					"SignatureItems"
-				],
-				"description": "Get all the signature items records from the database that has the supplied email address.",
-				"parameters": [
-					{
-					"name": "EmailAddress",
-					"in": "path",
-					"description": "EmailAddress of signature items that needs to be fetched",
-					"required": true,
-					"type": "string"
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "OK"
-					},
-					"400": {
-						"description": "Bad Request"
-					}
-				}
-			}
-		},		
-		"/SignatureItems/ContactTypes/{Id}": {
-			"get": {
-				"tags": [
-					"SignatureItems"
-				],
-				"description": "Get all the signature items records from the database that has the supplied email address.",
-				"parameters": [
-					{
-					"name": "Id",
-					"in": "path",
-					"description": "Id of signature item's contact types that needs to be fetched",
-					"required": true,
-					"type": "string"
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "OK"
-					},
-					"400": {
-						"description": "Bad Request"
-					}
-				}
-			}
+			
 		}
-		
 		
 		
 	
@@ -672,6 +957,7 @@
 	
 	},
 	"definitions": {
+	
 		"ContactTypesModel": {
 			"type": "object",
 			"required": [
@@ -691,7 +977,12 @@
 				"email": {
 					"type": "string",
 					"example": "emailAddress"
+				},
+				"inactive": {
+					"type": "string",
+					"example": "0"
 				}
+				
 			}
 		},
 		
@@ -710,7 +1001,7 @@
 					"type": "string",
 					"example": "description"
 				},
-				"inActive": {
+				"inactive": {
 					"type": "string",
 					"example": "0"
 				}
@@ -737,62 +1028,42 @@
 					"type": "string",
 					"example": "code"
 				},
-				"inActive": {
+				"inactive": {
 					"type": "string",
 					"example": "0"
 				}
 			}
 		},	
 		
-		"SignatureItemsModel": {
+		"FieldItemsModel": {
 			"type": "object",
 			"required": [
-				"contactTypeId",
-				"fieldTypeId",
-				"languageId",
-				"csiContactCategoryId",
-				"csiContactTypeId",
-				"csiMainContactTypeId",
-				"sequence",
+				"languageid",
+				"fieldtypeid",
+				"name",
+				"description",
 				"label",
 				"value",
-				"printFormat"
+				"printformat"
 			],
 			"properties": {
-				"contactTypeId": {
+				"languageid": {
 					"type": "integer",
 					"format": "int32",
 					"example": 1
 				},
-				"fieldTypeId": {
+				"fieldtypeid": {
 					"type": "integer",
 					"format": "int32",
 					"example": 1
 				},
-				"languageId": {
-					"type": "integer",
-					"format": "int32",
-					"example": 1
+				"name": {
+					"type": "string",
+					"example": "name"
 				},
-				"csiContactCategoryId": {
-					"type": "integer",
-					"format": "int32",
-					"example": 1
-				},
-				"csiContactTypeId": {
-					"type": "integer",
-					"format": "int32",
-					"example": 1
-				},
-				"csiMainContactTypeId": {
-					"type": "integer",
-					"format": "int32",
-					"example": 1
-				},
-				"sequence": {
-					"type": "integer",
-					"format": "int32",
-					"example": 1
+				"description": {
+					"type": "string",
+					"example": "description"
 				},
 				"label": {
 					"type": "string",
@@ -802,22 +1073,42 @@
 					"type": "string",
 					"example": "value"
 				},
-				"printFormat": {
+				"printformat": {
 					"type": "string",
-					"example": "printFormat"
+					"example": "printformat"
 				},
-				"inActive": {
+				"inactive": {
 					"type": "string",
 					"example": "0"
 				}
 			}
+		},	
+		
+		"SignatureItemsModel": {
+			"type": "object",
+			"required": [
+				"contacttypeid",
+				"fielditemid",
+				"sequence"
+			],
+			"properties": {
+				"contacttypeid": {
+					"type": "integer",
+					"format": "int32",
+					"example": 1
+				},
+				"fielditemid": {
+					"type": "integer",
+					"format": "int32",
+					"example": 1
+				},
+				"sequence": {
+					"type": "integer",
+					"format": "int32",
+					"example": 1
+				}
+			}
 		}
-	
-	
-	
-	
-	
-	
 	
 	}
 }

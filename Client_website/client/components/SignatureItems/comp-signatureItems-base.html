@@ -29,14 +29,13 @@
         <hr>
 
         <div data-bind="foreach : signaturesList()">
-
             <div class="row">
-
                 <strong class="col-xs-12 col-sm-12 col-lg-6 control-label">
                     <span data-bind="text : fielditemlabel"></span>
                 </strong>
                 <span class="col-xs-12 col-sm-12 col-lg-6">
-                    <span data-bind="text : fielditemvalue"></span>
+                    <span data-bind="text : fielditemvalue, visible: fielditemfieldtypename != 'Image'"></span>
+                    <img data-bind="attr:{src: fielditemvalue}, visible: fielditemfieldtypename == 'Image'" />
                 </span>
             </div>
         </div>
