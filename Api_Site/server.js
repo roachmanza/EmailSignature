@@ -50,7 +50,6 @@ webserver.get('/specification', function (req, res) { res.sendFile(path.join(__d
 webserver.listen(port);
 console.log('RESTful API server started on: ' + port);
 
-
 //API's
 //Apis are defined as /MailEnhancement/api/v1/ for the version and to denote that you are calling an api
 //1.1 Db table
@@ -65,37 +64,9 @@ fieldTypesRoutes(webserver);
 var languagesRoutes = require('./api/routes/LanguagesRoutes');
 languagesRoutes(webserver);
 
-//1.4 Db table
-var csiContactCategoriesRoutes = require('./api/routes/CsiContactCategoriesRoutes');
-csiContactCategoriesRoutes(webserver);
-
-//1.5 Db table
-var csiMainContactTypesRoutes = require('./api/routes/CsiMainContactTypesRoutes');
-csiMainContactTypesRoutes(webserver);
-
-
-//2.1 Db table
-var csiContactCategoryMappingsRoutes = require('./api/routes/CsiContactCategoryMappingsRoutes');
-csiContactCategoryMappingsRoutes(webserver);
-
-//2.2 Db table
-var csiContactTypesRoutes = require('./api/routes/CsiContactTypesRoutes');
-csiContactTypesRoutes(webserver);
-
-//2.3 Db table
-var awdContactTypeMappingsRoutes = require('./api/routes/AwdContactTypeMappingsRoutes');
-awdContactTypeMappingsRoutes(webserver);
-
-//2.4 Db table
-var csiContactTypeMappingsRoutes = require('./api/routes/CsiContactTypeMappingsRoutes');
-csiContactTypeMappingsRoutes(webserver);
-
 //2.5 Db table
 var fieldItemsRoutes = require('./api/routes/FieldItemsRoutes');
 fieldItemsRoutes(webserver);
-
-
-
 
 //2.1 Db table
 var signatureItemsRoutes = require('./api/routes/SignatureItemsRoutes');
