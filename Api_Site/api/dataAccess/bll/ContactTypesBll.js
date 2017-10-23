@@ -6,7 +6,7 @@ var tableSelect =
     ' CT."EmailAddress" as EmailAddress,' +
     ' CT."InActiveDate" as InActiveDate,' +
     ' CT."InActive" as InActive' +
-    ' FROM public."ContactTypes" AS CT';
+    ' FROM public."ContactTypes" AS CT ';
 
 var tableCount = 'SELECT "ContactTypeId" FROM public."ContactTypes" order by "ContactTypeId" desc LIMIT 1';
 

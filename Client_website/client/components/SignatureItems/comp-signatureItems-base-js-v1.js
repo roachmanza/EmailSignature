@@ -14,8 +14,9 @@ function SignatureItemsListViewModel(hostThisContext) {
     self.SignatureItemsList = ko.observableArray([]);
 
     self.apiUrl = {
-        getAllSignatureItemsForContactType: "api/v1/SignatureItems/ContactTypes",
-        getAllContactTypes: "api/v1/ContactTypes"
+        getAllSignatureItemsForContactType: "api/v1/SignatureItems/EmailAddress",
+        getAllContactTypes: "api/v1/ContactTypes",
+        getAllLanguages : "api/v1/Languages"
     }
     //Initialize and get the nominations
     self.Initialize = function (env, parentContext, model) {
@@ -33,10 +34,16 @@ function SignatureItemsListViewModel(hostThisContext) {
             self.SignatureItemsError("Please select a contact type");
             return;
         };
-        var id = self.contacttypes().contacttypeid;
+        if (!self.languages()) {
+            self.SignatureItemsHasError(true);
+            self.SignatureItemsError("Please select a language");
+            return;
+        };
+        var id = self.contacttypes().emailaddress;
+        var langcode = self.languages().code
         self.signaturesList.removeAll();
         var headers = [applicationTools.appAuth.claimsHeader([applicationTools.appAuth.domainNameClaim("metmom\\roolivier")])];
-        var url = self.ApiBaseUri() + self.apiUrl.getAllSignatureItemsForContactType + "/"+ id;
+        var url = self.ApiBaseUri() + self.apiUrl.getAllSignatureItemsForContactType + "/"+ id+"/LanguageCode/"+langcode;
         console.log("Getting all people : for " + currentDomainLogin);
         ajaxAsync.ajaxGet(self, self._populateSignatureItems, url, null, null, null, headers);
     };
@@ -100,5 +107,32 @@ function SignatureItemsListViewModel(hostThisContext) {
     };
 
 
+    //Get the ContactTypes dropdown
+    self.availableLanguages = ko.observableArray([{name : 'NONE AVAILABLE'}]);
+    self.languages = ko.observable("");
+    self.GetLanguages = function () {
+        self.availableLanguages.removeAll();
+        var url = "";
+        var headers = [applicationTools.appAuth.claimsHeader([applicationTools.appAuth.domainNameClaim(currentDomainLogin)])];
+        url = self.ApiBaseUri() + self.apiUrl.getAllLanguages;
+        ajaxAsync.ajaxGet(self, self._GetLanguages, url, null, null, null, headers);
+    };
+    self._GetLanguages = function (result) {
+        if (result.success) {
+            var data = result.data.data;
+            for (var i = 0; i < data.length; i++) {
+                var dataItem = data[i];
+                self.availableLanguages.push(dataItem);
+            }
+        }
+    };
+    self.getLanguagesItem = function (id) {
+        for (var i = 0; i < self.availableLanguages().length; i++) {
+            var curId = self.availableLanguages()[i].languageid
+            if ( curId === id) {
+                return self.availableLanguages()[i];
+            }
+        }
+    };
 
 }

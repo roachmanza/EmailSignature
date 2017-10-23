@@ -14,32 +14,18 @@
 				{
 					"name": "ContactTypes",
 					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"name\":\"test1\",\n\"description\":\"1desc\",\n\"email\":\"tt@e\"\n}"
+						},
 						"url": "http://localhost:4010/MailEnhancement/api/v1/ContactTypes",
-						"method": "GET",
-						"header": [],
-						"body": {},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "ContactTypes/1",
-					"request": {
-						"url": "http://localhost:4010/MailEnhancement/api/v1/ContactTypes/1",
-						"method": "GET",
-						"header": [],
-						"body": {},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "ContactTypes/EmailAddress/a@b.c",
-					"request": {
-						"url": "http://localhost:4010/MailEnhancement/api/v1/ContactTypes/EmailAddress/a@b.c",
-						"method": "GET",
-						"header": [],
-						"body": {},
 						"description": ""
 					},
 					"response": []
@@ -47,19 +33,32 @@
 				{
 					"name": "ContactTypes",
 					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
 						"url": "http://localhost:4010/MailEnhancement/api/v1/ContactTypes",
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\"name\":\"test1\",\n\"description\":\"1desc\",\n\"email\":\"tt@e\"\n}"
-						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "ContactTypes/1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": "http://localhost:4010/MailEnhancement/api/v1/ContactTypes/1",
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "ContactTypes/EmailAddress/a@b.c",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": "http://localhost:4010/MailEnhancement/api/v1/ContactTypes/EmailAddress/a@b.c",
 						"description": ""
 					},
 					"response": []
@@ -67,19 +66,18 @@
 				{
 					"name": "ContactTypes/5",
 					"request": {
-						"url": "http://localhost:4010/MailEnhancement/api/v1/ContactTypes/5",
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n\"name\":\"test1\",\n\"description\":\"1desc\",\n\"email\":\"a@b.c\",\n\"inactive\":\"0\"\n}"
 						},
+						"url": "http://localhost:4010/MailEnhancement/api/v1/ContactTypes/5",
 						"description": ""
 					},
 					"response": []
@@ -87,10 +85,10 @@
 				{
 					"name": "ContactTypes/5",
 					"request": {
-						"url": "http://localhost:4010/MailEnhancement/api/v1/ContactTypes/5",
 						"method": "DELETE",
 						"header": [],
 						"body": {},
+						"url": "http://localhost:4010/MailEnhancement/api/v1/ContactTypes/5",
 						"description": ""
 					},
 					"response": []
@@ -104,21 +102,18 @@
 				{
 					"name": "FieldTypes",
 					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"test1\",\n\"description\":\"1desc\"}"
+						},
 						"url": "http://localhost:4010/MailEnhancement/api/v1/FieldTypes",
-						"method": "GET",
-						"header": [],
-						"body": {},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "FieldTypes/1",
-					"request": {
-						"url": "http://localhost:4010/MailEnhancement/api/v1/FieldTypes/1",
-						"method": "GET",
-						"header": [],
-						"body": {},
 						"description": ""
 					},
 					"response": []
@@ -126,19 +121,21 @@
 				{
 					"name": "FieldTypes",
 					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
 						"url": "http://localhost:4010/MailEnhancement/api/v1/FieldTypes",
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\"name\":\"test1\",\n\"description\":\"1desc\"}"
-						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "FieldTypes/1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": "http://localhost:4010/MailEnhancement/api/v1/FieldTypes/1",
 						"description": ""
 					},
 					"response": []
@@ -146,19 +143,18 @@
 				{
 					"name": "FieldTypes/5",
 					"request": {
-						"url": "http://localhost:4010/MailEnhancement/api/v1/FieldTypes/5",
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n\"name\":\"String11\",\n\"description\":\"A text value you would like to display\",\n\"inactive\":\"0\"\n}"
 						},
+						"url": "http://localhost:4010/MailEnhancement/api/v1/FieldTypes/5",
 						"description": ""
 					},
 					"response": []
@@ -166,10 +162,10 @@
 				{
 					"name": "FieldTypes/5",
 					"request": {
-						"url": "http://localhost:4010/MailEnhancement/api/v1/FieldTypes/5",
 						"method": "DELETE",
 						"header": [],
 						"body": {},
+						"url": "http://localhost:4010/MailEnhancement/api/v1/FieldTypes/5",
 						"description": ""
 					},
 					"response": []
@@ -183,21 +179,18 @@
 				{
 					"name": "Languages",
 					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"name\":\"Dutch\",\n\"description\":\"Dutch langage\",\n\"code\":\"NE\"\n}"
+						},
 						"url": "http://localhost:4010/MailEnhancement/api/v1/Languages",
-						"method": "GET",
-						"header": [],
-						"body": {},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Languages/1",
-					"request": {
-						"url": "http://localhost:4010/MailEnhancement/api/v1/Languages/1",
-						"method": "GET",
-						"header": [],
-						"body": {},
 						"description": ""
 					},
 					"response": []
@@ -205,19 +198,21 @@
 				{
 					"name": "Languages",
 					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
 						"url": "http://localhost:4010/MailEnhancement/api/v1/Languages",
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\"name\":\"Dutch\",\n\"description\":\"Dutch langage\",\n\"code\":\"NE\"\n}"
-						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Languages/1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": "http://localhost:4010/MailEnhancement/api/v1/Languages/1",
 						"description": ""
 					},
 					"response": []
@@ -225,19 +220,18 @@
 				{
 					"name": "Languages/3",
 					"request": {
-						"url": "http://localhost:4010/MailEnhancement/api/v1/Languages/3",
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n\"name\":\"English\",\n\"description\":\"English langage dddd\",\n\"code\":\"EN\",\n\"inactive\":\"1\"\n}"
 						},
+						"url": "http://localhost:4010/MailEnhancement/api/v1/Languages/3",
 						"description": ""
 					},
 					"response": []
@@ -245,10 +239,10 @@
 				{
 					"name": "Languages/3",
 					"request": {
-						"url": "http://localhost:4010/MailEnhancement/api/v1/Languages/3",
 						"method": "DELETE",
 						"header": [],
 						"body": {},
+						"url": "http://localhost:4010/MailEnhancement/api/v1/Languages/3",
 						"description": ""
 					},
 					"response": []
@@ -262,21 +256,18 @@
 				{
 					"name": "FieldItems",
 					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"languageid\":\"1\",\n  \"fieldtypeid\":\"1\",\n  \"name\":\"namsssssssse\",\n  \"description\":\"descrisssssssssption\",\n  \"label\":\"lasssssssbel\",\n  \"value\":\"valssssssssssue\",\n  \"printformat\":\"prssssssintFormat\"\n}"
+						},
 						"url": "http://localhost:4010/MailEnhancement/api/v1/FieldItems",
-						"method": "GET",
-						"header": [],
-						"body": {},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "FieldItems/1",
-					"request": {
-						"url": "http://localhost:4010/MailEnhancement/api/v1/FieldItems/1",
-						"method": "GET",
-						"header": [],
-						"body": {},
 						"description": ""
 					},
 					"response": []
@@ -284,19 +275,21 @@
 				{
 					"name": "FieldItems",
 					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
 						"url": "http://localhost:4010/MailEnhancement/api/v1/FieldItems",
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"languageid\":\"1\",\n  \"fieldtypeid\":\"1\",\n  \"name\":\"namsssssssse\",\n  \"description\":\"descrisssssssssption\",\n  \"label\":\"lasssssssbel\",\n  \"value\":\"valssssssssssue\",\n  \"printformat\":\"prssssssintFormat\"\n}"
-						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "FieldItems/1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": "http://localhost:4010/MailEnhancement/api/v1/FieldItems/1",
 						"description": ""
 					},
 					"response": []
@@ -304,19 +297,18 @@
 				{
 					"name": "FieldItems/3",
 					"request": {
-						"url": "http://localhost:4010/MailEnhancement/api/v1/FieldItems/3",
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"languageid\":\"1\",\n  \"fieldtypeid\":\"1\",\n  \"name\":\"na222me\",\n  \"description\":\"descr222iption\",\n  \"label\":\"labe222l\",\n  \"value\":\"val222ue\",\n  \"printformat\":\"pri22ntFormat\"\n}"
 						},
+						"url": "http://localhost:4010/MailEnhancement/api/v1/FieldItems/3",
 						"description": ""
 					},
 					"response": []
@@ -324,19 +316,18 @@
 				{
 					"name": "FieldItems/3",
 					"request": {
-						"url": "http://localhost:4010/MailEnhancement/api/v1/FieldItems/3",
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"languageId\":\"1\",\n  \"fieldTypeId\":\"1\",\n  \"name\":\"na222me\",\n  \"description\":\"descr222iption\",\n  \"label\":\"labe222l\",\n  \"value\":\"val222ue\",\n  \"printFormat\":\"pri22ntFormat\"\n}"
 						},
+						"url": "http://localhost:4010/MailEnhancement/api/v1/FieldItems/3",
 						"description": ""
 					},
 					"response": []
@@ -350,54 +341,18 @@
 				{
 					"name": "SignatureItems",
 					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"contacttypeid\":\"1\",\n\"fielditemid\":\"1\",\n\"sequence\":\"1\"\n}"
+						},
 						"url": "http://localhost:4010/MailEnhancement/api/v1/SignatureItems",
-						"method": "GET",
-						"header": [],
-						"body": {},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "SignatureItems/1",
-					"request": {
-						"url": "http://localhost:4010/MailEnhancement/api/v1/SignatureItems/1",
-						"method": "GET",
-						"header": [],
-						"body": {},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "SignatureItems/ContactTypes/1",
-					"request": {
-						"url": "http://localhost:4010/MailEnhancement/api/v1/SignatureItems/ContactTypes/1",
-						"method": "GET",
-						"header": [],
-						"body": {},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "SignatureItems/EmailAddress/a@b.c",
-					"request": {
-						"url": "http://localhost:4010/MailEnhancement/api/v1/SignatureItems/EmailAddress/a@b.c",
-						"method": "GET",
-						"header": [],
-						"body": {},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "SignatureItemsContactTypeList",
-					"request": {
-						"url": "http://localhost:4010/MailEnhancement/api/v1/SignatureItemsContactTypeList",
-						"method": "GET",
-						"header": [],
-						"body": {},
 						"description": ""
 					},
 					"response": []
@@ -405,19 +360,87 @@
 				{
 					"name": "SignatureItems",
 					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
 						"url": "http://localhost:4010/MailEnhancement/api/v1/SignatureItems",
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\"contacttypeid\":\"1\",\n\"fielditemid\":\"1\",\n\"sequence\":\"1\"\n}"
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "SignatureItems/ContactTypes/1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": "http://localhost:4010/MailEnhancement/api/v1/SignatureItems/ContactTypes/1",
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "SignatureItems/EmailAddress/a@b.c",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": "http://localhost:4010/MailEnhancement/api/v1/SignatureItems/EmailAddress/a@b.c",
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "SignatureItems/EmailAddress/a@b.c?languagecode=AFR",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:4010/MailEnhancement/api/v1/SignatureItems/EmailAddress/a@b.c?languagecode=AFR",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4010",
+							"path": [
+								"MailEnhancement",
+								"api",
+								"v1",
+								"SignatureItems",
+								"EmailAddress",
+								"a@b.c"
+							],
+							"query": [
+								{
+									"key": "languagecode",
+									"value": "AFR",
+									"equals": true
+								}
+							]
 						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "SignatureItems/EmailAddress/a@b.c/LanguageCode/AFR",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": "http://localhost:4010/MailEnhancement/api/v1/SignatureItems/EmailAddress/a@b.c/LanguageCode/AFR",
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "SignatureItemsContactTypeList",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": "http://localhost:4010/MailEnhancement/api/v1/SignatureItemsContactTypeList",
 						"description": ""
 					},
 					"response": []
@@ -425,19 +448,29 @@
 				{
 					"name": "SignatureItems/1",
 					"request": {
-						"url": "http://localhost:4010/MailEnhancement/api/v1/SignatureItems/9",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": "http://localhost:4010/MailEnhancement/api/v1/SignatureItems/1",
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "SignatureItems/1",
+					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n\"contacttypeid\":\"1\",\n\"fielditemid\":\"1\",\n\"sequence\":\"1\",\n\"inactive\":\"1\"\n}"
 						},
+						"url": "http://localhost:4010/MailEnhancement/api/v1/SignatureItems/9",
 						"description": ""
 					},
 					"response": []
@@ -445,10 +478,10 @@
 				{
 					"name": "SignatureItems/2",
 					"request": {
-						"url": "http://localhost:4010/MailEnhancement/api/v1/SignatureItems/10",
 						"method": "DELETE",
 						"header": [],
 						"body": {},
+						"url": "http://localhost:4010/MailEnhancement/api/v1/SignatureItems/10",
 						"description": ""
 					},
 					"response": []
