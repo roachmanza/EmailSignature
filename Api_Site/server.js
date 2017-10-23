@@ -44,7 +44,6 @@ webserver.get('/client/content/img/homeimage', function (req, res) { res.sendFil
 // static folders to be able to point to css, js etc files in a directory
 webserver.get('/', function (req, res) { res.sendFile(path.join(__dirname + '/client/apiIndex.html')); });
 webserver.get('/home/', function (req, res) { res.sendFile(path.join(__dirname + '/client/apiIndex.html')); });
-webserver.get('/specification', function (req, res) { res.sendFile(path.join(__dirname + '/client/apiSpecification.html')); });
 
 //Listen on port number
 webserver.listen(port);
