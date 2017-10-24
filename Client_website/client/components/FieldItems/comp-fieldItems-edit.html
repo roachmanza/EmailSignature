@@ -24,7 +24,7 @@
                     <div class="clearfix col-lg-8 col-md-12 p-x-0">
                         <strong class="col-sm-5 col-xs-12 control-label">Field type</strong>
                         <span class="col-sm-7 col-xs-12">
-                            <select class="form-control" data-bind="options: availableFieldTypes, optionsText: 'name', value: fieldtypes, optionsCaption: 'Please select...'"></select>
+                            <select class="form-control" data-bind="options: availableFieldTypes, optionsText: 'name', value: fieldtypes, optionsCaption: 'Please select...', event:{ change: $root.FieldTypeChanged}"></select>
                         </span>
                     </div>
                 </div>
@@ -45,21 +45,39 @@
                             <input type="text" class="form-control" data-bind="value : description" /> </span>
                     </div>
                 </div>
-                <div class="row" style="margin-bottom:3px;">
+                <!-- Standard value -->
+                <div class="row" style="margin-bottom:3px;"  data-bind="visible: fieldTypeValue() != 'Image'">
                     <div class="clearfix col-lg-8 col-md-12 p-x-0">
                         <strong class="col-sm-5 col-xs-12 control-label">Label</strong>
                         <span class="col-sm-7 col-xs-12">
                             <input type="text" class="form-control" data-bind="value : label" /> </span>
                     </div>
                 </div>
-                <div class="row" style="margin-bottom:3px;">
+                <!-- Standard value -->
+                <div class="row" style="margin-bottom:3px;" data-bind="visible: fieldTypeValue() != 'Image'">
                     <div class="clearfix col-lg-8 col-md-12 p-x-0">
                         <strong class="col-sm-5 col-xs-12 control-label">Value</strong>
                         <span class="col-sm-7 col-xs-12">
                             <input type="text" class="form-control" data-bind="value : value" /> </span>
                     </div>
                 </div>
-                <div class="row" style="margin-bottom:3px;">
+
+                <!-- Images -->
+                <div class="row" style="margin-bottom:3px;" data-bind="visible: fieldTypeValue() == 'Image'">
+                    <div class="clearfix col-lg-8 col-md-12 p-x-0">
+                        <strong class="col-sm-5 col-xs-12 control-label">Click 'Choose File' to select new. </strong>
+                        <span class="col-sm-7 col-xs-12">
+                            <input class="btn btn-default " id="fileuploadinput" type="file" name="uploads[]" accept="image">
+                        </span>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom:3px;" data-bind="visible: fieldTypeValue() == 'Image'">
+                    <div class="clearfix col-lg-12 col-md-12 p-x-0">
+                        <img data-bind="attr:{src: value}, visible: fieldtypeidname() == 'Image'" />
+                    </div>
+                </div>
+                
+                <div class="row" style="margin-bottom:3px;"  data-bind="visible: fieldTypeValue() != 'Image'">
                     <div class="clearfix col-lg-8 col-md-12 p-x-0">
                         <strong class="col-sm-5 col-xs-12 control-label">Print format</strong>
                         <span class="col-sm-7 col-xs-12">
@@ -124,6 +142,8 @@
                 ko.applyBindings(self.FieldItemsModel, this);
                 var vm = self.FieldItemsModel;
                 vm.Initialize(self.environmentUrl, self, self.FieldItemsModel, itemId);
+
+
             }
         });
     </script>

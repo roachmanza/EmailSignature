@@ -53,6 +53,7 @@ function FieldItemsViewViewModel(hostThisContext) {
     self.languageidname = ko.observable("");
     self.fieldtypeid = ko.observable("");
     self.fieldtypeidname = ko.observable("");
+    self.fieldTypeValue = ko.observable("");
     self.name = ko.observable("");
     self.description = ko.observable("");
     self.label = ko.observable("");
@@ -78,6 +79,8 @@ function FieldItemsViewViewModel(hostThisContext) {
                 self.inactive(data[0].inactive);
                 self.inactivechecked(self.getInActive(data[0].inactive));
                 self.inactivedate(data[0].inactivedate);
+
+                self.fieldTypeValue(data[0].fieldtypeidname);
 
                 self.languages(self.getLanguagesItem(data[0].languageid));  
                 self.fieldtypes(self.getFieldTypesItem(data[0].fieldtypeid)); 

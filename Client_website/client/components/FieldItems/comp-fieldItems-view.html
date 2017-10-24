@@ -61,21 +61,29 @@
                         <span class="col-sm-7 col-xs-12" data-bind="text : description"> </span>
                     </div>
                 </div>
-                <div class="row" style="margin-bottom:3px;">
+                <div class="row" style="margin-bottom:3px;"  data-bind="visible: fieldTypeValue() != 'Image'">
                     <div class="clearfix col-lg-8 col-md-12 p-x-0">
                         <strong class="col-sm-5 col-xs-12 control-label">Label</strong>
                         <span class="col-sm-7 col-xs-12" data-bind="text : label"> </span>
                     </div>
                 </div>
-                <div class="row" style="margin-bottom:3px;">
+
+                <div class="row" style="margin-bottom:3px;"  data-bind="visible: fieldTypeValue() != 'Image'">
                     <div class="clearfix col-lg-8 col-md-12 p-x-0">
                         <strong class="col-sm-5 col-xs-12 control-label">Value</strong>
                         <span class="col-sm-7 col-xs-12" data-bind="text : value,  visible: fieldtypeidname() != 'Image'"></span>
-                        <img data-bind="attr:{src: value}, visible: fieldtypeidname() == 'Image'" />
-
                     </div>
                 </div>
-                <div class="row" style="margin-bottom:3px;">
+
+                <div class="row" style="margin-bottom:3px;" data-bind="visible: fieldTypeValue() == 'Image'">
+                    <div class="clearfix col-lg-12 col-md-12 p-x-0">
+                        <img data-bind="attr:{src: value}, visible: fieldtypeidname() == 'Image'" />
+                    </div>
+                </div>
+
+
+
+                <div class="row" style="margin-bottom:3px;" data-bind="visible: fieldTypeValue() != 'Image'">
                     <div class="clearfix col-lg-8 col-md-12 p-x-0">
                         <strong class="col-sm-5 col-xs-12 control-label">Print format</strong>
                         <span class="col-sm-7 col-xs-12" data-bind="text : printformat"> </span>

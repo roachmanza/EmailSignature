@@ -4,13 +4,43 @@ var port = process.env.PORT || 4011;
 var bodyParser = require('body-parser');
 var path = require('path');
 
-
+var fs = require("fs");
+var formidable = require('formidable');
+var mkdirp = require('mkdirp');
+var mv = require('mv'); //use for EXDEV oldpath and newpath are not on the same mounted filesystem 
 
 //PARSER
-webserver.use(bodyParser.urlencoded({
-    extended: true
-}));
-webserver.use(bodyParser.json());
+webserver.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
+webserver.use(bodyParser.json({limit: '50mb'}));
+
+//FILE UPLOADS
+webserver.post('/upload', function (req, res) {
+    var base64string;
+    var form = new formidable.IncomingForm();
+    form.multiples = true;
+    form.uploadDir = path.join(__dirname, '/public/uploads/');
+    form.on('file', function (field, file) {
+        //rename the file and copy it to the relevant directory
+        var newfilepath = path.join(form.uploadDir, file.name)
+        
+        mv(file.path, newfilepath, { mkdirp: true }, function (err) {
+            if (err) {
+
+            } else {
+                base64string = new Buffer(fs.readFileSync(newfilepath)).toString("base64");
+                var extension = newfilepath.substr(newfilepath.length - 3);
+                res.end('data:image/'+extension+';base64,' + base64string);
+            }
+        });
+    });
+    form.on('error', function (err) {
+        console.log('An error has occured: \n' + err);
+    });
+    form.on('end', function () {
+        console.log("end");
+    });
+    form.parse(req);
+});
 
 //client css
 webserver.get('/client/content/css/default', function (req, res) {
