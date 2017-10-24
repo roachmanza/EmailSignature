@@ -42,14 +42,18 @@ webserver.post('/upload', function (req, res) {
     form.parse(req);
 });
 
-//client css
+//CSS
 webserver.get('/client/content/css/default', function (req, res) {
     res.sendFile(path.join(__dirname + '/client/content/css/client.css'));
 });
 webserver.get('/client/content/css/bootstrap', function (req, res) {
     res.sendFile(path.join(__dirname + '/client/content/css/bootstrap.css'));
 });
+webserver.get('/client/content/css/datatables', function (req, res) {
+    res.sendFile(path.join(__dirname + '/client/content/css/datatables.css'));
+});
 
+//IMAGES
 webserver.get('/client/content/img/favicon', function (req, res) {
     res.sendFile(path.join(__dirname + '/client/content/img/MailIcon24.png'));
 });
@@ -57,7 +61,7 @@ webserver.get('/client/content/img/config', function (req, res) {
     res.sendFile(path.join(__dirname + '/client/content/img/ConfigIcon64.png'));
 });
 
-//client js
+//JS
 webserver.get('/client/content/js/default', function (req, res) {
     res.sendFile(path.join(__dirname + '/client/content/js/client.js'));
 });
@@ -69,6 +73,9 @@ webserver.get('/client/content/js/jquery', function (req, res) {
 });
 webserver.get('/client/content/js/knockout', function (req, res) {
     res.sendFile(path.join(__dirname + '/client/content/js/knockout.js'));
+});
+webserver.get('/client/content/js/datatables', function (req, res) {
+    res.sendFile(path.join(__dirname + '/client/content/js/datatables.js'));
 });
 
 

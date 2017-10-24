@@ -74,7 +74,7 @@ function SignatureItemsListViewModel(hostThisContext) {
             
         }
         self.SignatureItemsLoading(false);
-        // $('#SignatureItemsTable').DataTable();
+        $('#SignatureItemsTable').DataTable();
 
     };
 

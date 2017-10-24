@@ -70,6 +70,7 @@ function FieldItemsListViewModel(hostThisContext) {
             
             
         }
+        $('#myTable').DataTable();
         self.FieldItemsLoading(false);
     };
 
