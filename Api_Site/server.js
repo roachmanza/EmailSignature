@@ -62,9 +62,8 @@ webserver.get('/client/content/js/bootstrap', function (req, res) {
   res.sendFile(path.join(__dirname + '/client/content/js/bootstrap.min.js'));
 });
 // IMAGES
-webserver.get('/client/content/img/homeIcon', function (req, res) { res.sendFile(path.join(__dirname + '/client/content/img/home24.png')); });
-webserver.get('/client/content/img/systemIcon', function (req, res) { res.sendFile(path.join(__dirname + '/client/content/img/MailIcon32.png')); });
-webserver.get('/client/content/img/homeimage', function (req, res) { res.sendFile(path.join(__dirname + '/client/content/img/home64.png')); });
+webserver.get('/client/content/img/favicon', function (req, res) { res.sendFile(path.join(__dirname + '/client/content/img/MailIcon32.png')); });
+webserver.get('/client/content/img/base', function (req, res) { res.sendFile(path.join(__dirname + '/client/content/img/MailIcon32.png')); });
 // STATIC PATH
 webserver.get('/', function (req, res) { res.sendFile(path.join(__dirname + '/client/index.html')); });
 webserver.get('/home/', function (req, res) { res.sendFile(path.join(__dirname + '/client/index.html')); });
