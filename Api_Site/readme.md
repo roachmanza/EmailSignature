@@ -15,11 +15,13 @@ Clone the application to your local repo.<br/>
 Open the folder where the application resides with a prompt , and run the 'npm start' command. This will start your application on the relevant port. You should be able to browse the application.<br/>
 
 ##### Option 2
+    docker build -t email-signature-api .
+
 Create a docker image of the application and run it there.<br/>
 The .dockerignore and Dockerfile is already included in the application.<br/>
-To create a docker image do the following:
-    docker build -t email-signature-api .
+To create a docker image follow the steps above.
     
+
 
 
 
