@@ -34,7 +34,7 @@ exports.PopulateEnvironmentSettings = function (env, callback) {
             "cors_allow_headers": "Content-Type,MMI-Authorization-Claims"
         };
         postgresEnvAttributes = {
-            "host": "localhost",
+            "host": "10.0.0.2",
             "database": "MailEnhancement_Dev",
             "port": 5432,
             "user": "MailEnhancementUser",

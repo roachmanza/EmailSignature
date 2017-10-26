@@ -1,4 +1,4 @@
-##  ![Mail enhancement system](https://github.com/roachmanza/MailEnhancement/blob/master/Client_website_cdn/content/img/MailIcon64.png "Mail enhancement system") Mail enhancement system database
+#  ![Email signature system](https://github.com/roachmanza/EmailSignature/blob/master/Api_Site/client/content/img/MailIcon32.png "Email signature system") Email signature database
 
 ### How to get the database up and running
 Install postgres from the web site <a href="https://www.postgresql.org/">https://www.postgresql.org/</a><br/>
