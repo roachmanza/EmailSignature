@@ -14,15 +14,16 @@ Clone the application to your local repo.<br/>
 ### How to change the environments
 To change the environment , change the value of the name in the env.js file in the config folder.<br/>
 
-### What is used in the application
-#### Server side
-NodeJs.<br/>
+### Modules used in the application
+    body-parser: "^1.17.2"<br/>
+    cors: "^2.8.4"<br/>
+    express: "^4.15.3"<br/>
+    pg: "^1.3.0"<br/>
+    swagger-ui-express: "^2.0.7"<br/>
+
+
+### Database used in the application
 PostgreSQL.<br/>
-NGINX.<br/>
-#### Client side
-HTML<br/>
-Javascript<br/>
-Knockout<br/>
 
 
 
