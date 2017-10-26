@@ -1,12 +1,19 @@
 
-#  ![Email signature system](https://github.com/roachmanza/EmailSignature/blob/master/Api_Site/client/content/img/MailIcon32.png "Email signature system") Email signature system APIs
+#  ![Email signature system](https://github.com/roachmanza/EmailSignature/blob/master/Api_Site/client/content/img/MailIcon32.png "Email signature system") Email signature system WFE
 
 ### Welcome to the email signature system Web Front End (WFE)
 
 #### What is the email signature system Web Front End (WFE)
-The email signature API consists of all the tools a developer would need to set up a front end system, and to interface via the API with the database.<br/>
-Field items of type image is stored as base64 encoded strings in the database. This behaviour was required for images to be embedded into mails, to avoid downloading or discarding of images in the mail.<br/>
-A complete swagger document is available from the main page, by clicking on the 'Swagger API documentation' menu item
+    The web front end is used to create all the relevant information pertaining to the signatures.
+    Contact types is defineed as a name and an email address pair, where the contact type is the primary key of the system.
+    Field types are the type of field you would like to define for the signature item, for example operating hours, email , image etc.
+    Languages is the language the signature will be sent in to the client.
+    
+    Field items are re-useable lines in a signature.
+    Signature items adds the re-useable line of a signature to a contact type , and includes a order the item must be displyed in.
+    
+    There is a menu item called 'Signatures' where you can view a sample of the completed signature for the language selected.
+
 
 ### How to get the application up and running
 Clone the application to your local repo.<br/>
