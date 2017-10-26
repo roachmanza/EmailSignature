@@ -48,8 +48,8 @@ To change the environment , change the value of the name in the env.js file in t
     pg: "^1.3.0"
     swagger-ui-express: "^2.0.7"
 
-### Database used in the application
-PostgreSQL.<br/>
+### Dependencies
+    PostgreSQL
 
 
 

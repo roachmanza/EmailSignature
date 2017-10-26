@@ -71,7 +71,7 @@ webserver.get('/home/', function (req, res) { res.sendFile(path.join(__dirname +
 
 //Listen on port number
 webserver.listen(port);
-console.log('RESTful API server started on: ' + port +' for environment : '+_env.name);
+console.log('Email signature API site started on: ' + port +' for environment : '+_env.name);
 
 
 //API's

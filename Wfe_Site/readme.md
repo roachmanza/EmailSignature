@@ -23,9 +23,9 @@ Clone the application to your local repo.<br/>
 
 Open the folder where the application resides with a prompt , and run the 'npm start' command. This will start your application on the relevant port. You should be able to browse the application.<br/>
 
-##### Run the api website in a docker container
-    docker build -t email-signature-api .
-    docker run -p 4010:4010 -d email-signature-api
+##### Run the wfe website in a docker container
+    docker build -t email-signature-wfe .
+    docker run -p 4011:4011 -d email-signature-wfe
     
 Create a docker image of the application and run it there.<br/>
 The .dockerignore and Dockerfile is already included in the application.<br/>
@@ -49,14 +49,16 @@ To change the environment , change the value of the name in the env.js file in t
     docker stop email-signature-api-local
 
 ### Modules used in the application
-    body-parser: "^1.17.2"
-    cors: "^2.8.4"
-    express: "^4.15.3"
-    pg: "^1.3.0"
-    swagger-ui-express: "^2.0.7"
+    body-parser: "^1.17.2",
+    express: "^4.15.3",
+    formidable: "^1.1.1",
+    fs: "0.0.1-security",
+    mkdirp: "^0.5.1",
+    mv: "^2.1.1",
+    webcomponents-lite: "^0.6.0"
 
-### Database used in the application
-PostgreSQL.<br/>
+### Dependencies
+    email-signature-api
 
 
 
