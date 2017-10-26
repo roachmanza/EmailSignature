@@ -79,52 +79,52 @@ exports.update_a_ContactType = function (req, callback) {
     };
     //check that the record that is edited does not match an email address of any of the other records
     dataGet('SELECT "ContactTypeId", "EmailAddress"  FROM public."ContactTypes" where "EmailAddress" = \'' + email + '\'',
-    function (findResults, haserror, code) {
-        if(haserror){
-            //no records were found with this email address - continue
-            if (findResults === 'No records found') {
-                dataPut(' UPDATE public."ContactTypes" ' +
-                'SET ' +
-                ' "Name"=\'' + name + '\', ' +
-                ' "Description"=\'' + description + '\', ' +
-                ' "EmailAddress"=\'' + email + '\', ' +
-                ' "InActiveDate"=\'' + inactiveDate + '\', ' +
-                ' "InActive"=\'' + inactive + '\' ' +
-                'where "ContactTypeId" = ' + id,
-                function (jsonResults, haserror, code) {
-                    callback(jsonResults, haserror, code);
-                });
-            }else{
-                //some other error occured , pass it through to the top
-                callback(JSON.parse(JSON.stringify(findResults)), haserror, code);
-                return;
-            }
-        }else{
-            //a record was found with this email address check if the ID is the same
-            testid = findResults[0]["ContactTypeId"];
-            if(testid){
-                console.log(testid + " "+id );
-                if(testid==id){
-                    //this is the same record update it
+        function (findResults, haserror, code) {
+            if (haserror) {
+                //no records were found with this email address - continue
+                if (findResults === 'No records found') {
                     dataPut(' UPDATE public."ContactTypes" ' +
-                    'SET ' +
-                    ' "Name"=\'' + name + '\', ' +
-                    ' "Description"=\'' + description + '\', ' +
-                    ' "EmailAddress"=\'' + email + '\', ' +
-                    ' "InActiveDate"=\'' + inactiveDate + '\', ' +
-                    ' "InActive"=\'' + inactive + '\' ' +
-                    'where "ContactTypeId" = ' + id,
-                    function (jsonResults, haserror, code) {
-                        callback(jsonResults, haserror, code);
-                    });
-                }else{
-                    //other number found - send through an error
-                    callback(JSON.parse(JSON.stringify("The email address is already in use.")), true, _httpresponcecode.Forbidden);
+                        'SET ' +
+                        ' "Name"=\'' + name + '\', ' +
+                        ' "Description"=\'' + description + '\', ' +
+                        ' "EmailAddress"=\'' + email + '\', ' +
+                        ' "InActiveDate"=\'' + inactiveDate + '\', ' +
+                        ' "InActive"=\'' + inactive + '\' ' +
+                        'where "ContactTypeId" = ' + id,
+                        function (jsonResults, haserror, code) {
+                            callback(jsonResults, haserror, code);
+                        });
+                } else {
+                    //some other error occured , pass it through to the top
+                    callback(JSON.parse(JSON.stringify(findResults)), haserror, code);
+                    return;
+                }
+            } else {
+                //a record was found with this email address check if the ID is the same
+                testid = findResults[0]["ContactTypeId"];
+                if (testid) {
+                    console.log(testid + " " + id);
+                    if (testid == id) {
+                        //this is the same record update it
+                        dataPut(' UPDATE public."ContactTypes" ' +
+                            'SET ' +
+                            ' "Name"=\'' + name + '\', ' +
+                            ' "Description"=\'' + description + '\', ' +
+                            ' "EmailAddress"=\'' + email + '\', ' +
+                            ' "InActiveDate"=\'' + inactiveDate + '\', ' +
+                            ' "InActive"=\'' + inactive + '\' ' +
+                            'where "ContactTypeId" = ' + id,
+                            function (jsonResults, haserror, code) {
+                                callback(jsonResults, haserror, code);
+                            });
+                    } else {
+                        //other number found - send through an error
+                        callback(JSON.parse(JSON.stringify("The email address is already in use.")), true, _httpresponcecode.Forbidden);
+                    }
                 }
             }
-        }
 
-    });
+        });
 };
 
 exports.delete_a_ContactType = function (req, callback) {

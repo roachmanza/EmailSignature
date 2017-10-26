@@ -1,6 +1,4 @@
 var applicationTools = {
-
-
     getDomainLoginFromPage: function () {
         return document.getElementById("muser").value;
     },
@@ -18,18 +16,17 @@ var applicationTools = {
                 "MMI-Authorization-Claims": claims.join(';')
             };
         },
-
         domainNameClaim: function (domainName) {
             return "Domain=" + domainName;
         },
-
         entityClaim: function (entityId) {
             return "Entity=" + entityId;
         }
     },
     baseUrl: function (env) {
+        console.log(test.cors_allow_headers);
         var uriLocal = 'http://localhost:4010';
-        var uriDev = 'http://10.0.0.2:4010';
+        var uriDev = 'http://devtest.mmiholdings.co.za:4010';
         var uriTest = 'http://devtest.mmiholdings.co.za:4010';
         var uriPre = 'http://staging.mmiholdings.co.za:4010';
         var uriProd = 'http://mmiapp.mmiholdings.co.za:4010';

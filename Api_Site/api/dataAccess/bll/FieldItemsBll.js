@@ -44,7 +44,7 @@ exports.create_a_FieldItem = function (req, callback) {
             var inactiveDate = new Date(1900, 01, 01).toJSON().slice(0, 10).replace(/-/g, '/');
             var inactive = 0;
             var createQueryString = tableInsert +
-                '(' + id + ',\'' + languageid + '\' ,\'' + fieldtypeid + '\' ,\''+ name + '\' ,\''+ description + '\' ,\''+ label + '\' ,\''+ value + '\' ,\''+ printformat + '\' ,\'' + inactiveDate + '\' ,\'' + inactive + '\')';
+                '(' + id + ',\'' + languageid + '\' ,\'' + fieldtypeid + '\' ,\'' + name + '\' ,\'' + description + '\' ,\'' + label + '\' ,\'' + value + '\' ,\'' + printformat + '\' ,\'' + inactiveDate + '\' ,\'' + inactive + '\')';
             dataPost(createQueryString, function (jsonResults, haserror, code) {
                 callback(jsonResults, haserror, code);
             });
@@ -123,4 +123,3 @@ exports.read_a_FieldItem = function (req, callback) {
         callback(jsonResults, haserror, code);
     });
 };
-

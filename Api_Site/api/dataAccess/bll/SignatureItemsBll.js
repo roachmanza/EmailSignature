@@ -20,33 +20,33 @@ var tableDelete = 'DELETE FROM public."SignatureItems" where "SignatureItemId" =
 
 //Used in the service to give a full object back to the requestor
 var tableSelectFull = 'SELECT ' +
-' SI."SignatureItemId" as SignatureItemId, ' +
-' SI."ContactTypeId" as ContactTypeId, ' +
-' CT."Name" as ContactTypeIdName, ' +
-' SI."FieldItemId" as FieldItemId, ' +
-' FI."LanguageId" as FieldItemLanguageId, ' +
-' L."Name" as FieldItemLanguageIdName, ' +
-' L."Code" as FieldItemLanguageIdCode, ' +
-' FI."Description" as FieldItemDescription, ' +
-' FI."Label" as FieldItemLabel, ' +
-' FI."Value" as FieldItemValue, ' +
-' FI."PrintFormat" as FieldItemPrintFormat, ' +
-' FI."FieldTypeId" as FieldItemFieldTypeId, ' +
-' FT."Name" as FieldItemFieldTypeName, ' +
-' SI."Sequence" as Sequence, ' +
-' SI."InActiveDate" as InActiveDate, ' +
-' SI."InActive" as InActive ' +
-' FROM public."SignatureItems" AS SI' +
-' JOIN public."ContactTypes" as CT ON CT."ContactTypeId" = SI."ContactTypeId" ' +
-' JOIN public."FieldItems" as FI ON FI."FieldItemId" = SI."FieldItemId" '+
-' JOIN public."FieldTypes" as FT ON FT."FieldTypeId" = FI."FieldTypeId" '+
-' JOIN public."Languages" as L ON L."LanguageId" = FI."LanguageId" ';
+    ' SI."SignatureItemId" as SignatureItemId, ' +
+    ' SI."ContactTypeId" as ContactTypeId, ' +
+    ' CT."Name" as ContactTypeIdName, ' +
+    ' SI."FieldItemId" as FieldItemId, ' +
+    ' FI."LanguageId" as FieldItemLanguageId, ' +
+    ' L."Name" as FieldItemLanguageIdName, ' +
+    ' L."Code" as FieldItemLanguageIdCode, ' +
+    ' FI."Description" as FieldItemDescription, ' +
+    ' FI."Label" as FieldItemLabel, ' +
+    ' FI."Value" as FieldItemValue, ' +
+    ' FI."PrintFormat" as FieldItemPrintFormat, ' +
+    ' FI."FieldTypeId" as FieldItemFieldTypeId, ' +
+    ' FT."Name" as FieldItemFieldTypeName, ' +
+    ' SI."Sequence" as Sequence, ' +
+    ' SI."InActiveDate" as InActiveDate, ' +
+    ' SI."InActive" as InActive ' +
+    ' FROM public."SignatureItems" AS SI' +
+    ' JOIN public."ContactTypes" as CT ON CT."ContactTypeId" = SI."ContactTypeId" ' +
+    ' JOIN public."FieldItems" as FI ON FI."FieldItemId" = SI."FieldItemId" ' +
+    ' JOIN public."FieldTypes" as FT ON FT."FieldTypeId" = FI."FieldTypeId" ' +
+    ' JOIN public."Languages" as L ON L."LanguageId" = FI."LanguageId" ';
 
-var drowpdownContactTypeList = 
-' SELECT CT."ContactTypeId" as ctid,  CT."Name" as description,  CT."EmailAddress" as email '+
-' FROM public."SignatureItems" AS SI '+
-'         JOIN public."ContactTypes" as CT ON CT."ContactTypeId" = SI."ContactTypeId" '+
-' GROUP BY  CT."ContactTypeId", CT."Name", CT."EmailAddress" ';
+var drowpdownContactTypeList =
+    ' SELECT CT."ContactTypeId" as ctid,  CT."Name" as description,  CT."EmailAddress" as email ' +
+    ' FROM public."SignatureItems" AS SI ' +
+    '         JOIN public."ContactTypes" as CT ON CT."ContactTypeId" = SI."ContactTypeId" ' +
+    ' GROUP BY  CT."ContactTypeId", CT."Name", CT."EmailAddress" ';
 
 
 exports.create_a_SignatureItem = function (req, callback) {
@@ -65,7 +65,7 @@ exports.create_a_SignatureItem = function (req, callback) {
             var inactive = 0;
             var createQueryString = tableInsert +
                 '(' + id + ',\'' + contacttypeid + '\' ,\'' + fielditemid + '\' ,\'' + sequence + '\' ,\'' + inactiveDate + '\' ,\'' + inactive + '\')';
-                console.log(createQueryString);
+            console.log(createQueryString);
             dataPost(createQueryString, function (jsonResults, haserror, code) {
                 callback(jsonResults, haserror, code);
             });
@@ -139,7 +139,7 @@ exports.read_a_SignatureItem = function (req, callback) {
 exports.read_a_SignatureItem_ContactTypeList = function (req, callback) {
     var dataGet = require('../data/dataGet');
     var id = req.params.id;
-    dataGet(drowpdownContactTypeList , function (jsonResults, haserror, code) {
+    dataGet(drowpdownContactTypeList, function (jsonResults, haserror, code) {
         callback(jsonResults, haserror, code);
     });
 };
@@ -148,19 +148,19 @@ exports.read_all_SignatureItems_for_emailAddr = function (req, callback) {
     var dataGet = require('../data/dataGet');
     var id = req.params.id;
     if (typeof req.query !== 'undefined' && req.query) {
-        var languagecode = req.query.languagecode; 
-        if (typeof languagecode !== 'undefined' && languagecode) { 
+        var languagecode = req.query.languagecode;
+        if (typeof languagecode !== 'undefined' && languagecode) {
             // Valid languagecode querystring
-            dataGet(tableSelectFull + ' AND CT."EmailAddress" = \'' + id + '\' AND L."Code" = \'' + languagecode +'\' AND SI."InActive" = \'0\' ORDER BY SI."Sequence" ASC ', function (jsonResults, haserror, code) {
+            dataGet(tableSelectFull + ' AND CT."EmailAddress" = \'' + id + '\' AND L."Code" = \'' + languagecode + '\' AND SI."InActive" = \'0\' ORDER BY SI."Sequence" ASC ', function (jsonResults, haserror, code) {
                 callback(jsonResults, haserror, code);
             });
-        } else { 
+        } else {
             // No valid language code query string
             dataGet(tableSelectFull + ' and CT."EmailAddress" = \'' + id + '\' AND SI."InActive" = \'0\' ORDER BY SI."Sequence" ASC ', function (jsonResults, haserror, code) {
                 callback(jsonResults, haserror, code);
             });
         }
-    } else { 
+    } else {
         // No query string
         dataGet(tableSelectFull + ' and CT."EmailAddress" = \'' + id + '\' AND SI."InActive" = \'0\' ORDER BY SI."Sequence" ASC ', function (jsonResults, haserror, code) {
             callback(jsonResults, haserror, code);
@@ -172,7 +172,7 @@ exports.read_all_SignatureItems_for_emailAddr_with_language = function (req, cal
     var dataGet = require('../data/dataGet');
     var email = req.params.id;
     var languagecode = req.params.langcode;
-    dataGet(tableSelectFull + ' AND CT."EmailAddress" = \'' + email + '\' AND L."Code" = \'' + languagecode +'\' AND SI."InActive" = \'0\' ORDER BY SI."Sequence" ASC ', function (jsonResults, haserror, code) {
+    dataGet(tableSelectFull + ' AND CT."EmailAddress" = \'' + email + '\' AND L."Code" = \'' + languagecode + '\' AND SI."InActive" = \'0\' ORDER BY SI."Sequence" ASC ', function (jsonResults, haserror, code) {
         callback(jsonResults, haserror, code);
     });
 };
@@ -182,7 +182,7 @@ exports.read_all_SignatureItems_for_emailAddr_with_language = function (req, cal
 exports.read_all_SignatureItems_for_contactTypeId = function (req, callback) {
     var dataGet = require('../data/dataGet');
     var id = req.params.id;
-    dataGet(tableSelectFull + ' AND SI."ContactTypeId" = \'' + id +  '\' AND SI."InActive" = \'0\'  ORDER BY SI."Sequence" ASC ' , function (jsonResults, haserror, code) {
+    dataGet(tableSelectFull + ' AND SI."ContactTypeId" = \'' + id + '\' AND SI."InActive" = \'0\'  ORDER BY SI."Sequence" ASC ', function (jsonResults, haserror, code) {
         callback(jsonResults, haserror, code);
     });
 };

@@ -1,5 +1,5 @@
 'use strict';
-module.exports = function(webserver) {
+module.exports = function (webserver) {
     var controller = require('../controllers/LanguagesController');
     webserver.route('/MailEnhancement/api/v1/Languages')
         .post(controller.create_a_Language)

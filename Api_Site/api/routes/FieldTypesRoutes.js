@@ -1,5 +1,5 @@
 'use strict';
-module.exports = function(webserver) {
+module.exports = function (webserver) {
     var controller = require('../controllers/FieldTypesController');
     webserver.route('/MailEnhancement/api/v1/FieldTypes')
         .post(controller.create_a_FieldType)
