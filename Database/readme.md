@@ -2,9 +2,9 @@
 
 ### How to get the database up and running
 
-### Option 1 - Run a postgres db on your machine, run db commands with the pgAdmin tool
+##### Option 1 - Run a postgres db on your machine, run db commands with the pgAdmin tool
     Install postgres from the web site <a href="https://www.postgresql.org/">https://www.postgresql.org/</a><br/>
-    
+
 <b>Change the 'pg_hba.conf' file</b> to facilitate your local database instance to be accessed from the API's @~\data\pg96 , sample here : <a href="https://github.com/roachmanza/EmailSignature/blob/master/Database/Postgres/pg_hba.conf">here</a><br/>
 <b>Create the user</b> with the script found <a href="https://github.com/roachmanza/EmailSignature/blob/master/Database/Postgres/0_Create_User.sql">here</a><br/>
 <b>Create the database</b> with the script found 
@@ -15,7 +15,7 @@ Create the <b>tables</b> with the script found <a href="https://github.com/roach
 
 
 
-### Option 2 - Run a docker container, and create a postgres image, run db commands with the pgAdmin tool
+##### Option 2 - Run a docker container, and create a postgres image, run db commands with the pgAdmin tool
     docker volume create --name emailsignaturepgdb
     docker run --name postgres -v emailsignaturepgdb:/var/lib/postgresql/plantmonitorpgdb/data -e POSTGRESPAWD=postgres -d -p 5432:5432 postgres
 
