@@ -1,9 +1,9 @@
 
-##  ![Mail signature system](https://github.com/roachmanza/EmailSignature/blob/master/Api_Site/client/content/img/MailIcon32.png "Mail signature system") Mail signature system APIs
+##  ![Email signature system](https://github.com/roachmanza/EmailSignature/blob/master/Api_Site/client/content/img/MailIcon32.png "Email signature system") Email signature system APIs
 
-### Welcome to the mail signature system APIs
+### Welcome to the email signature system APIs
 
-#### What is the mail signature system
+#### What is the email signature system
 Upload a file for the signature.<br/>
 Add content lines per area
 
