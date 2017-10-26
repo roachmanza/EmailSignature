@@ -30,14 +30,14 @@ To change the environment , change the value of the name in the env.js file in t
 
 ##### docker container build per environment
     LOCAL:
-    docker build -f dockerfiles/Dockerfile.local -t email-signature-api:local .
+    docker build -f dockerfiles/local/Dockerfile.local -t email-signature-api:local .
     docker run --name email-signature-api-local -d -p 4010:4010 email-signature-api:local
 
     DEV:
-    docker build -f dockerfiles/Dockerfile.dev -t email-signature-api:dev .
+    docker build -f dockerfiles/dev/Dockerfile.dev -t email-signature-api:dev .
     docker run --name email-signature-api-dev -d -p 4010:4010 email-signature-api:dev
 
-    Then use the folowing command to stop and start the image
+    Then use the folowing command to stop and start the image : 
     docker start email-signature-api-local
     docker stop email-signature-api-local
 

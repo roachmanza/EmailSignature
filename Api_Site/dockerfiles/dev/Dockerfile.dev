@@ -1,0 +1,20 @@
+FROM node:alpine
+
+WORKDIR /usr/src/app
+
+COPY package.json package-lock.json ./
+
+RUN npm install
+
+COPY . .
+
+COPY dockerfiles/dev/env.js /usr/src/app/config/
+
+EXPOSE 4010
+
+CMD [ "npm", "start" ]
+
+# Add the following line to the dockerfile for the cache npm repository
+#   - RUN npm set registry http://momjendev102.metmom.mmih.biz:8082/repository/npm-group/
+# for alpine image use the command below to bash into the image
+# docker exec -it email-signature-api-dev sh 
