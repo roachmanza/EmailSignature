@@ -1,7 +1,7 @@
 {
-  "name": "mailenhancement-to-prostgres-db",
-  "version": "0.0.1",
-  "description": "A connection to a postgres database",
+  "name": "email-signature-api",
+  "version": "1.0.1",
+  "description": "Signatures appended to email items, return a signature item array with items a signature consists of.",
   "main": "server.js",
   "author": "Roche Olivier",
   "private": true,
@@ -9,15 +9,17 @@
   "keywords": [
     "Postgres",
     "REST",
-    "API"
+    "API",
+    "Email",
+    "Signature",
+    "Email Signature"
   ],
   "scripts": {
     "test": "echo \"error: no test specified\" && exit 1",
     "start": "nodemon server.js"
   },
   "devDependencies": {
-    "nodemon": "^1.11.0",
-    "lint": "*"
+    "nodemon": "^1.11.0"
   },
   "dependencies": {
     "body-parser": "^1.17.2",
