@@ -1,9 +1,9 @@
 {
 	"swagger": "2.0",
 	"info": {
-		"description": "This is a email enhancement system , that adds signatures at the bottom of emails or any other electronic correspondence.",
+		"description": "This is a email signature system , that adds signatures at the bottom of emails or any other electronic correspondence.",
 		"version": "1.0.0",
-		"title": "Mail enhancement API documentation"
+		"title": "Email signature API documentation"
 	},
 	"host": "devtest.mmiholdings.co.za:4010",
 	"basePath": "/MailEnhancement/api/v1/",
