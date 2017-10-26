@@ -1,0 +1,5 @@
+Run these commands from the Api_Site directory:
+
+LOCAL:
+    docker build -f dockerfiles/local/Dockerfile.local -t email-signature-api:local .
+    docker run --name email-signature-api-local -d -p 4010:4010 email-signature-api:local

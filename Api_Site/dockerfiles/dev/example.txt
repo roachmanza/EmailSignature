@@ -1,0 +1,5 @@
+Run these commands from the Api_Site directory:
+
+DEV:
+    docker build -f dockerfiles/dev/Dockerfile.dev -t email-signature-api:dev .
+    docker run --name email-signature-api-dev -d -p 4010:4010 email-signature-api:dev
