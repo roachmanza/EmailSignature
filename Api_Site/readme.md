@@ -4,10 +4,8 @@
 ### Welcome to the email signature system APIs
 
 #### What is the email signature system
-Upload a file for the signature.<br/>
-Add content lines per area
-
-
+The email signature API consists of all the tools a developer would need to set up a front end system, and to interface via the API with the database.<br/>
+Field items of type image is stored as base64 encoded strings in the database.
 
 ### How to get the application up and running
 Clone the application to your local repo.<br/>
