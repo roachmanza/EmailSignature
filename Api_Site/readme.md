@@ -10,7 +10,6 @@ Field items of type image is stored as base64 encoded strings in the database.
 ### How to get the application up and running
 Clone the application to your local repo.<br/>
 
-
 ### How to change the environments
 To change the environment , change the value of the name in the env.js file in the config folder.<br/>
 
@@ -20,7 +19,6 @@ To change the environment , change the value of the name in the env.js file in t
     express: "^4.15.3"<br/>
     pg: "^1.3.0"<br/>
     swagger-ui-express: "^2.0.7"<br/>
-
 
 ### Database used in the application
 PostgreSQL.<br/>
