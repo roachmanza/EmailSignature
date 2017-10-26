@@ -1,4 +1,4 @@
-FROM node:boron
+FROM node:alpine
 
 WORKDIR /usr/src/app
 # Install app dependencies
@@ -7,7 +7,7 @@ WORKDIR /usr/src/app
 # For npm@5 or later, copy package-lock.json as well
 COPY package.json package-lock.json ./
 
-RUN npm set registry http://momjendev102.metmom.mmih.biz:8082/repository/npm-group/ 
+# RUN npm set registry http://momjendev102.metmom.mmih.biz:8082/repository/npm-group/ 
 RUN npm install
 
 

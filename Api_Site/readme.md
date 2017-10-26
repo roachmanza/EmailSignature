@@ -16,7 +16,9 @@ Open the folder where the application resides with a prompt , and run the 'npm s
 
 ##### Option 2
     docker build -t email-signature-api .
+    docker run -p 4010:4010 -d email-signature-api
 
+    
 Create a docker image of the application and run it there.<br/>
 The .dockerignore and Dockerfile is already included in the application.<br/>
 To create a docker image follow the steps above.
