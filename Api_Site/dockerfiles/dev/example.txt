@@ -2,8 +2,9 @@ Run these commands from the Api_Site directory:
 Do the RUN command only once, its a detached image.
 
 1. remove the old container [docker rm email-signature-api-local]
-2. build the new container [docker build ...] 
-3. run the new container [docker run ...] 
+2. remove the old image [docker rmi xxxx -f]
+3. build the new image [docker build ...] 
+4. run the new container [docker run ...] 
 
 DEV:
     docker build -f dockerfiles/dev/Dockerfile.dev -t email-signature-api:dev .
