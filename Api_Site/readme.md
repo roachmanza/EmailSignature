@@ -39,7 +39,7 @@ To change the environment , change the value of the name in the env.js file in t
 
     Then use the command :
     docker start email-signature - to start the api site
-    dcoker stop email-signature - to stop the web site
+    docker stop email-signature - to stop the web site
 
 ### Modules used in the application
     body-parser: "^1.17.2"
