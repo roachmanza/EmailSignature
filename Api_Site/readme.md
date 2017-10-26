@@ -14,11 +14,11 @@ Clone the application to your local repo.<br/>
 To change the environment , change the value of the name in the env.js file in the config folder.<br/>
 
 ### Modules used in the application
-    body-parser: "^1.17.2"<br/>
-    cors: "^2.8.4"<br/>
-    express: "^4.15.3"<br/>
-    pg: "^1.3.0"<br/>
-    swagger-ui-express: "^2.0.7"<br/>
+    body-parser: "^1.17.2"
+    cors: "^2.8.4"
+    express: "^4.15.3"
+    pg: "^1.3.0"
+    swagger-ui-express: "^2.0.7"
 
 ### Database used in the application
 PostgreSQL.<br/>
