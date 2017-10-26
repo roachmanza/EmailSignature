@@ -1,0 +1,17 @@
+FROM node:alpine
+
+MAINTAINER Roche Olivier <rolivier@mmiholdings.co.za>
+
+WORKDIR /usr/src/app
+
+COPY package.json package-lock.json ./
+
+RUN npm install
+
+COPY . .
+
+COPY dockerfiles/local/env.js /usr/src/app/config/
+
+EXPOSE 4011
+
+CMD [ "npm", "start" ]

@@ -1,0 +1,11 @@
+Run these commands from the Wfe_Site directory:
+Do the RUN command only once, its a detached image.
+
+1. remove the old container [docker rm email-signature-wfe-local]
+2. remove the old image [docker rmi xxxx -f]
+3. build the new image [docker build ...] 
+4. run the new container [docker run ...] 
+
+LOCAL:
+    docker build -f dockerfiles/local/Dockerfile.local -t email-signature-wfe:local .
+    docker run --name email-signature-wfe-local -d -p 4010:4010 email-signature-wfe:local

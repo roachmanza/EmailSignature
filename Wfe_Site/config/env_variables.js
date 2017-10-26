@@ -2,6 +2,7 @@ exports.PopulateEnvironmentSettings = function (env, callback) {
 
     var httpEnvAttributes = {};
     var parserEnvAttributes = {};
+    var fileEnvAttributes = {};
 
     var result = {};
     var haserror = true;
@@ -11,6 +12,10 @@ exports.PopulateEnvironmentSettings = function (env, callback) {
     parserEnvAttributes = {
         "urlencoded_max": "50mb",
         "json_max": "50mb"
+    };
+    fileEnvAttributes = {
+        "size_max": "50mb",
+        "allowed": "jpg, png, gif"
     };
 
     //SPECIFIC TO ENVIRONMENT
@@ -39,7 +44,8 @@ exports.PopulateEnvironmentSettings = function (env, callback) {
     else {
         result = {
             "http": httpEnvAttributes,
-            "parser": parserEnvAttributes
+            "parser": parserEnvAttributes,
+            "file": fileEnvAttributes
         };
         callback(result, haserror, errormessage);
     }
