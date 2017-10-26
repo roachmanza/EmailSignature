@@ -1,0 +1,90 @@
+<dom-module id="comp-csiMainContactTypes-list">
+    <style>
+         :host {
+            display: block;
+        }
+    </style>
+
+    <template>
+        <content></content>
+        <button class="btn btn-default btn-xs" data-bind="click: $root.CreateCsiMainContactTypes">Add a new CSI contact category</button>
+
+        <div class="loader-wrapper p-a-md " data-bind="visible: CsiMainContactTypesLoading()">
+            <i class="fa fa-repeat fa-spin fa-1x"></i>
+            <h4>loading</h4>
+        </div>
+
+        <div data-bind="visible : CsiMainContactTypesHasError()">
+            <div data-bind="text: CsiMainContactTypesError()"></div>
+        </div>
+        <hr>
+        <div data-bind="visible : CsiMainContactTypesList().length < 1 && !CsiMainContactTypesLoading()" class="alert alert-info m-t alert-dismissible"
+            role="alert" role="alert">
+            <div class="fa fa-info-circle fa-lg alert-icon"></div>
+            <strong>INFO: </strong>There are currently no items in the list.
+        </div>
+
+        <div class="table-responsive" data-bind="visible : CsiMainContactTypesList().length > 0 && !CsiMainContactTypesLoading()">
+            <table class="table  table-striped">
+                <thead>
+
+                    <tr>
+                        <th style="font-size:12px;width: 5%;" class="hidden-xs">Id</th>
+                        <th style="font-size:12px;width: 15%;">Name</th>
+                        <th style="font-size:12px;width: 45%;">Description</th>
+                        <th style="font-size:12px;width: 5%;">Active</th>
+                        <th style="font-size:12px;width: 10%;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach : CsiMainContactTypesList()">
+                    <tr>
+                        <td style="font-size:12px;" data-bind="text : csimaincontacttypeid" class="hidden-xs"></td>
+                        <td style="font-size:12px;" data-bind="text : name"></td>
+                        <td style="font-size:12px;" data-bind="text : description"></td>
+                        <td style="font-size:12px;">
+                            <span class="glyphicon glyphicon-ok-circle" style="color:green" data-bind="visible : !inactivechecked"></span>
+                            <span class="glyphicon glyphicon-ban-circle" style="color:red" data-bind="visible : inactivechecked"></span>
+                        </td>
+                        <td>
+                            <button class="btn btn-default btn-xs" data-bind="click: $root.OpenCsiMainContactTypes">Open</button>
+                            <button class="btn btn-default btn-xs" data-bind="click: $root.EditCsiMainContactTypes">Edit</button>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+
+    </template>
+
+    <!-- Uncomment the link below if this page will be used outside the application.
+    This is the path of the js file relative to this html file.
+    <script src="comp-csiMainContactTypes-list-js-v1.js"></script> -->
+
+    <script src="/comp-csiMainContactTypes-list/js"></script>
+
+    <script>
+        Polymer({
+            is: 'comp-csiMainContactTypes-list',
+
+            properties: {
+                environmentUrl: {
+                    type: String,
+                    value: 'DEV'
+                }
+            },
+
+            CsiMainContactTypesModel: null,
+
+            ready: function () {
+                var self = this;
+
+                self.CsiMainContactTypesModel = new CsiMainContactTypesListViewModel(this);
+                ko.applyBindings(self.CsiMainContactTypesModel, this);
+                var vm = self.CsiMainContactTypesModel;
+                vm.Initialize(self.environmentUrl, self, self.CsiMainContactTypesModel);
+                vm.GetCsiMainContactTypes();
+            }
+        });
+    </script>
+</dom-module>

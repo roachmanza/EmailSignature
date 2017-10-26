@@ -1,0 +1,88 @@
+<dom-module id="comp-fieldTypes-list">
+    <style>
+         :host {
+            display: block;
+        }
+    </style>
+
+    <template>
+        <content></content>
+        <button class="btn btn-default" data-bind="click: $root.CreateFieldTypes">Add a new field type</button>
+
+        <div class="loader-wrapper p-a-md " data-bind="visible: FieldTypesLoading()">
+            <i class="fa fa-repeat fa-spin fa-1x"></i>
+            <h4>loading</h4>
+        </div>
+
+        <div data-bind="visible : FieldTypesHasError()">
+            <div data-bind="text: FieldTypesError()"></div>
+        </div>
+        <hr>
+        <div data-bind="visible : FieldTypesList().length < 1 && !FieldTypesLoading()" class="alert alert-info m-t alert-dismissible"
+            role="alert" role="alert">
+            <div class="fa fa-info-circle fa-lg alert-icon"></div>
+            <strong>INFO: </strong>There are currently no items in the list.
+        </div>
+
+        <div class="table-responsive" data-bind="visible : FieldTypesList().length > 0 && !FieldTypesLoading()">
+            <table class="table  table-striped">
+                <thead>
+
+                    <tr>
+                        <th style="font-size:12px;width: 5%;" class="hidden-xs">Id</th>
+                        <th style="font-size:12px;width: 60%;">Name</th>
+                        <th style="font-size:12px;width: 5%;">Active</th>
+                        <th style="font-size:12px;width: 10%;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach : FieldTypesList()">
+                    <tr>
+                        <td style="font-size:12px;" data-bind="text : fieldtypeid" class="hidden-xs"></td>
+                        <td style="font-size:12px;" data-bind="text : name"></td>
+                        <td style="font-size:12px;">
+                            <span class="glyphicon glyphicon-ok-circle" style="color:green" data-bind="visible : !inactivechecked"></span>
+                            <span class="glyphicon glyphicon-ban-circle" style="color:red" data-bind="visible : inactivechecked"></span>
+                        </td>
+                        <td>
+                            <button class="btn btn-default btn-xs" data-bind="click: $root.OpenFieldTypes">Open</button>
+                            <button class="btn btn-default btn-xs" data-bind="click: $root.EditFieldTypes">Edit</button>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+
+    </template>
+
+    <!-- Uncomment the link below if this page will be used outside the application.
+    This is the path of the js file relative to this html file.
+    <script src="comp-fieldTypes-list-js-v1.js"></script> -->
+
+    <script src="/comp-fieldTypes-list/js"></script>
+
+    <script>
+        Polymer({
+            is: 'comp-fieldTypes-list',
+
+            properties: {
+                environmentUrl: {
+                    type: String,
+                    value: 'DEV'
+                }
+            },
+
+            FieldTypesModel: null,
+
+            ready: function () {
+                var self = this;
+
+                self.FieldTypesModel = new FieldTypesListViewModel(this);
+                ko.applyBindings(self.FieldTypesModel, this);
+                var vm = self.FieldTypesModel;
+                vm.Initialize(self.environmentUrl, self, self.FieldTypesModel);
+                vm.GetFieldTypes();
+            }
+        });
+    </script>
+</dom-module>

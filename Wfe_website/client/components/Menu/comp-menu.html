@@ -1,0 +1,111 @@
+<dom-module id="comp-menu">
+    <style>
+         :host {
+            display: block;
+        }
+    </style>
+
+    <template>
+        <content></content>
+ 
+    <!-- NAV START -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                    aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+                <a class="navbar-brand" href="/home">Home</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="/Signatures">Signatures <span class="sr-only">(current)</span></a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Configuration & Setup <span class="caret"></span></a>
+                        <ul class="dropdown-menu">     
+                                <li class="dropdown-header">Base system setup</li>                         
+                                <li><a href="/ContactTypes">Contact types</a></li>
+                                <li><a href="/FieldTypes">Field types</a></li>
+                                <li><a href="/Languages">Languages</a></li>                                
+                                <li class="divider"></li>
+                                <li class="dropdown-header">Create field items and link them to a signature item</li> 
+                                <li><a href="/FieldItems">Field items</a></li>
+                                <li><a href="/SignatureItems">Signature items</a></li>
+                                <li class="divider"></li>
+                                <!-- <li class="dropdown-header">Test your signature</li> 
+                                <li><a href="/Signatures">Signatures</a></li> -->
+                        </ul>
+                    </li>
+                </ul>
+<!-- 
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Link processes <span class="caret"></span></a>
+                        <ul class="dropdown-menu">     
+                           
+                                <li class="dropdown-header">CSI contact types to main types</li>   
+                                <li><a href="/CsiMainContactTypes">CSI main contact types</a></li>
+                                <li><a href="/CsiContactTypes">CSI contact types</a></li>
+                                <li class="divider"></li>
+                                <li class="dropdown-header">Link CSI contact categories to contact types</li>   
+                                <li><a href="/CsiContactCategories">CSI contact categories</a></li>
+                                <li><a href="/CsiContactCategoryMappings">CSI contact category mappings</a></li>
+                                <li class="divider"></li>
+                                <li class="dropdown-header">Maps to contact types</li>   
+                                <li><a href="/CsiContactTypeMappings">CSI contact type mappings</a></li>
+                                <li><a href="/AwdContactTypeMappings">AWD contact type mappings</a></li>
+                                <li class="divider"></li>
+
+                        </ul>
+                    </li>
+                </ul> -->
+
+
+
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+    <!-- NAV END -->
+
+
+    </template>
+
+    <!-- Uncomment the link below if this page will be used outside the application.
+    This is the path of the js file relative to this html file.
+    <script src="comp-menu-js-v1.js"></script> -->
+
+    <script src="/comp-menu/js"></script>
+
+    <script>
+        Polymer({
+            is: 'comp-menu',
+
+            properties: {
+                environmentUrl: {
+                    type: String,
+                    value: 'DEV'
+                }
+            },
+
+            LanguagesModel: null,
+
+            ready: function () {
+                var self = this;
+
+                self.MenuModel = new MenuViewModel(this);
+                ko.applyBindings(self.MenuModel, this);
+                var vm = self.MenuModel;
+                vm.Initialize(self.environmentUrl, self, self.MenuModel);
+            }
+        });
+    </script>
+</dom-module>

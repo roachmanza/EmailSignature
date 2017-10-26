@@ -1,0 +1,133 @@
+<dom-module id="comp-fieldItems-view">
+    <style>
+        :host {
+            display: block;
+        }
+    </style>
+
+    <template>
+        <content></content>
+        <button class="btn btn-default" data-bind="click: $root.OpenFieldItemsList">List</button>
+
+        <div data-bind="visible : FieldItemsHasError()">
+            <div data-bind="text: FieldItemsError()"></div>
+        </div>
+
+        <hr>
+
+        <div class="loader-wrapper p-a-md " data-bind="visible: FieldItemsLoading()">
+            <i class="fa fa-repeat fa-spin fa-1x"></i>
+            <h4>loading</h4>
+        </div>
+
+        <div data-bind="visible: !FieldItemsLoading()">
+            <div>
+                <div class="row" style="margin-bottom:3px;" data-bind="visible: inactivechecked">
+                    <div class="clearfix col-lg-8 col-md-12 p-x-0">
+                        <span class="col-sm-12 col-xs-12">
+                            <span class="glyphicon glyphicon-ban-circle" style="color:red"></span>&nbsp;
+                            <span style="color:red">Inactive on </span>
+                            <span style="color:red" data-bind="text : inactivedate, visible: inactivechecked"></span>
+                        </span>
+                    </div>
+                </div>
+
+
+                <div class="row" style="margin-bottom:3px;">
+                    <div class="clearfix col-lg-8 col-md-12 p-x-0">
+                        <strong class="col-sm-5 col-xs-12 control-label">Language</strong>
+                        <span class="col-sm-7 col-xs-12" data-bind="text : languageidname"> </span>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-bottom:3px;">
+                    <div class="clearfix col-lg-8 col-md-12 p-x-0">
+                        <strong class="col-sm-5 col-xs-12 control-label">Field type</strong>
+                        <span class="col-sm-7 col-xs-12" data-bind="text : fieldtypeidname"> </span>
+                    </div>
+                </div>
+
+
+                <div class="row" style="margin-bottom:3px;">
+                    <div class="clearfix col-lg-8 col-md-12 p-x-0">
+                        <strong class="col-sm-5 col-xs-12 control-label">Name</strong>
+                        <span class="col-sm-7 col-xs-12" data-bind="text : name"> </span>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-bottom:3px;">
+                    <div class="clearfix col-lg-8 col-md-12 p-x-0">
+                        <strong class="col-sm-5 col-xs-12 control-label">Description</strong>
+                        <span class="col-sm-7 col-xs-12" data-bind="text : description"> </span>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom:3px;"  data-bind="visible: fieldTypeValue() != 'Image'">
+                    <div class="clearfix col-lg-8 col-md-12 p-x-0">
+                        <strong class="col-sm-5 col-xs-12 control-label">Label</strong>
+                        <span class="col-sm-7 col-xs-12" data-bind="text : label"> </span>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-bottom:3px;"  data-bind="visible: fieldTypeValue() != 'Image'">
+                    <div class="clearfix col-lg-8 col-md-12 p-x-0">
+                        <strong class="col-sm-5 col-xs-12 control-label">Value</strong>
+                        <span class="col-sm-7 col-xs-12" data-bind="text : value,  visible: fieldtypeidname() != 'Image'"></span>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-bottom:3px;" data-bind="visible: fieldTypeValue() == 'Image'">
+                    <div class="clearfix col-lg-12 col-md-12 p-x-0">
+                        <img data-bind="attr:{src: value}, visible: fieldtypeidname() == 'Image'" />
+                    </div>
+                </div>
+
+
+
+                <div class="row" style="margin-bottom:3px;" data-bind="visible: fieldTypeValue() != 'Image'">
+                    <div class="clearfix col-lg-8 col-md-12 p-x-0">
+                        <strong class="col-sm-5 col-xs-12 control-label">Print format</strong>
+                        <span class="col-sm-7 col-xs-12" data-bind="text : printformat"> </span>
+                    </div>
+                </div>
+
+            </div>
+            <hr>
+            <button class="btn btn-default" data-bind="click: $root.EditFieldItems">Edit</button>
+        </div>
+
+    </template>
+
+    <!-- Uncomment the link below if this page will be used outside the application.
+    This is the path of the js file relative to this html file.
+    <script src="comp-fieldItems-list-js-v1.js"></script> -->
+
+    <script src="/comp-fieldItems-view/js"></script>
+
+    <script>
+        Polymer({
+            is: 'comp-fieldItems-view',
+
+            properties: {
+                environmentUrl: {
+                    type: String,
+                    value: 'DEV'
+                }
+            },
+
+            FieldItemsViewViewModel: null,
+
+            ready: function () {
+                var self = this;
+                var itemId = applicationTools.getqueryValue("id");
+                self.FieldItemsViewViewModel = new FieldItemsViewViewModel(this);
+                ko.applyBindings(self.FieldItemsViewViewModel, this);
+                var vm = self.FieldItemsViewViewModel;
+                vm.Initialize(self.environmentUrl, self, self.FieldItemsViewViewModel, itemId);
+                vm.GetLanguages();
+                vm.GetFieldTypes();
+                vm.GetFieldItemsById();
+
+            }
+        });
+    </script>
+</dom-module>

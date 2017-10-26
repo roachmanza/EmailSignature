@@ -1,0 +1,88 @@
+<dom-module id="comp-contactTypes-list">
+    <style>
+        :host {
+            display: block;
+        }
+    </style>
+
+    <template>
+        <content></content>
+        <button class="btn btn-default" data-bind="click: $root.CreateContactTypes">Add a new contact type</button>
+
+        <div class="loader-wrapper p-a-md " data-bind="visible: ContactTypesLoading()">
+            <i class="fa fa-repeat fa-spin fa-1x"></i>
+            <h4>loading</h4>
+        </div>
+
+        <div data-bind="visible : ContactTypesHasError()">
+            <div data-bind="text: ContactTypesError()"></div>
+        </div>
+        <hr>
+        <div data-bind="visible : ContactTypesList().length < 1 && !ContactTypesLoading()" class="alert alert-info m-t alert-dismissible"
+            role="alert" role="alert">
+            <div class="fa fa-info-circle fa-lg alert-icon"></div>
+            <strong>INFO: </strong>There are currently no items in the list.
+        </div>
+
+        <div class="table table-responsive" data-bind="visible : ContactTypesList().length > 0 && !ContactTypesLoading()">
+            <table class="table  table-striped">
+                <thead>
+
+                    <tr>
+                        <th style="font-size:12px;width: 5%;" class="hidden-xs">Id</th>
+                        <th style="font-size:12px;width: 60%;">Name</th>
+                        <th style="font-size:12px;width: 5%;">Active</th>
+                        <th style="font-size:12px;width: 10%;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach : ContactTypesList()">
+                    <tr>
+                        <td style="font-size:12px;" data-bind="text : contacttypeid" class="hidden-xs"></td>
+                        <td style="font-size:12px;" data-bind="text : name"></td>
+                        <td style="font-size:12px;">
+                            <span class="glyphicon glyphicon-ok-circle" style="color:green" data-bind="visible : !inactivechecked"></span>
+                            <span class="glyphicon glyphicon-ban-circle" style="color:red" data-bind="visible : inactivechecked"></span>
+                        </td>
+                        <td>
+                            <button class="btn btn-default btn-xs" data-bind="click: $root.OpenContactTypes">Open</button>
+                            <button class="btn btn-default btn-xs" data-bind="click: $root.EditContactTypes">Edit</button>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+
+    </template>
+
+    <!-- Uncomment the link below if this page will be used outside the application.
+    This is the path of the js file relative to this html file.
+    <script src="comp-contactTypes-list-js-v1.js"></script> -->
+
+    <script src="/comp-contactTypes-list/js"></script>
+
+    <script>
+        Polymer({
+            is: 'comp-contactTypes-list',
+
+            properties: {
+                environmentUrl: {
+                    type: String,
+                    value: 'DEV'
+                }
+            },
+
+            ContactTypesModel: null,
+
+            ready: function () {
+                var self = this;
+
+                self.ContactTypesModel = new ContactTypesListViewModel(this);
+                ko.applyBindings(self.ContactTypesModel, this);
+                var vm = self.ContactTypesModel;
+                vm.Initialize(self.environmentUrl, self, self.ContactTypesModel);
+                vm.GetContactTypes();
+            }
+        });
+    </script>
+</dom-module>

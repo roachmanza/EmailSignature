@@ -1,0 +1,91 @@
+<dom-module id="comp-signatureItems-create">
+    <style>
+        :host {
+            display: block;
+        }
+    </style>
+
+    <template>
+        <content></content>
+        <button class="btn btn-default" data-bind="click: $root.OpenSignatureItemsList">List</button>
+        <hr>
+
+        <div class="loader-wrapper p-a-md " data-bind="visible: SignatureItemsLoading()">
+            <i class="fa fa-repeat fa-spin fa-1x"></i>
+            <h4>loading</h4>
+        </div>
+
+        <div data-bind="visible: !SignatureItemsLoading()">
+            <div>
+
+                <div class="row" style="margin-bottom:3px;">
+                    <div class="clearfix col-lg-8 col-md-12 p-x-0">
+                        <strong class="col-sm-5 col-xs-12 control-label">Contact type</strong>
+                        <span class="col-sm-7 col-xs-12">
+                            <select class="form-control" data-bind="options: availableContactTypes, optionsText: 'name', value: contacttypes, optionsCaption: 'Please select...'"></select>
+                        </span>
+                    </div>
+                </div>
+
+
+                <div class="row" style="margin-bottom:3px;">
+                    <div class="clearfix col-lg-8 col-md-12 p-x-0">
+                        <strong class="col-sm-5 col-xs-12 control-label">Field item</strong>
+                        <span class="col-sm-7 col-xs-12">
+                            <select class="form-control" data-bind="options: availableFieldItems, optionsText: 'name', value: fielditems, optionsCaption: 'Please select...'"></select>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-bottom:3px;">
+                    <div class="clearfix col-lg-8 col-md-12 p-x-0">
+                        <strong class="col-sm-5 col-xs-12 control-label">Sequence</strong>
+                        <span class="col-sm-7 col-xs-12">
+                            <input type="text" class="form-control" data-bind="value : sequence" /> </span>
+                    </div>
+                </div>
+            </div>
+
+            <div data-bind="visible : SignatureItemsHasError()">
+                <hr>
+                <div style="color:red" data-bind="text: SignatureItemsError()"></div>
+            </div>
+            <hr>
+            <button class="btn btn-default" data-bind="click: $root.OpenSignatureItemsList">Back</button>
+            <button class="btn btn-default" data-bind="click: $root.SaveSignatureItems">Save</button>
+
+        </div>
+
+    </template>
+
+    <!-- Uncomment the link below if this page will be used outside the application.
+    This is the path of the js file relative to this html file.
+    <script src="comp-signatureItems-list-js-v1.js"></script> -->
+
+    <script src="/comp-signatureItems-create/js"></script>
+
+    <script>
+        Polymer({
+            is: 'comp-signatureItems-create',
+
+            properties: {
+                environmentUrl: {
+                    type: String,
+                    value: 'DEV'
+                }
+            },
+
+            SignatureItemsModel: null,
+
+            ready: function () {
+                var self = this;
+                self.SignatureItemsModel = new SignatureItemsCreateViewModel(this);
+                ko.applyBindings(self.SignatureItemsModel, this);
+                var vm = self.SignatureItemsModel;
+                vm.Initialize(self.environmentUrl, self, self.SignatureItemsModel);
+                vm.GetContactTypes();
+                vm.GetFieldItems();
+            }
+        });
+    </script>
+</dom-module>
