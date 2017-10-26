@@ -1,6 +1,6 @@
 FROM node:alpine
 
-MAINTAINER Roche Olivier <roolivier@mmiholdings.co.za>
+MAINTAINER Roche Olivier <rolivier@mmiholdings.co.za>
 
 WORKDIR /usr/src/app
 
