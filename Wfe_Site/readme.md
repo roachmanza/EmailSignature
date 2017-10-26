@@ -4,15 +4,16 @@
 ### Welcome to the email signature system Web Front End (WFE)
 
 #### What is the email signature system Web Front End (WFE)
-    The web front end is used to create all the relevant information pertaining to the signatures.
-    Contact types is defineed as a name and an email address pair, where the contact type is the primary key of the system.
-    Field types are the type of field you would like to define for the signature item, for example operating hours, email , image etc.
-    Languages is the language the signature will be sent in to the client.
-    
-    Field items are re-useable lines in a signature.
-    Signature items adds the re-useable line of a signature to a contact type , and includes a order the item must be displyed in.
-    
-    There is a menu item called 'Signatures' where you can view a sample of the completed signature for the language selected.
+
+The web front end is used to create all the relevant information pertaining to the signatures.
+Contact types is defineed as a name and an email address pair, where the contact type is the primary key of the system.
+Field types are the type of field you would like to define for the signature item, for example operating hours, email , image etc.
+Languages is the language the signature will be sent in to the client.
+
+Field items are re-useable lines in a signature.
+Signature items adds the re-useable line of a signature to a contact type , and includes a order the item must be displyed in.
+
+There is a menu item called 'Signatures' where you can view a sample of the completed signature for the language selected.
 
 
 ### How to get the application up and running
