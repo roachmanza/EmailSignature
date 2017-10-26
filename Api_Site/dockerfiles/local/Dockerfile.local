@@ -1,5 +1,7 @@
 FROM node:alpine
 
+MAINTAINER Roche Olivier <roolivier@mmiholdings.co.za>
+
 WORKDIR /usr/src/app
 
 COPY package.json package-lock.json ./
