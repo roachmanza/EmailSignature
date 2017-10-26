@@ -31,15 +31,15 @@ To change the environment , change the value of the name in the env.js file in t
 ##### docker container build per environment
     LOCAL:
     docker build -f dockerfiles/Dockerfile.local -t email-signature-api:local .
-    docker run --name EmailSignatureApiLocal -d -p 4010:4010 email-signature-api:local
+    docker run --name email-signature-api-local -d -p 4010:4010 email-signature-api:local
 
     DEV:
     docker build -f dockerfiles/Dockerfile.dev -t email-signature-api:dev .
-    docker run --name EmailSignatureApiDev -d -p 4010:4010 email-signature-api:dev
+    docker run --name email-signature-api-dev -d -p 4010:4010 email-signature-api:dev
 
     Then use the command ( on local ):
-    docker start EmailSignatureApiLocal - to start the api site
-    docker stop EmailSignatureApiLocal - to stop the web site
+    docker start email-signature-api-local - to start the api site
+    docker stop email-signature-api-local - to stop the web site
 
 ### Modules used in the application
     body-parser: "^1.17.2"
