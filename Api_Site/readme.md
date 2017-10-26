@@ -37,9 +37,9 @@ To change the environment , change the value of the name in the env.js file in t
     docker build -f dockerfiles/Dockerfile.dev -t email-signature-api:dev .
     docker run --name email-signature-api-dev -d -p 4010:4010 email-signature-api:dev
 
-    Then use the command ( on local ):
-    docker start email-signature-api-local - to start the api site
-    docker stop email-signature-api-local - to stop the web site
+    Then use the folowing command to stop and start the image
+    docker start email-signature-api-local
+    docker stop email-signature-api-local
 
 ### Modules used in the application
     body-parser: "^1.17.2"
