@@ -16,7 +16,7 @@ exports.PopulateEnvironmentSettings = function (env, callback) {
     fileEnvAttributes = {
         "size_max": 307200,
         "size_max_Kb": 300,
-        "allowed_type": ["image/gif", "image/png", "image/jpg", "application/x-zip-compressed"],
+        "allowed_type": ["image/gif", "image/png", "image/jpg"],
         "allowed_formats": ["gif", "png", "jpg"]
     };
 

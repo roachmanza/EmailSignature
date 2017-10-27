@@ -24,6 +24,86 @@ var mv = require('mv'); //use for EXDEV oldpath and newpath are not on the same 
 webserver.use(bodyParser.urlencoded({ limit: _config.parser.urlencoded_max, extended: true }));
 webserver.use(bodyParser.json({ limit: _config.parser.json_max }));
 
+//CSS
+webserver.get('/client/content/css/default', function (req, res) {
+    res.sendFile(path.join(__dirname + '/client/content/css/client.css'));
+});
+webserver.get('/client/content/css/bootstrap', function (req, res) {
+    res.sendFile(path.join(__dirname + '/client/content/css/bootstrap.css'));
+});
+webserver.get('/client/content/css/datatables', function (req, res) {
+    res.sendFile(path.join(__dirname + '/client/content/css/datatables.css'));
+});
+
+//IMAGES
+webserver.get('/client/content/img/favicon', function (req, res) {
+    res.sendFile(path.join(__dirname + '/client/content/img/MailIcon32.png'));
+});
+webserver.get('/client/content/img/default', function (req, res) {
+    res.sendFile(path.join(__dirname + '/client/content/img/MailIcon32.png'));
+});
+
+//JS
+webserver.get('/client/content/js/default', function (req, res) {
+    res.sendFile(path.join(__dirname + '/client/content/js/client.js'));
+});
+webserver.get('/client/content/js/bootstrap', function (req, res) {
+    res.sendFile(path.join(__dirname + '/client/content/js/bootstrap.min.js'));
+});
+webserver.get('/client/content/js/jquery', function (req, res) {
+    res.sendFile(path.join(__dirname + '/client/content/js/jquery.js'));
+});
+webserver.get('/client/content/js/knockout', function (req, res) {
+    res.sendFile(path.join(__dirname + '/client/content/js/knockout.js'));
+});
+webserver.get('/client/content/js/datatables', function (req, res) {
+    res.sendFile(path.join(__dirname + '/client/content/js/datatables.js'));
+});
+
+
+webserver.get('/client/content/js/webcomponentslite', function (req, res) {
+    res.sendFile(path.join(__dirname + '/client/content/js/webcomponents-lite.js'));
+});
+webserver.get('/client/content/js/polymer', function (req, res) {
+    res.sendFile(path.join(__dirname + '/client/content/js/polymer/polymer.html'));
+});
+webserver.get('/client/content/js/polymer-mini', function (req, res) {
+    res.sendFile(path.join(__dirname + '/client/content/js/polymer/polymer-mini.html'));
+});
+webserver.get('/client/content/js/polymer-micro', function (req, res) {
+    res.sendFile(path.join(__dirname + '/client/content/js/polymer/polymer-micro.html'));
+});
+webserver.get('/client/content/js/appframework', function (req, res) {
+    res.sendFile(path.join(__dirname + '/client/content/js/appFrameWork.js'));
+});
+
+
+// static folders to be able to point to css, js etc files in a directory
+webserver.get('/', function (req, res) {
+    res.sendFile(path.join(__dirname + '/client/index.html'));
+});
+webserver.get('/home/', function (req, res) {
+    res.sendFile(path.join(__dirname + '/client/index.html'));
+});
+webserver.get('/ContactTypes', function (req, res) {
+    res.sendFile(path.join(__dirname + '/client/pages/ContactTypes/list.html'));
+});
+webserver.get('/FieldTypes', function (req, res) {
+    res.sendFile(path.join(__dirname + '/client/pages/FieldTypes/list.html'));
+});
+webserver.get('/Languages', function (req, res) {
+    res.sendFile(path.join(__dirname + '/client/pages/Languages/list.html'));
+});
+webserver.get('/FieldItems', function (req, res) {
+    res.sendFile(path.join(__dirname + '/client/pages/FieldItems/list.html'));
+});
+webserver.get('/SignatureItems', function (req, res) {
+    res.sendFile(path.join(__dirname + '/client/pages/SignatureItems/list.html'));
+});
+webserver.get('/Signatures', function (req, res) {
+    res.sendFile(path.join(__dirname + '/client/pages/SignatureItems/base.html'));
+});
+
 //FILE UPLOADS
 webserver.post('/upload', function (req, res) {
     var base64string;
@@ -104,13 +184,6 @@ webserver.post('/upload', function (req, res) {
                 });
             }
         }
-
-
-
-
-
-
-
     });
     form.on('error', function (err) {
         console.log('An error has occured: \n' + err);
@@ -119,86 +192,6 @@ webserver.post('/upload', function (req, res) {
         console.log("end");
     });
     form.parse(req);
-});
-
-//CSS
-webserver.get('/client/content/css/default', function (req, res) {
-    res.sendFile(path.join(__dirname + '/client/content/css/client.css'));
-});
-webserver.get('/client/content/css/bootstrap', function (req, res) {
-    res.sendFile(path.join(__dirname + '/client/content/css/bootstrap.css'));
-});
-webserver.get('/client/content/css/datatables', function (req, res) {
-    res.sendFile(path.join(__dirname + '/client/content/css/datatables.css'));
-});
-
-//IMAGES
-webserver.get('/client/content/img/favicon', function (req, res) {
-    res.sendFile(path.join(__dirname + '/client/content/img/MailIcon32.png'));
-});
-webserver.get('/client/content/img/default', function (req, res) {
-    res.sendFile(path.join(__dirname + '/client/content/img/MailIcon32.png'));
-});
-
-//JS
-webserver.get('/client/content/js/default', function (req, res) {
-    res.sendFile(path.join(__dirname + '/client/content/js/client.js'));
-});
-webserver.get('/client/content/js/bootstrap', function (req, res) {
-    res.sendFile(path.join(__dirname + '/client/content/js/bootstrap.min.js'));
-});
-webserver.get('/client/content/js/jquery', function (req, res) {
-    res.sendFile(path.join(__dirname + '/client/content/js/jquery.js'));
-});
-webserver.get('/client/content/js/knockout', function (req, res) {
-    res.sendFile(path.join(__dirname + '/client/content/js/knockout.js'));
-});
-webserver.get('/client/content/js/datatables', function (req, res) {
-    res.sendFile(path.join(__dirname + '/client/content/js/datatables.js'));
-});
-
-
-webserver.get('/client/content/js/webcomponentslite', function (req, res) {
-    res.sendFile(path.join(__dirname + '/client/content/js/webcomponents-lite.js'));
-});
-webserver.get('/client/content/js/polymer', function (req, res) {
-    res.sendFile(path.join(__dirname + '/client/content/js/polymer/polymer.html'));
-});
-webserver.get('/client/content/js/polymer-mini', function (req, res) {
-    res.sendFile(path.join(__dirname + '/client/content/js/polymer/polymer-mini.html'));
-});
-webserver.get('/client/content/js/polymer-micro', function (req, res) {
-    res.sendFile(path.join(__dirname + '/client/content/js/polymer/polymer-micro.html'));
-});
-webserver.get('/client/content/js/appframework', function (req, res) {
-    res.sendFile(path.join(__dirname + '/client/content/js/appFrameWork.js'));
-});
-
-
-// static folders to be able to point to css, js etc files in a directory
-webserver.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname + '/client/index.html'));
-});
-webserver.get('/home/', function (req, res) {
-    res.sendFile(path.join(__dirname + '/client/index.html'));
-});
-webserver.get('/ContactTypes', function (req, res) {
-    res.sendFile(path.join(__dirname + '/client/pages/ContactTypes/list.html'));
-});
-webserver.get('/FieldTypes', function (req, res) {
-    res.sendFile(path.join(__dirname + '/client/pages/FieldTypes/list.html'));
-});
-webserver.get('/Languages', function (req, res) {
-    res.sendFile(path.join(__dirname + '/client/pages/Languages/list.html'));
-});
-webserver.get('/FieldItems', function (req, res) {
-    res.sendFile(path.join(__dirname + '/client/pages/FieldItems/list.html'));
-});
-webserver.get('/SignatureItems', function (req, res) {
-    res.sendFile(path.join(__dirname + '/client/pages/SignatureItems/list.html'));
-});
-webserver.get('/Signatures', function (req, res) {
-    res.sendFile(path.join(__dirname + '/client/pages/SignatureItems/base.html'));
 });
 
 

@@ -45,7 +45,7 @@ function FieldItemsEditViewModel(hostThisContext) {
 
         self.FieldItemsHasError(false);
         self.FieldItemsError("");
-        
+
         var inactive = "0";
         if (self.inactivechecked() === true) {
             inactive = "1"
@@ -72,6 +72,9 @@ function FieldItemsEditViewModel(hostThisContext) {
         };
 
         if (self.fieldTypeValue() == 'Image') {
+            // if(!self.value()){
+            //there is no value specified and no image was previously specified
+            //check the files if there is one
             var files = $("#fileuploadinput").get(0).files;
             if (files.length > 0) {
                 var formData = new FormData();
@@ -102,7 +105,7 @@ function FieldItemsEditViewModel(hostThisContext) {
                         url = self.ApiBaseUri() + self.apiUrl.updateFieldItems + "/" + currentId;
                         ajaxAsync.ajaxPut(self, self._SaveFieldItems, url, null, jsonObject, null, headers);
                     },
-                    error(xhr,status,error){
+                    error(xhr, status, error) {
                         var errormessage = xhr.responseJSON.error.message;
                         self.FieldItemsHasError(true);
                         self.FieldItemsError(errormessage);
@@ -110,9 +113,31 @@ function FieldItemsEditViewModel(hostThisContext) {
                     }
                 });
             } else {
-                self.FieldItemsHasError(true);
-                self.FieldItemsError("Please select a file");
-                return;
+                //no files
+                //check if there is a current value
+                if (!self.value()) {
+                    self.FieldItemsHasError(true);
+                    self.FieldItemsError("Please select a file");
+                    return;
+                } else {
+                    //there is a value
+                    //continue with the other field validations
+                    var jsonObject = JSON.stringify({
+                        languageid: self.languages().languageid,
+                        fieldtypeid: self.fieldtypes().fieldtypeid,
+                        name: self.name(),
+                        description: self.description(),
+                        label: "image",
+                        value: self.value(),
+                        printformat: "None",
+                        inactive: inactive
+                    });
+                    var url = "";
+                    var headers = [applicationTools.appAuth.claimsHeader([applicationTools.appAuth.domainNameClaim(currentDomainLogin)])];
+                    url = self.ApiBaseUri() + self.apiUrl.updateFieldItems + "/" + currentId;
+                    ajaxAsync.ajaxPut(self, self._SaveFieldItems, url, null, jsonObject, null, headers);
+                }
+
             }
         } else {
 
@@ -137,7 +162,7 @@ function FieldItemsEditViewModel(hostThisContext) {
                 name: self.name(),
                 description: self.description(),
                 label: self.label(),
-                value: base64encodedimage,
+                value: self.value(),
                 printformat: self.printformat(),
                 inactive: inactive
             });
