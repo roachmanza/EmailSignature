@@ -49,6 +49,7 @@ function SignatureItemsViewViewModel(hostThisContext) {
     self.signatureitemid = ko.observable("");
     self.contacttypeid = ko.observable("");
     self.contacttypeidname = ko.observable("");
+    self.fielditemfieldtypename = ko.observable("");
     self.fielditemidname = ko.observable("");
     self.fielditemlabel = ko.observable("");
     self.fielditemvalue = ko.observable("");
@@ -76,7 +77,7 @@ function SignatureItemsViewViewModel(hostThisContext) {
                 self.fielditemdescription(data[0].fielditemdescription);
 
                 
-                
+                self.fielditemfieldtypename(data[0].fielditemfieldtypename);
                 
 
                 self.inactivechecked(self.getInActive(data[0].inactive));
