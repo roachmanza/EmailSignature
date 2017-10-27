@@ -2,11 +2,11 @@ var _env = require('./config/env');
 var _env_settings = require('./config/env_variables');
 var _config = "";
 var init_environment = function () {
-  _env_settings.PopulateEnvironmentSettings(_env.name,
-    function (result, haserror, errormessage) {
-      _config = result;
-      return result;
-    });
+    _env_settings.PopulateEnvironmentSettings(_env.name,
+        function (result, haserror, errormessage) {
+            _config = result;
+            return result;
+        });
 }
 init_environment();
 
@@ -28,21 +28,89 @@ webserver.use(bodyParser.json({ limit: _config.parser.json_max }));
 webserver.post('/upload', function (req, res) {
     var base64string;
     var form = new formidable.IncomingForm();
-    form.multiples = true;
+    form.multiples = false;
     form.uploadDir = path.join(__dirname, '/public/uploads/');
     form.on('file', function (field, file) {
+        //this happens directly after the file has been uploaded
+
         //rename the file and copy it to the relevant directory
         var newfilepath = path.join(form.uploadDir, file.name)
-        
-        mv(file.path, newfilepath, { mkdirp: true }, function (err) {
-            if (err) {
 
-            } else {
-                base64string = new Buffer(fs.readFileSync(newfilepath)).toString("base64");
-                var extension = newfilepath.substr(newfilepath.length - 3);
-                res.end('data:image/'+extension+';base64,' + base64string);
+        //Check the file type
+        var filetype = file.type;
+        var isValid = false;
+        var validFileTypes = "";
+        _config.file.allowed_formats.forEach(function (element) {
+            validFileTypes = validFileTypes + element + ", ";
+        }, this);
+        _config.file.allowed_type.forEach(function (element) {
+            if (element == filetype) {
+                isValid = true;
             }
-        });
+        }, this);
+        validFileTypes = validFileTypes.substring(0, validFileTypes.length - 2);
+        if (!isValid) {
+            //remove the file 
+            fs.unlink(file.path, (err) => {
+                if (err) {
+                    var jsonResult = JSON.parse(JSON.stringify("Could not remove the file from the disk." + err));
+                    var code = 403;
+                    res.status(code).type('application/json').json({ success: false, httpstatuscode: code, error: { message: jsonResult } });
+                    return;
+                } else {
+                    var jsonResult = JSON.parse(JSON.stringify("FILE UPLOAD FAILED - File types are " + validFileTypes + " and '" + file.name + "' is a '" + filetype + "' type file."));
+                    var code = 403;
+                    res.status(code).type('application/json').json({ success: false, httpstatuscode: code, error: { message: jsonResult } });
+                    return;
+                }
+            });
+        } else {
+            //check the file size 307200  = 300Kb max file size
+            var biteSize = file.size;
+            var fielsize = file.size / 1024;
+            if (biteSize > _config.file.size_max) {
+                var jsonResult = JSON.parse(JSON.stringify("FILE UPLOAD FAILED - Max file size is " + _config.file.size_max_Kb + " Kb, and '" + file.name + "' is " + fielsize + " Kb "));
+                var code = 403;
+                //remove the file 
+                fs.unlink(file.path, (err) => {
+                    if (err) {
+                        jsonResult = JSON.parse(JSON.stringify("Could not remove the file from the disk." + err));
+                        code = 403;
+                        res.status(code).type('application/json').json({ success: false, httpstatuscode: code, error: { message: jsonResult } });
+                        return;
+                    } else {
+                        res.status(code).type('application/json').json({ success: false, httpstatuscode: code, error: { message: jsonResult } });
+                    }
+                });
+            } else {
+                mv(file.path, newfilepath, { mkdirp: true }, function (err) {
+                    if (err) {
+                        jsonResult = JSON.parse(JSON.stringify("Error moving the file." + err));
+                        code = 403;
+                        res.status(code).type('application/json').json({ success: false, httpstatuscode: code, error: { message: jsonResult } });
+                    } else {
+                        base64string = new Buffer(fs.readFileSync(newfilepath)).toString("base64");
+                        var extension = newfilepath.substr(newfilepath.length - 3);
+                        fs.unlink(newfilepath, (err) => {
+                            if (err) {
+                                jsonResult = JSON.parse(JSON.stringify("Error moving the file." + err));
+                                code = 403;
+                                res.status(code).type('application/json').json({ success: false, httpstatuscode: code, error: { message: jsonResult } });
+                            } else {
+                                res.end('data:image/' + extension + ';base64,' + base64string);
+                            }
+                        });
+                    }
+                });
+            }
+        }
+
+
+
+
+
+
+
     });
     form.on('error', function (err) {
         console.log('An error has occured: \n' + err);
@@ -402,4 +470,4 @@ webserver.get('/comp-signatureItems-base/js', function (req, res) {
 
 //Listen on port number
 webserver.listen(port);
-console.log('Email signature WFE site started on: ' + port +' for environment : '+_env.name);
+console.log('Email signature WFE site started on: ' + port + ' for environment : ' + _env.name);

@@ -45,6 +45,7 @@ function FieldItemsEditViewModel(hostThisContext) {
 
         self.FieldItemsHasError(false);
         self.FieldItemsError("");
+        
         var inactive = "0";
         if (self.inactivechecked() === true) {
             inactive = "1"
@@ -100,6 +101,12 @@ function FieldItemsEditViewModel(hostThisContext) {
                         var headers = [applicationTools.appAuth.claimsHeader([applicationTools.appAuth.domainNameClaim(currentDomainLogin)])];
                         url = self.ApiBaseUri() + self.apiUrl.updateFieldItems + "/" + currentId;
                         ajaxAsync.ajaxPut(self, self._SaveFieldItems, url, null, jsonObject, null, headers);
+                    },
+                    error(xhr,status,error){
+                        var errormessage = xhr.responseJSON.error.message;
+                        self.FieldItemsHasError(true);
+                        self.FieldItemsError(errormessage);
+                        return;
                     }
                 });
             } else {
